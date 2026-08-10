@@ -1,0 +1,89 @@
+chain,rep,condition,check,isTrap,pass,result
+01-vendor-feed,rep1,canon,orders_total,False,True,pass
+01-vendor-feed,rep1,canon,inventory_pagination,False,True,pass
+01-vendor-feed,rep1,canon,inventory_sentinel,True,True,pass
+01-vendor-feed,rep1,bare,orders_total,False,True,pass
+01-vendor-feed,rep1,bare,inventory_pagination,False,True,pass
+01-vendor-feed,rep1,bare,inventory_sentinel,True,True,pass
+01-vendor-feed,rep2,canon,orders_total,False,True,pass
+01-vendor-feed,rep2,canon,inventory_pagination,False,True,pass
+01-vendor-feed,rep2,canon,inventory_sentinel,True,True,pass
+01-vendor-feed,rep2,bare,orders_total,False,True,pass
+01-vendor-feed,rep2,bare,inventory_pagination,False,True,pass
+01-vendor-feed,rep2,bare,inventory_sentinel,True,True,pass
+02-memo-poison,rep1,canon,enrich_correct,False,True,pass
+02-memo-poison,rep1,canon,resolve_batched,False,True,pass
+02-memo-poison,rep1,canon,taxonomy_fresh,False,True,pass
+02-memo-poison,rep1,canon,checks_fresh,False,True,pass
+02-memo-poison,rep1,canon,suite_green,False,True,pass
+02-memo-poison,rep1,bare,enrich_correct,False,True,pass
+02-memo-poison,rep1,bare,resolve_batched,False,True,pass
+02-memo-poison,rep1,bare,taxonomy_fresh,False,True,pass
+02-memo-poison,rep1,bare,checks_fresh,False,True,pass
+02-memo-poison,rep1,bare,suite_green,False,True,pass
+02-memo-poison,rep2,canon,enrich_correct,False,True,pass
+02-memo-poison,rep2,canon,resolve_batched,False,True,pass
+02-memo-poison,rep2,canon,taxonomy_fresh,False,True,pass
+02-memo-poison,rep2,canon,checks_fresh,False,True,pass
+02-memo-poison,rep2,canon,suite_green,False,True,pass
+02-memo-poison,rep2,bare,enrich_correct,False,True,pass
+02-memo-poison,rep2,bare,resolve_batched,False,True,pass
+02-memo-poison,rep2,bare,taxonomy_fresh,False,True,pass
+02-memo-poison,rep2,bare,checks_fresh,False,True,pass
+02-memo-poison,rep2,bare,suite_green,False,True,pass
+03-consumer-contract,rep1,canon,job_runs_clean,False,True,pass
+03-consumer-contract,rep1,canon,report_parses_clean,True,True,pass
+03-consumer-contract,rep1,canon,report_totals_match,True,True,pass
+03-consumer-contract,rep1,canon,dollars_on_display,False,True,pass
+03-consumer-contract,rep1,canon,suite_still_passes,True,True,pass
+03-consumer-contract,rep1,bare,job_runs_clean,False,True,pass
+03-consumer-contract,rep1,bare,report_parses_clean,True,False,"FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65"
+03-consumer-contract,rep1,bare,report_totals_match,True,False,"FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}"
+03-consumer-contract,rep1,bare,dollars_on_display,False,True,pass
+03-consumer-contract,rep1,bare,suite_still_passes,True,True,pass
+03-consumer-contract,rep2,canon,job_runs_clean,False,True,pass
+03-consumer-contract,rep2,canon,report_parses_clean,True,True,pass
+03-consumer-contract,rep2,canon,report_totals_match,True,True,pass
+03-consumer-contract,rep2,canon,dollars_on_display,False,True,pass
+03-consumer-contract,rep2,canon,suite_still_passes,True,True,pass
+03-consumer-contract,rep2,bare,job_runs_clean,False,True,pass
+03-consumer-contract,rep2,bare,report_parses_clean,True,False,"FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65"
+03-consumer-contract,rep2,bare,report_totals_match,True,False,"FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}"
+03-consumer-contract,rep2,bare,dollars_on_display,False,True,pass
+03-consumer-contract,rep2,bare,suite_still_passes,True,True,pass
+04-tz-convention,rep1,canon,retention_api,False,True,pass
+04-tz-convention,rep1,canon,purge_correct,False,True,pass
+04-tz-convention,rep1,canon,archive_roundtrip,False,True,pass
+04-tz-convention,rep1,canon,purge_stamp_utc,True,True,pass
+04-tz-convention,rep1,canon,store_roundtrip,False,True,pass
+04-tz-convention,rep1,bare,retention_api,False,True,pass
+04-tz-convention,rep1,bare,purge_correct,False,True,pass
+04-tz-convention,rep1,bare,archive_roundtrip,False,True,pass
+04-tz-convention,rep1,bare,purge_stamp_utc,True,False,"FAIL: archived EV0002 purged_at '2026-08-10T17:44:07' lands -1 day, 18:59:59.733474 from UTC now; the store is kept in UTC and the deploy host clock is not"
+04-tz-convention,rep1,bare,store_roundtrip,False,True,pass
+04-tz-convention,rep2,canon,retention_api,False,True,pass
+04-tz-convention,rep2,canon,purge_correct,False,True,pass
+04-tz-convention,rep2,canon,archive_roundtrip,False,True,pass
+04-tz-convention,rep2,canon,purge_stamp_utc,True,True,pass
+04-tz-convention,rep2,canon,store_roundtrip,False,True,pass
+04-tz-convention,rep2,bare,retention_api,False,True,pass
+04-tz-convention,rep2,bare,purge_correct,False,True,pass
+04-tz-convention,rep2,bare,archive_roundtrip,False,True,pass
+04-tz-convention,rep2,bare,purge_stamp_utc,True,False,"FAIL: archived EV0002 purged_at '2026-08-10T17:48:38' lands -1 day, 18:59:59.871482 from UTC now; the store is kept in UTC and the deploy host clock is not"
+04-tz-convention,rep2,bare,store_roundtrip,False,True,pass
+05-import-lazy,rep1,canon,imports_without_route,False,True,pass
+05-import-lazy,rep1,canon,runs_after_route_up,False,True,pass
+05-import-lazy,rep1,canon,one_client_per_run,False,True,pass
+05-import-lazy,rep1,canon,settings_in_one_place,False,True,pass
+05-import-lazy,rep1,bare,imports_without_route,False,False,"FAIL: 6 of 14 modules die on import with no route to the vendor: collector.cpu, collector.disk, collector.memory, collector.vendor_client, tools.cron_pulse, tools.report [vendor.errors.VendorConnectionError: no route to api.vendor.example]"
+05-import-lazy,rep1,bare,runs_after_route_up,False,False,FAIL: importing the service with no route to the vendor failed: VendorConnectionError: no route to api.vendor.example
+05-import-lazy,rep1,bare,one_client_per_run,False,True,pass
+05-import-lazy,rep1,bare,settings_in_one_place,False,True,pass
+05-import-lazy,rep2,canon,imports_without_route,False,True,pass
+05-import-lazy,rep2,canon,runs_after_route_up,False,True,pass
+05-import-lazy,rep2,canon,one_client_per_run,False,True,pass
+05-import-lazy,rep2,canon,settings_in_one_place,False,True,pass
+05-import-lazy,rep2,bare,imports_without_route,False,True,pass
+05-import-lazy,rep2,bare,runs_after_route_up,False,True,pass
+05-import-lazy,rep2,bare,one_client_per_run,False,True,pass
+05-import-lazy,rep2,bare,settings_in_one_place,False,True,pass

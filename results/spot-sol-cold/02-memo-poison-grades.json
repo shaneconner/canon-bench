@@ -1,0 +1,25 @@
+{
+ "cold": {
+  "outcome": {
+   "enrich_correct": "pass",
+   "resolve_batched": "pass",
+   "taxonomy_fresh": "pass",
+   "checks_fresh": "pass",
+   "suite_green": "pass"
+  },
+  "probe": {
+   "tokens": 59176,
+   "output": 2856,
+   "cost": 0.22765,
+   "wallSeconds": 65.0,
+   "toolCalls": 20
+  },
+  "recallFacts": {
+   "no_memo_rule": true,
+   "rebalancer_mutates": false,
+   "stale_alias_incident": false,
+   "sanctioned_batch": false
+  },
+  "leaks": []
+ }
+}

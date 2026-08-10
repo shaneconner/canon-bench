@@ -1,0 +1,346 @@
+{
+ "rep1/canon": {
+  "outcome": {
+   "orders_total": "pass",
+   "inventory_pagination": "pass",
+   "inventory_sentinel": "pass"
+  },
+  "recall": {
+   "cap_50": true,
+   "docs_1000": true,
+   "silent_truncation": true,
+   "sentinel_999": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 21581,
+    "output": 1230,
+    "cost": 0.00309,
+    "wallSeconds": 25.4,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 17256,
+    "output": 857,
+    "cost": 0.00252,
+    "wallSeconds": 24.7,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 48986,
+    "output": 1542,
+    "cost": 0.00508,
+    "wallSeconds": 37.2,
+    "toolCalls": 14
+   },
+   "recall": {
+    "tokens": 57083,
+    "output": 583,
+    "cost": 0.01135,
+    "wallSeconds": 21.0,
+    "toolCalls": 11
+   }
+  }
+ },
+ "rep1/canondoc": {
+  "outcome": {
+   "orders_total": "pass",
+   "inventory_pagination": "pass",
+   "inventory_sentinel": "pass"
+  },
+  "recall": {
+   "cap_50": true,
+   "docs_1000": false,
+   "silent_truncation": true,
+   "sentinel_999": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 25716,
+    "output": 1153,
+    "cost": 0.0037,
+    "wallSeconds": 33.3,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 19994,
+    "output": 953,
+    "cost": 0.00337,
+    "wallSeconds": 26.6,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 36824,
+    "output": 1801,
+    "cost": 0.00589,
+    "wallSeconds": 43.5,
+    "toolCalls": 15
+   },
+   "recall": {
+    "tokens": 18009,
+    "output": 612,
+    "cost": 0.0026,
+    "wallSeconds": 18.3,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep1/bare": {
+  "outcome": {
+   "orders_total": "pass",
+   "inventory_pagination": "pass",
+   "inventory_sentinel": "pass"
+  },
+  "recall": {
+   "cap_50": true,
+   "docs_1000": true,
+   "silent_truncation": true,
+   "sentinel_999": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 15637,
+    "output": 1537,
+    "cost": 0.00316,
+    "wallSeconds": 29.0,
+    "toolCalls": 7
+   },
+   "s2": {
+    "tokens": 9113,
+    "output": 594,
+    "cost": 0.00204,
+    "wallSeconds": 16.4,
+    "toolCalls": 8
+   },
+   "s3": {
+    "tokens": 10048,
+    "output": 926,
+    "cost": 0.00209,
+    "wallSeconds": 22.6,
+    "toolCalls": 8
+   },
+   "recall": {
+    "tokens": 68222,
+    "output": 482,
+    "cost": 0.01377,
+    "wallSeconds": 16.0,
+    "toolCalls": 10
+   }
+  }
+ },
+ "rep1/agentsmd": {
+  "outcome": {
+   "orders_total": "pass",
+   "inventory_pagination": "pass",
+   "inventory_sentinel": "pass"
+  },
+  "recall": {
+   "cap_50": true,
+   "docs_1000": false,
+   "silent_truncation": true,
+   "sentinel_999": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 32133,
+    "output": 1464,
+    "cost": 0.00371,
+    "wallSeconds": 35.4,
+    "toolCalls": 10
+   },
+   "s2": {
+    "tokens": 72784,
+    "output": 1592,
+    "cost": 0.00581,
+    "wallSeconds": 41.1,
+    "toolCalls": 19
+   },
+   "s3": {
+    "tokens": 37048,
+    "output": 2346,
+    "cost": 0.00506,
+    "wallSeconds": 41.5,
+    "toolCalls": 12
+   },
+   "recall": {
+    "tokens": 40095,
+    "output": 611,
+    "cost": 0.00609,
+    "wallSeconds": 16.0,
+    "toolCalls": 7
+   }
+  }
+ },
+ "rep2/canon": {
+  "outcome": {
+   "orders_total": "pass",
+   "inventory_pagination": "pass",
+   "inventory_sentinel": "pass"
+  },
+  "recall": {
+   "cap_50": true,
+   "docs_1000": true,
+   "silent_truncation": true,
+   "sentinel_999": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 26306,
+    "output": 1432,
+    "cost": 0.00413,
+    "wallSeconds": 34.7,
+    "toolCalls": 10
+   },
+   "s2": {
+    "tokens": 17014,
+    "output": 946,
+    "cost": 0.00278,
+    "wallSeconds": 28.2,
+    "toolCalls": 8
+   },
+   "s3": {
+    "tokens": 26776,
+    "output": 1089,
+    "cost": 0.00381,
+    "wallSeconds": 29.6,
+    "toolCalls": 13
+   },
+   "recall": {
+    "tokens": 61982,
+    "output": 532,
+    "cost": 0.0085,
+    "wallSeconds": 24.3,
+    "toolCalls": 7
+   }
+  }
+ },
+ "rep2/canondoc": {
+  "outcome": {
+   "orders_total": "pass",
+   "inventory_pagination": "pass",
+   "inventory_sentinel": "pass"
+  },
+  "recall": {
+   "cap_50": true,
+   "docs_1000": true,
+   "silent_truncation": true,
+   "sentinel_999": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 30171,
+    "output": 1605,
+    "cost": 0.00444,
+    "wallSeconds": 38.7,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 28696,
+    "output": 1174,
+    "cost": 0.00427,
+    "wallSeconds": 29.8,
+    "toolCalls": 11
+   },
+   "s3": {
+    "tokens": 31648,
+    "output": 1405,
+    "cost": 0.00448,
+    "wallSeconds": 38.0,
+    "toolCalls": 14
+   },
+   "recall": {
+    "tokens": 5521,
+    "output": 178,
+    "cost": 0.00099,
+    "wallSeconds": 9.1,
+    "toolCalls": 2
+   }
+  }
+ },
+ "rep2/bare": {
+  "outcome": {
+   "orders_total": "pass",
+   "inventory_pagination": "pass",
+   "inventory_sentinel": "FAIL: AssertionError: total_stock 45532 != 4573"
+  },
+  "recall": {
+   "cap_50": true,
+   "docs_1000": false,
+   "silent_truncation": true,
+   "sentinel_999": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 16079,
+    "output": 1566,
+    "cost": 0.00304,
+    "wallSeconds": 29.5,
+    "toolCalls": 10
+   },
+   "s2": {
+    "tokens": 8779,
+    "output": 587,
+    "cost": 0.00196,
+    "wallSeconds": 18.9,
+    "toolCalls": 6
+   },
+   "s3": {
+    "tokens": 18736,
+    "output": 1307,
+    "cost": 0.00313,
+    "wallSeconds": 29.6,
+    "toolCalls": 12
+   },
+   "recall": {
+    "tokens": 132385,
+    "output": 752,
+    "cost": 0.0137,
+    "wallSeconds": 18.9,
+    "toolCalls": 7
+   }
+  }
+ },
+ "rep2/agentsmd": {
+  "outcome": {
+   "orders_total": "pass",
+   "inventory_pagination": "pass",
+   "inventory_sentinel": "pass"
+  },
+  "recall": {
+   "cap_50": true,
+   "docs_1000": true,
+   "silent_truncation": true,
+   "sentinel_999": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 36435,
+    "output": 1476,
+    "cost": 0.00452,
+    "wallSeconds": 29.8,
+    "toolCalls": 11
+   },
+   "s2": {
+    "tokens": 46635,
+    "output": 1030,
+    "cost": 0.00486,
+    "wallSeconds": 34.1,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 44370,
+    "output": 1935,
+    "cost": 0.00518,
+    "wallSeconds": 36.1,
+    "toolCalls": 12
+   },
+   "recall": {
+    "tokens": 26337,
+    "output": 550,
+    "cost": 0.0049,
+    "wallSeconds": 13.1,
+    "toolCalls": 5
+   }
+  }
+ }
+}

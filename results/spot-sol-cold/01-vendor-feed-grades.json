@@ -1,0 +1,25 @@
+{
+ "cold": {
+  "outcome": {
+   "orders_total": "pass",
+   "inventory_pagination": "pass",
+   "inventory_sentinel": "FAIL: AssertionError: total_stock 45532 != 4573"
+  },
+  "probe": {
+   "tokens": 14905,
+   "output": 1571,
+   "cost": 0.09023,
+   "wallSeconds": 35.2,
+   "toolCalls": 10
+  },
+  "recallFacts": {
+   "cap_50": true,
+   "docs_1000": true,
+   "silent_truncation": true,
+   "sentinel_999": true
+  },
+  "leaks": [
+   "docs_1000"
+  ]
+ }
+}

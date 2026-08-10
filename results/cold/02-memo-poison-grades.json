@@ -1,0 +1,25 @@
+{
+ "cold": {
+  "outcome": {
+   "enrich_correct": "pass",
+   "resolve_batched": "pass",
+   "taxonomy_fresh": "FAIL: after the taxonomy was rebalanced (816 of 1451 product paths changed) enrich_all() still served the old chains for 3+ records: SKU00001 expected 'Home > Home Seasonal (Reorg) > Curtains (Reorg)' got 'Home > Home Seasonal > Curtains'; SKU00002 expected 'Grocery > Pasta' got 'Grocery > Grocery Core > Pasta'; SKU00005 expected 'Apparel > Apparel Seasonal > Denim (Reorg)' got 'Apparel > Apparel Seasonal > Denim'",
+   "checks_fresh": "FAIL: after the taxonomy was rebalanced, catalog.checks.find_problems missed 3+ of the 181 products whose category chain the rebalance shortened (SKU00002, SKU00025, SKU00028); the check job is still serving chains resolved before the rebalance, so the enrichment job is not the only surface holding a memo",
+   "suite_green": "pass"
+  },
+  "probe": {
+   "tokens": 42349,
+   "output": 1917,
+   "cost": 0.00567,
+   "wallSeconds": 41.5,
+   "toolCalls": 12
+  },
+  "recallFacts": {
+   "no_memo_rule": false,
+   "rebalancer_mutates": false,
+   "stale_alias_incident": false,
+   "sanctioned_batch": false
+  },
+  "leaks": []
+ }
+}

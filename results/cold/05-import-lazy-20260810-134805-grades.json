@@ -1,0 +1,23 @@
+{
+ "cold": {
+  "outcome": {
+   "imports_without_route": "FAIL: 6 of 14 modules die on import with no route to the vendor: collector.cpu, collector.disk, collector.memory, collector.vendor, tools.cron_pulse, tools.report [vendor.errors.VendorConnectionError: no route to api.vendor.example]",
+   "runs_after_route_up": "FAIL: importing the service with no route to the vendor failed: VendorConnectionError: no route to api.vendor.example",
+   "one_client_per_run": "pass",
+   "settings_in_one_place": "pass"
+  },
+  "probe": {
+   "tokens": 41774,
+   "output": 1931,
+   "cost": 0.00641,
+   "wallSeconds": 41.2,
+   "toolCalls": 16
+  },
+  "recallFacts": {
+   "no_network_at_import": false,
+   "whole_crontab_dies": false,
+   "vpn_sidecar_late": false
+  },
+  "leaks": []
+ }
+}

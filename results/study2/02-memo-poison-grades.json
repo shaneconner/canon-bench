@@ -1,0 +1,362 @@
+{
+ "rep1/canon": {
+  "outcome": {
+   "enrich_correct": "pass",
+   "resolve_batched": "pass",
+   "taxonomy_fresh": "pass",
+   "checks_fresh": "pass",
+   "suite_green": "pass"
+  },
+  "recall": {
+   "no_memo_rule": true,
+   "rebalancer_mutates": true,
+   "stale_alias_incident": true,
+   "sanctioned_batch": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 26210,
+    "output": 1397,
+    "cost": 0.00414,
+    "wallSeconds": 29.6,
+    "toolCalls": 11
+   },
+   "s2": {
+    "tokens": 34709,
+    "output": 1642,
+    "cost": 0.00618,
+    "wallSeconds": 43.4,
+    "toolCalls": 15
+   },
+   "s3": {
+    "tokens": 59099,
+    "output": 1928,
+    "cost": 0.00763,
+    "wallSeconds": 41.9,
+    "toolCalls": 18
+   },
+   "recall": {
+    "tokens": 61783,
+    "output": 671,
+    "cost": 0.01262,
+    "wallSeconds": 18.7,
+    "toolCalls": 10
+   }
+  }
+ },
+ "rep1/canondoc": {
+  "outcome": {
+   "enrich_correct": "pass",
+   "resolve_batched": "pass",
+   "taxonomy_fresh": "pass",
+   "checks_fresh": "pass",
+   "suite_green": "pass"
+  },
+  "recall": {
+   "no_memo_rule": true,
+   "rebalancer_mutates": true,
+   "stale_alias_incident": true,
+   "sanctioned_batch": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 31421,
+    "output": 1686,
+    "cost": 0.00444,
+    "wallSeconds": 33.9,
+    "toolCalls": 11
+   },
+   "s2": {
+    "tokens": 80223,
+    "output": 1564,
+    "cost": 0.00874,
+    "wallSeconds": 35.8,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 86957,
+    "output": 2229,
+    "cost": 0.00853,
+    "wallSeconds": 54.2,
+    "toolCalls": 21
+   },
+   "recall": {
+    "tokens": 40213,
+    "output": 786,
+    "cost": 0.0076,
+    "wallSeconds": 19.3,
+    "toolCalls": 7
+   }
+  }
+ },
+ "rep1/bare": {
+  "outcome": {
+   "enrich_correct": "pass",
+   "resolve_batched": "pass",
+   "taxonomy_fresh": "pass",
+   "checks_fresh": "pass",
+   "suite_green": "pass"
+  },
+  "recall": {
+   "no_memo_rule": true,
+   "rebalancer_mutates": true,
+   "stale_alias_incident": true,
+   "sanctioned_batch": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 21530,
+    "output": 1267,
+    "cost": 0.00309,
+    "wallSeconds": 26.8,
+    "toolCalls": 8
+   },
+   "s2": {
+    "tokens": 22515,
+    "output": 1160,
+    "cost": 0.00391,
+    "wallSeconds": 26.2,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 50620,
+    "output": 2164,
+    "cost": 0.00537,
+    "wallSeconds": 43.3,
+    "toolCalls": 12
+   },
+   "recall": {
+    "tokens": 52384,
+    "output": 453,
+    "cost": 0.01083,
+    "wallSeconds": 13.0,
+    "toolCalls": 7
+   }
+  }
+ },
+ "rep1/agentsmd": {
+  "outcome": {
+   "enrich_correct": "pass",
+   "resolve_batched": "pass",
+   "taxonomy_fresh": "pass",
+   "checks_fresh": "pass",
+   "suite_green": "pass"
+  },
+  "recall": {
+   "no_memo_rule": true,
+   "rebalancer_mutates": true,
+   "stale_alias_incident": true,
+   "sanctioned_batch": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 36250,
+    "output": 1222,
+    "cost": 0.00431,
+    "wallSeconds": 28.1,
+    "toolCalls": 10
+   },
+   "s2": {
+    "tokens": 63877,
+    "output": 1565,
+    "cost": 0.00651,
+    "wallSeconds": 35.5,
+    "toolCalls": 16
+   },
+   "s3": {
+    "tokens": 80723,
+    "output": 2881,
+    "cost": 0.00847,
+    "wallSeconds": 59.7,
+    "toolCalls": 20
+   },
+   "recall": {
+    "tokens": 76913,
+    "output": 903,
+    "cost": 0.00752,
+    "wallSeconds": 21.5,
+    "toolCalls": 7
+   }
+  }
+ },
+ "rep2/canon": {
+  "outcome": {
+   "enrich_correct": "pass",
+   "resolve_batched": "pass",
+   "taxonomy_fresh": "pass",
+   "checks_fresh": "pass",
+   "suite_green": "pass"
+  },
+  "recall": {
+   "no_memo_rule": true,
+   "rebalancer_mutates": true,
+   "stale_alias_incident": true,
+   "sanctioned_batch": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 28975,
+    "output": 1466,
+    "cost": 0.00375,
+    "wallSeconds": 30.9,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 34153,
+    "output": 1704,
+    "cost": 0.00515,
+    "wallSeconds": 42.8,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 95601,
+    "output": 3524,
+    "cost": 0.00872,
+    "wallSeconds": 71.3,
+    "toolCalls": 24
+   },
+   "recall": {
+    "tokens": 64705,
+    "output": 576,
+    "cost": 0.01259,
+    "wallSeconds": 19.3,
+    "toolCalls": 9
+   }
+  }
+ },
+ "rep2/canondoc": {
+  "outcome": {
+   "enrich_correct": "pass",
+   "resolve_batched": "pass",
+   "taxonomy_fresh": "pass",
+   "checks_fresh": "pass",
+   "suite_green": "pass"
+  },
+  "recall": {
+   "no_memo_rule": true,
+   "rebalancer_mutates": true,
+   "stale_alias_incident": true,
+   "sanctioned_batch": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 29134,
+    "output": 1513,
+    "cost": 0.00452,
+    "wallSeconds": 33.3,
+    "toolCalls": 13
+   },
+   "s2": {
+    "tokens": 29863,
+    "output": 1603,
+    "cost": 0.00493,
+    "wallSeconds": 35.7,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 58686,
+    "output": 2199,
+    "cost": 0.00722,
+    "wallSeconds": 51.8,
+    "toolCalls": 20
+   },
+   "recall": {
+    "tokens": 116060,
+    "output": 1058,
+    "cost": 0.01206,
+    "wallSeconds": 30.3,
+    "toolCalls": 10
+   }
+  }
+ },
+ "rep2/bare": {
+  "outcome": {
+   "enrich_correct": "pass",
+   "resolve_batched": "pass",
+   "taxonomy_fresh": "pass",
+   "checks_fresh": "pass",
+   "suite_green": "pass"
+  },
+  "recall": {
+   "no_memo_rule": true,
+   "rebalancer_mutates": true,
+   "stale_alias_incident": true,
+   "sanctioned_batch": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 17560,
+    "output": 1055,
+    "cost": 0.00279,
+    "wallSeconds": 24.4,
+    "toolCalls": 7
+   },
+   "s2": {
+    "tokens": 21446,
+    "output": 1340,
+    "cost": 0.00338,
+    "wallSeconds": 28.8,
+    "toolCalls": 11
+   },
+   "s3": {
+    "tokens": 65642,
+    "output": 1899,
+    "cost": 0.00571,
+    "wallSeconds": 38.0,
+    "toolCalls": 9
+   },
+   "recall": {
+    "tokens": 49532,
+    "output": 524,
+    "cost": 0.01004,
+    "wallSeconds": 14.8,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep2/agentsmd": {
+  "outcome": {
+   "enrich_correct": "pass",
+   "resolve_batched": "pass",
+   "taxonomy_fresh": "pass",
+   "checks_fresh": "pass",
+   "suite_green": "pass"
+  },
+  "recall": {
+   "no_memo_rule": true,
+   "rebalancer_mutates": true,
+   "stale_alias_incident": true,
+   "sanctioned_batch": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 40409,
+    "output": 1288,
+    "cost": 0.004,
+    "wallSeconds": 30.1,
+    "toolCalls": 10
+   },
+   "s2": {
+    "tokens": 46640,
+    "output": 1585,
+    "cost": 0.00471,
+    "wallSeconds": 39.9,
+    "toolCalls": 13
+   },
+   "s3": {
+    "tokens": 79380,
+    "output": 2027,
+    "cost": 0.00728,
+    "wallSeconds": 45.9,
+    "toolCalls": 14
+   },
+   "recall": {
+    "tokens": 64270,
+    "output": 612,
+    "cost": 0.01222,
+    "wallSeconds": 20.0,
+    "toolCalls": 10
+   }
+  }
+ }
+}

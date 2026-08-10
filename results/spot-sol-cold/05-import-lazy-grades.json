@@ -1,0 +1,23 @@
+{
+ "cold": {
+  "outcome": {
+   "imports_without_route": "pass",
+   "runs_after_route_up": "pass",
+   "one_client_per_run": "pass",
+   "settings_in_one_place": "pass"
+  },
+  "probe": {
+   "tokens": 46168,
+   "output": 2030,
+   "cost": 0.15956,
+   "wallSeconds": 48.4,
+   "toolCalls": 18
+  },
+  "recallFacts": {
+   "no_network_at_import": false,
+   "whole_crontab_dies": false,
+   "vpn_sidecar_late": false
+  },
+  "leaks": []
+ }
+}

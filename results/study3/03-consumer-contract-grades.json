@@ -1,0 +1,186 @@
+{
+ "rep1/canon": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 24961,
+    "output": 1269,
+    "cost": 0.00334,
+    "wallSeconds": 31.7,
+    "toolCalls": 13
+   },
+   "s2": {
+    "tokens": 26260,
+    "output": 1582,
+    "cost": 0.0037,
+    "wallSeconds": 34.0,
+    "toolCalls": 11
+   },
+   "s3": {
+    "tokens": 45122,
+    "output": 2036,
+    "cost": 0.00633,
+    "wallSeconds": 54.9,
+    "toolCalls": 13
+   },
+   "recall": {
+    "tokens": 19012,
+    "output": 786,
+    "cost": 0.00278,
+    "wallSeconds": 25.3,
+    "toolCalls": 11
+   }
+  }
+ },
+ "rep1/canondoc": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 26609,
+    "output": 1107,
+    "cost": 0.00377,
+    "wallSeconds": 28.2,
+    "toolCalls": 13
+   },
+   "s2": {
+    "tokens": 33944,
+    "output": 1446,
+    "cost": 0.00457,
+    "wallSeconds": 35.7,
+    "toolCalls": 12
+   },
+   "s3": {
+    "tokens": 38373,
+    "output": 1474,
+    "cost": 0.00452,
+    "wallSeconds": 36.5,
+    "toolCalls": 15
+   },
+   "recall": {
+    "tokens": 14010,
+    "output": 1071,
+    "cost": 0.00225,
+    "wallSeconds": 23.2,
+    "toolCalls": 9
+   }
+  }
+ },
+ "rep2/canon": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 24950,
+    "output": 1075,
+    "cost": 0.00361,
+    "wallSeconds": 26.4,
+    "toolCalls": 10
+   },
+   "s2": {
+    "tokens": 27901,
+    "output": 1561,
+    "cost": 0.00466,
+    "wallSeconds": 36.9,
+    "toolCalls": 11
+   },
+   "s3": {
+    "tokens": 34336,
+    "output": 1666,
+    "cost": 0.00545,
+    "wallSeconds": 42.2,
+    "toolCalls": 15
+   },
+   "recall": {
+    "tokens": 38386,
+    "output": 857,
+    "cost": 0.00676,
+    "wallSeconds": 24.4,
+    "toolCalls": 13
+   }
+  }
+ },
+ "rep2/canondoc": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 24949,
+    "output": 1139,
+    "cost": 0.00342,
+    "wallSeconds": 28.8,
+    "toolCalls": 11
+   },
+   "s2": {
+    "tokens": 37707,
+    "output": 1841,
+    "cost": 0.00458,
+    "wallSeconds": 41.8,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 31102,
+    "output": 1848,
+    "cost": 0.00509,
+    "wallSeconds": 44.1,
+    "toolCalls": 12
+   },
+   "recall": {
+    "tokens": 13620,
+    "output": 795,
+    "cost": 0.00228,
+    "wallSeconds": 19.1,
+    "toolCalls": 9
+   }
+  }
+ }
+}

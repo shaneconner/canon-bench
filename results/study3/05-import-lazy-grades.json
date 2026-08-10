@@ -1,0 +1,174 @@
+{
+ "rep1/canon": {
+  "outcome": {
+   "imports_without_route": "pass",
+   "runs_after_route_up": "pass",
+   "one_client_per_run": "pass",
+   "settings_in_one_place": "pass"
+  },
+  "recall": {
+   "no_network_at_import": true,
+   "whole_crontab_dies": true,
+   "vpn_sidecar_late": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 25558,
+    "output": 1678,
+    "cost": 0.00437,
+    "wallSeconds": 48.5,
+    "toolCalls": 14
+   },
+   "s2": {
+    "tokens": 30056,
+    "output": 1800,
+    "cost": 0.00438,
+    "wallSeconds": 43.1,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 61861,
+    "output": 2660,
+    "cost": 0.00723,
+    "wallSeconds": 58.5,
+    "toolCalls": 16
+   },
+   "recall": {
+    "tokens": 15189,
+    "output": 670,
+    "cost": 0.00272,
+    "wallSeconds": 20.8,
+    "toolCalls": 13
+   }
+  }
+ },
+ "rep1/canondoc": {
+  "outcome": {
+   "imports_without_route": "pass",
+   "runs_after_route_up": "pass",
+   "one_client_per_run": "pass",
+   "settings_in_one_place": "pass"
+  },
+  "recall": {
+   "no_network_at_import": false,
+   "whole_crontab_dies": false,
+   "vpn_sidecar_late": false
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 26000,
+    "output": 1538,
+    "cost": 0.00391,
+    "wallSeconds": 34.7,
+    "toolCalls": 13
+   },
+   "s2": {
+    "tokens": 23815,
+    "output": 1386,
+    "cost": 0.00333,
+    "wallSeconds": 33.4,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 56510,
+    "output": 2730,
+    "cost": 0.00642,
+    "wallSeconds": 52.9,
+    "toolCalls": 22
+   },
+   "recall": {
+    "tokens": 19826,
+    "output": 691,
+    "cost": 0.0024,
+    "wallSeconds": 18.7,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep2/canon": {
+  "outcome": {
+   "imports_without_route": "pass",
+   "runs_after_route_up": "pass",
+   "one_client_per_run": "pass",
+   "settings_in_one_place": "pass"
+  },
+  "recall": {
+   "no_network_at_import": true,
+   "whole_crontab_dies": true,
+   "vpn_sidecar_late": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 36734,
+    "output": 1835,
+    "cost": 0.00444,
+    "wallSeconds": 41.6,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 28379,
+    "output": 1989,
+    "cost": 0.00521,
+    "wallSeconds": 50.9,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 187937,
+    "output": 2182,
+    "cost": 0.01197,
+    "wallSeconds": 50.3,
+    "toolCalls": 20
+   },
+   "recall": {
+    "tokens": 70535,
+    "output": 923,
+    "cost": 0.01389,
+    "wallSeconds": 22.5,
+    "toolCalls": 12
+   }
+  }
+ },
+ "rep2/canondoc": {
+  "outcome": {
+   "imports_without_route": "pass",
+   "runs_after_route_up": "pass",
+   "one_client_per_run": "pass",
+   "settings_in_one_place": "pass"
+  },
+  "recall": {
+   "no_network_at_import": true,
+   "whole_crontab_dies": true,
+   "vpn_sidecar_late": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 46520,
+    "output": 2207,
+    "cost": 0.00596,
+    "wallSeconds": 55.4,
+    "toolCalls": 17
+   },
+   "s2": {
+    "tokens": 23298,
+    "output": 1407,
+    "cost": 0.00348,
+    "wallSeconds": 35.3,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 56351,
+    "output": 2325,
+    "cost": 0.00574,
+    "wallSeconds": 53.1,
+    "toolCalls": 17
+   },
+   "recall": {
+    "tokens": 12701,
+    "output": 933,
+    "cost": 0.00186,
+    "wallSeconds": 20.0,
+    "toolCalls": 5
+   }
+  }
+ }
+}

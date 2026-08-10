@@ -1,0 +1,922 @@
+{
+ "rep1/canon": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 29670,
+    "output": 1316,
+    "cost": 0.0036,
+    "wallSeconds": 32.9,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 27816,
+    "output": 1463,
+    "cost": 0.00474,
+    "wallSeconds": 35.3,
+    "toolCalls": 12
+   },
+   "s3": {
+    "tokens": 46779,
+    "output": 2625,
+    "cost": 0.00682,
+    "wallSeconds": 53.9,
+    "toolCalls": 19
+   },
+   "recall": {
+    "tokens": 14041,
+    "output": 946,
+    "cost": 0.00245,
+    "wallSeconds": 19.7,
+    "toolCalls": 10
+   }
+  }
+ },
+ "rep1/canondoc": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 26993,
+    "output": 1109,
+    "cost": 0.00337,
+    "wallSeconds": 31.4,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 34132,
+    "output": 1353,
+    "cost": 0.00441,
+    "wallSeconds": 31.4,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 31212,
+    "output": 1415,
+    "cost": 0.00479,
+    "wallSeconds": 36.3,
+    "toolCalls": 14
+   },
+   "recall": {
+    "tokens": 14518,
+    "output": 932,
+    "cost": 0.00254,
+    "wallSeconds": 23.6,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep1/bare": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65",
+   "report_totals_match": "FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 12269,
+    "output": 530,
+    "cost": 0.00238,
+    "wallSeconds": 17.1,
+    "toolCalls": 6
+   },
+   "s2": {
+    "tokens": 15481,
+    "output": 794,
+    "cost": 0.00252,
+    "wallSeconds": 21.5,
+    "toolCalls": 7
+   },
+   "s3": {
+    "tokens": 27123,
+    "output": 1034,
+    "cost": 0.00381,
+    "wallSeconds": 26.7,
+    "toolCalls": 13
+   },
+   "recall": {
+    "tokens": 25900,
+    "output": 884,
+    "cost": 0.00554,
+    "wallSeconds": 19.5,
+    "toolCalls": 9
+   }
+  }
+ },
+ "rep1/agentsmd": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65",
+   "report_totals_match": "FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": false,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": false
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 30728,
+    "output": 649,
+    "cost": 0.00289,
+    "wallSeconds": 18.7,
+    "toolCalls": 9
+   },
+   "s2": {
+    "tokens": 37698,
+    "output": 1080,
+    "cost": 0.00447,
+    "wallSeconds": 26.1,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 60580,
+    "output": 1805,
+    "cost": 0.00529,
+    "wallSeconds": 38.6,
+    "toolCalls": 14
+   },
+   "recall": {
+    "tokens": 71505,
+    "output": 1153,
+    "cost": 0.01365,
+    "wallSeconds": 23.0,
+    "toolCalls": 13
+   }
+  }
+ },
+ "rep2/canon": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": false,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 22483,
+    "output": 1188,
+    "cost": 0.00416,
+    "wallSeconds": 27.8,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 33888,
+    "output": 1378,
+    "cost": 0.00465,
+    "wallSeconds": 37.8,
+    "toolCalls": 8
+   },
+   "s3": {
+    "tokens": 34628,
+    "output": 1854,
+    "cost": 0.00545,
+    "wallSeconds": 42.4,
+    "toolCalls": 15
+   },
+   "recall": {
+    "tokens": 19374,
+    "output": 832,
+    "cost": 0.00266,
+    "wallSeconds": 21.4,
+    "toolCalls": 10
+   }
+  }
+ },
+ "rep2/canondoc": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65",
+   "report_totals_match": "FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": false,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": false,
+   "dollars_display_only": false
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 20961,
+    "output": 1118,
+    "cost": 0.00326,
+    "wallSeconds": 28.8,
+    "toolCalls": 11
+   },
+   "s2": {
+    "tokens": 34775,
+    "output": 1600,
+    "cost": 0.00491,
+    "wallSeconds": 37.3,
+    "toolCalls": 11
+   },
+   "s3": {
+    "tokens": 46398,
+    "output": 2175,
+    "cost": 0.00559,
+    "wallSeconds": 48.0,
+    "toolCalls": 16
+   },
+   "recall": {
+    "tokens": 20577,
+    "output": 967,
+    "cost": 0.00309,
+    "wallSeconds": 24.1,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep2/bare": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65",
+   "report_totals_match": "FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": false,
+   "amounts_integer_cents": false,
+   "no_commas_or_dollar_signs": false,
+   "violation_dropped_silently": false,
+   "dollars_display_only": false
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 28815,
+    "output": 834,
+    "cost": 0.00372,
+    "wallSeconds": 21.9,
+    "toolCalls": 8
+   },
+   "s2": {
+    "tokens": 12382,
+    "output": 810,
+    "cost": 0.00311,
+    "wallSeconds": 20.9,
+    "toolCalls": 7
+   },
+   "s3": {
+    "tokens": 26777,
+    "output": 1447,
+    "cost": 0.00441,
+    "wallSeconds": 32.7,
+    "toolCalls": 14
+   },
+   "recall": {
+    "tokens": 57716,
+    "output": 1188,
+    "cost": 0.00787,
+    "wallSeconds": 30.1,
+    "toolCalls": 15
+   }
+  }
+ },
+ "rep2/agentsmd": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 41053,
+    "output": 977,
+    "cost": 0.0038,
+    "wallSeconds": 24.1,
+    "toolCalls": 13
+   },
+   "s2": {
+    "tokens": 34992,
+    "output": 1356,
+    "cost": 0.00511,
+    "wallSeconds": 29.4,
+    "toolCalls": 12
+   },
+   "s3": {
+    "tokens": 51666,
+    "output": 1795,
+    "cost": 0.00588,
+    "wallSeconds": 34.7,
+    "toolCalls": 15
+   },
+   "recall": {
+    "tokens": 69827,
+    "output": 917,
+    "cost": 0.01303,
+    "wallSeconds": 20.8,
+    "toolCalls": 12
+   }
+  }
+ },
+ "rep3/canon": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 23963,
+    "output": 1137,
+    "cost": 0.00356,
+    "wallSeconds": 25.9,
+    "toolCalls": 9
+   },
+   "s2": {
+    "tokens": 33449,
+    "output": 1679,
+    "cost": 0.00404,
+    "wallSeconds": 36.0,
+    "toolCalls": 13
+   },
+   "s3": {
+    "tokens": 49844,
+    "output": 2701,
+    "cost": 0.0065,
+    "wallSeconds": 56.5,
+    "toolCalls": 16
+   },
+   "recall": {
+    "tokens": 12809,
+    "output": 647,
+    "cost": 0.00209,
+    "wallSeconds": 17.5,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep3/canondoc": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": false,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 25225,
+    "output": 1446,
+    "cost": 0.0032,
+    "wallSeconds": 30.8,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 29325,
+    "output": 1543,
+    "cost": 0.00428,
+    "wallSeconds": 35.1,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 42092,
+    "output": 1678,
+    "cost": 0.00537,
+    "wallSeconds": 38.6,
+    "toolCalls": 15
+   },
+   "recall": {
+    "tokens": 6737,
+    "output": 565,
+    "cost": 0.00147,
+    "wallSeconds": 15.5,
+    "toolCalls": 3
+   }
+  }
+ },
+ "rep3/bare": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65",
+   "report_totals_match": "FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 15083,
+    "output": 508,
+    "cost": 0.00203,
+    "wallSeconds": 18.7,
+    "toolCalls": 8
+   },
+   "s2": {
+    "tokens": 13685,
+    "output": 942,
+    "cost": 0.00297,
+    "wallSeconds": 21.9,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 36391,
+    "output": 1081,
+    "cost": 0.00366,
+    "wallSeconds": 27.9,
+    "toolCalls": 12
+   },
+   "recall": {
+    "tokens": 65450,
+    "output": 999,
+    "cost": 0.01359,
+    "wallSeconds": 22.9,
+    "toolCalls": 14
+   }
+  }
+ },
+ "rep3/agentsmd": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": false,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 40104,
+    "output": 889,
+    "cost": 0.00476,
+    "wallSeconds": 23.2,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 51533,
+    "output": 1297,
+    "cost": 0.00473,
+    "wallSeconds": 32.4,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 34308,
+    "output": 1412,
+    "cost": 0.00405,
+    "wallSeconds": 30.9,
+    "toolCalls": 11
+   },
+   "recall": {
+    "tokens": 34977,
+    "output": 900,
+    "cost": 0.00621,
+    "wallSeconds": 21.7,
+    "toolCalls": 10
+   }
+  }
+ },
+ "rep4/canon": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 29603,
+    "output": 1284,
+    "cost": 0.00425,
+    "wallSeconds": 30.1,
+    "toolCalls": 11
+   },
+   "s2": {
+    "tokens": 34131,
+    "output": 1465,
+    "cost": 0.00442,
+    "wallSeconds": 35.3,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 35558,
+    "output": 2128,
+    "cost": 0.00611,
+    "wallSeconds": 50.6,
+    "toolCalls": 15
+   },
+   "recall": {
+    "tokens": 13670,
+    "output": 992,
+    "cost": 0.00257,
+    "wallSeconds": 20.9,
+    "toolCalls": 14
+   }
+  }
+ },
+ "rep4/canondoc": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 23850,
+    "output": 1098,
+    "cost": 0.00367,
+    "wallSeconds": 27.6,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 32656,
+    "output": 1406,
+    "cost": 0.00456,
+    "wallSeconds": 31.7,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 34985,
+    "output": 2031,
+    "cost": 0.00488,
+    "wallSeconds": 42.0,
+    "toolCalls": 18
+   },
+   "recall": {
+    "tokens": 13730,
+    "output": 617,
+    "cost": 0.00199,
+    "wallSeconds": 18.0,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep4/bare": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65",
+   "report_totals_match": "FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 20437,
+    "output": 885,
+    "cost": 0.00277,
+    "wallSeconds": 23.2,
+    "toolCalls": 10
+   },
+   "s2": {
+    "tokens": 16213,
+    "output": 798,
+    "cost": 0.00234,
+    "wallSeconds": 19.0,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 26335,
+    "output": 1059,
+    "cost": 0.00326,
+    "wallSeconds": 24.0,
+    "toolCalls": 9
+   },
+   "recall": {
+    "tokens": 105168,
+    "output": 1160,
+    "cost": 0.01742,
+    "wallSeconds": 24.5,
+    "toolCalls": 17
+   }
+  }
+ },
+ "rep4/agentsmd": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": false,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 38751,
+    "output": 813,
+    "cost": 0.00361,
+    "wallSeconds": 23.4,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 33666,
+    "output": 1087,
+    "cost": 0.00387,
+    "wallSeconds": 25.5,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 47955,
+    "output": 1562,
+    "cost": 0.00461,
+    "wallSeconds": 35.2,
+    "toolCalls": 13
+   },
+   "recall": {
+    "tokens": 37131,
+    "output": 844,
+    "cost": 0.00634,
+    "wallSeconds": 19.0,
+    "toolCalls": 10
+   }
+  }
+ },
+ "rep5/canon": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 28370,
+    "output": 1187,
+    "cost": 0.00425,
+    "wallSeconds": 30.5,
+    "toolCalls": 13
+   },
+   "s2": {
+    "tokens": 28064,
+    "output": 1310,
+    "cost": 0.00427,
+    "wallSeconds": 31.1,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 27570,
+    "output": 1903,
+    "cost": 0.00481,
+    "wallSeconds": 38.2,
+    "toolCalls": 15
+   },
+   "recall": {
+    "tokens": 15229,
+    "output": 795,
+    "cost": 0.00308,
+    "wallSeconds": 20.2,
+    "toolCalls": 5
+   }
+  }
+ },
+ "rep5/canondoc": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": false,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 31218,
+    "output": 1536,
+    "cost": 0.00359,
+    "wallSeconds": 34.6,
+    "toolCalls": 14
+   },
+   "s2": {
+    "tokens": 39552,
+    "output": 1702,
+    "cost": 0.005,
+    "wallSeconds": 44.9,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 45209,
+    "output": 2124,
+    "cost": 0.00541,
+    "wallSeconds": 47.1,
+    "toolCalls": 16
+   },
+   "recall": {
+    "tokens": 8503,
+    "output": 718,
+    "cost": 0.00159,
+    "wallSeconds": 16.6,
+    "toolCalls": 3
+   }
+  }
+ },
+ "rep5/bare": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65",
+   "report_totals_match": "FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": false,
+   "amounts_integer_cents": false,
+   "no_commas_or_dollar_signs": false,
+   "violation_dropped_silently": false,
+   "dollars_display_only": false
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 31921,
+    "output": 605,
+    "cost": 0.00375,
+    "wallSeconds": 26.0,
+    "toolCalls": 9
+   },
+   "s2": {
+    "tokens": 11868,
+    "output": 692,
+    "cost": 0.00219,
+    "wallSeconds": 18.7,
+    "toolCalls": 6
+   },
+   "s3": {
+    "tokens": 40975,
+    "output": 1362,
+    "cost": 0.00432,
+    "wallSeconds": 33.8,
+    "toolCalls": 14
+   },
+   "recall": {
+    "tokens": 58290,
+    "output": 1093,
+    "cost": 0.00706,
+    "wallSeconds": 24.2,
+    "toolCalls": 11
+   }
+  }
+ },
+ "rep5/agentsmd": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": false,
+   "violation_dropped_silently": false,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 41019,
+    "output": 823,
+    "cost": 0.00371,
+    "wallSeconds": 26.0,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 53493,
+    "output": 1262,
+    "cost": 0.00598,
+    "wallSeconds": 31.2,
+    "toolCalls": 16
+   },
+   "s3": {
+    "tokens": 43193,
+    "output": 1397,
+    "cost": 0.00371,
+    "wallSeconds": 30.2,
+    "toolCalls": 11
+   },
+   "recall": {
+    "tokens": 21944,
+    "output": 686,
+    "cost": 0.00287,
+    "wallSeconds": 18.4,
+    "toolCalls": 11
+   }
+  }
+ }
+}

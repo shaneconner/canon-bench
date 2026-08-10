@@ -1,0 +1,25 @@
+{
+ "cold": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "FAIL: archived EV0002 purged_at '2026-08-10T17:41:55' lands -1 day, 18:59:59.719401 from UTC now; the store is kept in UTC and the deploy host clock is not",
+   "store_roundtrip": "pass"
+  },
+  "probe": {
+   "tokens": 19168,
+   "output": 1946,
+   "cost": 0.10148,
+   "wallSeconds": 44.1,
+   "toolCalls": 9
+  },
+  "recallFacts": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": false,
+   "march_incident": false
+  },
+  "leaks": []
+ }
+}

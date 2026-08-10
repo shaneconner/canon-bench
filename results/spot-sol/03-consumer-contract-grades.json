@@ -1,0 +1,186 @@
+{
+ "rep1/canon": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": false,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 20229,
+    "output": 1294,
+    "cost": 0.09336,
+    "wallSeconds": 33.1,
+    "toolCalls": 11
+   },
+   "s2": {
+    "tokens": 31873,
+    "output": 1622,
+    "cost": 0.12961,
+    "wallSeconds": 40.5,
+    "toolCalls": 16
+   },
+   "s3": {
+    "tokens": 35432,
+    "output": 1793,
+    "cost": 0.1191,
+    "wallSeconds": 47.3,
+    "toolCalls": 16
+   },
+   "recall": {
+    "tokens": 10407,
+    "output": 648,
+    "cost": 0.04686,
+    "wallSeconds": 20.5,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep1/bare": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65",
+   "report_totals_match": "FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 16560,
+    "output": 549,
+    "cost": 0.0546,
+    "wallSeconds": 17.1,
+    "toolCalls": 9
+   },
+   "s2": {
+    "tokens": 13639,
+    "output": 952,
+    "cost": 0.077,
+    "wallSeconds": 23.0,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 27631,
+    "output": 1265,
+    "cost": 0.10947,
+    "wallSeconds": 38.8,
+    "toolCalls": 15
+   },
+   "recall": {
+    "tokens": 104588,
+    "output": 877,
+    "cost": 0.36039,
+    "wallSeconds": 24.4,
+    "toolCalls": 9
+   }
+  }
+ },
+ "rep2/canon": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "pass",
+   "report_totals_match": "pass",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 28794,
+    "output": 1411,
+    "cost": 0.14378,
+    "wallSeconds": 36.5,
+    "toolCalls": 14
+   },
+   "s2": {
+    "tokens": 33148,
+    "output": 1700,
+    "cost": 0.12594,
+    "wallSeconds": 43.9,
+    "toolCalls": 15
+   },
+   "s3": {
+    "tokens": 33074,
+    "output": 1813,
+    "cost": 0.13186,
+    "wallSeconds": 47.9,
+    "toolCalls": 14
+   },
+   "recall": {
+    "tokens": 6791,
+    "output": 620,
+    "cost": 0.03906,
+    "wallSeconds": 23.1,
+    "toolCalls": 4
+   }
+  }
+ },
+ "rep2/bare": {
+  "outcome": {
+   "job_runs_clean": "pass",
+   "report_parses_clean": "FAIL: finance ingest dropped 5 corrupt line(s); line 2: currency character on a report line: 2026-03-03|fuel|13|$2,255.65",
+   "report_totals_match": "FAIL: 0 rows ingested, expected 5; ledger total 0 cents, expected 1385983; category amounts {} != {'fuel': 225565, 'groceries': 254338, 'lodging': 294802, 'meals': 329990, 'supplies': 281288}; category counts {} != {'fuel': 13, 'groceries': 12, 'lodging': 14, 'meals': 15, 'supplies': 13}",
+   "dollars_on_display": "pass",
+   "suite_still_passes": "pass"
+  },
+  "recall": {
+   "consumer_repo_fin_ledger_intake": true,
+   "amounts_integer_cents": true,
+   "no_commas_or_dollar_signs": true,
+   "violation_dropped_silently": true,
+   "dollars_display_only": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 15592,
+    "output": 641,
+    "cost": 0.06672,
+    "wallSeconds": 21.9,
+    "toolCalls": 9
+   },
+   "s2": {
+    "tokens": 14652,
+    "output": 936,
+    "cost": 0.06484,
+    "wallSeconds": 28.0,
+    "toolCalls": 11
+   },
+   "s3": {
+    "tokens": 34958,
+    "output": 1334,
+    "cost": 0.10154,
+    "wallSeconds": 36.3,
+    "toolCalls": 16
+   },
+   "recall": {
+    "tokens": 46565,
+    "output": 1195,
+    "cost": 0.15918,
+    "wallSeconds": 27.9,
+    "toolCalls": 9
+   }
+  }
+ }
+}

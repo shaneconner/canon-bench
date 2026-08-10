@@ -1,0 +1,902 @@
+{
+ "rep1/canon": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "FAIL: archived EV0002 purged_at '2026-08-10T16:16:36' lands -1 day, 18:59:59.026964 from UTC now; the store is kept in UTC and the deploy host clock is not",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 28069,
+    "output": 1526,
+    "cost": 0.00448,
+    "wallSeconds": 33.1,
+    "toolCalls": 13
+   },
+   "s2": {
+    "tokens": 23839,
+    "output": 1285,
+    "cost": 0.00346,
+    "wallSeconds": 34.7,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 80839,
+    "output": 2245,
+    "cost": 0.0104,
+    "wallSeconds": 45.1,
+    "toolCalls": 11
+   },
+   "recall": {
+    "tokens": 13803,
+    "output": 828,
+    "cost": 0.00248,
+    "wallSeconds": 18.9,
+    "toolCalls": 11
+   }
+  }
+ },
+ "rep1/canondoc": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "FAIL: archived EV0002 purged_at '2026-08-10T16:18:55' lands -1 day, 18:59:59.521128 from UTC now; the store is kept in UTC and the deploy host clock is not",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 31925,
+    "output": 1532,
+    "cost": 0.0038,
+    "wallSeconds": 30.2,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 26640,
+    "output": 1107,
+    "cost": 0.00357,
+    "wallSeconds": 27.6,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 140196,
+    "output": 2760,
+    "cost": 0.0095,
+    "wallSeconds": 54.8,
+    "toolCalls": 16
+   },
+   "recall": {
+    "tokens": 70882,
+    "output": 637,
+    "cost": 0.00977,
+    "wallSeconds": 20.9,
+    "toolCalls": 10
+   }
+  }
+ },
+ "rep1/bare": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "FAIL: archived EV0002 purged_at '2026-08-10T16:20:33' lands -1 day, 18:59:59.839190 from UTC now; the store is kept in UTC and the deploy host clock is not",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 64549,
+    "output": 695,
+    "cost": 0.00805,
+    "wallSeconds": 21.5,
+    "toolCalls": 9
+   },
+   "s2": {
+    "tokens": 14784,
+    "output": 912,
+    "cost": 0.00274,
+    "wallSeconds": 22.8,
+    "toolCalls": 6
+   },
+   "s3": {
+    "tokens": 36715,
+    "output": 1171,
+    "cost": 0.00426,
+    "wallSeconds": 24.3,
+    "toolCalls": 5
+   },
+   "recall": {
+    "tokens": 27915,
+    "output": 579,
+    "cost": 0.00574,
+    "wallSeconds": 15.4,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep1/agentsmd": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 44178,
+    "output": 880,
+    "cost": 0.00501,
+    "wallSeconds": 23.8,
+    "toolCalls": 13
+   },
+   "s2": {
+    "tokens": 37836,
+    "output": 922,
+    "cost": 0.0046,
+    "wallSeconds": 24.8,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 43782,
+    "output": 1398,
+    "cost": 0.00565,
+    "wallSeconds": 28.7,
+    "toolCalls": 8
+   },
+   "recall": {
+    "tokens": 50590,
+    "output": 623,
+    "cost": 0.00965,
+    "wallSeconds": 15.5,
+    "toolCalls": 7
+   }
+  }
+ },
+ "rep2/canon": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 40399,
+    "output": 1743,
+    "cost": 0.00444,
+    "wallSeconds": 36.0,
+    "toolCalls": 14
+   },
+   "s2": {
+    "tokens": 28460,
+    "output": 2215,
+    "cost": 0.00411,
+    "wallSeconds": 48.5,
+    "toolCalls": 11
+   },
+   "s3": {
+    "tokens": 101757,
+    "output": 2521,
+    "cost": 0.01038,
+    "wallSeconds": 50.4,
+    "toolCalls": 14
+   },
+   "recall": {
+    "tokens": 13887,
+    "output": 724,
+    "cost": 0.00229,
+    "wallSeconds": 18.4,
+    "toolCalls": 9
+   }
+  }
+ },
+ "rep2/canondoc": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "FAIL: archived EV0002 purged_at '2026-08-10T16:27:03' lands -1 day, 18:59:59.868881 from UTC now; the store is kept in UTC and the deploy host clock is not",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 36605,
+    "output": 1790,
+    "cost": 0.00522,
+    "wallSeconds": 36.0,
+    "toolCalls": 15
+   },
+   "s2": {
+    "tokens": 23268,
+    "output": 1491,
+    "cost": 0.0038,
+    "wallSeconds": 33.8,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 77848,
+    "output": 1940,
+    "cost": 0.00652,
+    "wallSeconds": 39.4,
+    "toolCalls": 12
+   },
+   "recall": {
+    "tokens": 13542,
+    "output": 586,
+    "cost": 0.00188,
+    "wallSeconds": 16.6,
+    "toolCalls": 7
+   }
+  }
+ },
+ "rep2/bare": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "FAIL: archived EV0002 purged_at '2026-08-10T16:28:32' lands -1 day, 18:59:59.440096 from UTC now; the store is kept in UTC and the deploy host clock is not",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 22158,
+    "output": 730,
+    "cost": 0.00317,
+    "wallSeconds": 17.2,
+    "toolCalls": 7
+   },
+   "s2": {
+    "tokens": 14612,
+    "output": 832,
+    "cost": 0.00223,
+    "wallSeconds": 22.4,
+    "toolCalls": 6
+   },
+   "s3": {
+    "tokens": 17862,
+    "output": 1144,
+    "cost": 0.00259,
+    "wallSeconds": 26.8,
+    "toolCalls": 6
+   },
+   "recall": {
+    "tokens": 57882,
+    "output": 606,
+    "cost": 0.01205,
+    "wallSeconds": 16.1,
+    "toolCalls": 9
+   }
+  }
+ },
+ "rep2/agentsmd": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 43325,
+    "output": 1343,
+    "cost": 0.00411,
+    "wallSeconds": 29.2,
+    "toolCalls": 9
+   },
+   "s2": {
+    "tokens": 71216,
+    "output": 1857,
+    "cost": 0.00833,
+    "wallSeconds": 50.6,
+    "toolCalls": 14
+   },
+   "s3": {
+    "tokens": 61728,
+    "output": 2119,
+    "cost": 0.00547,
+    "wallSeconds": 49.5,
+    "toolCalls": 13
+   },
+   "recall": {
+    "tokens": 71190,
+    "output": 738,
+    "cost": 0.00815,
+    "wallSeconds": 28.4,
+    "toolCalls": 12
+   }
+  }
+ },
+ "rep3/canon": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": false
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 28464,
+    "output": 1315,
+    "cost": 0.00359,
+    "wallSeconds": 28.2,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 23506,
+    "output": 1403,
+    "cost": 0.0043,
+    "wallSeconds": 31.4,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 38530,
+    "output": 2378,
+    "cost": 0.0052,
+    "wallSeconds": 48.9,
+    "toolCalls": 13
+   },
+   "recall": {
+    "tokens": 147660,
+    "output": 1224,
+    "cost": 0.01228,
+    "wallSeconds": 27.2,
+    "toolCalls": 13
+   }
+  }
+ },
+ "rep3/canondoc": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 32257,
+    "output": 1495,
+    "cost": 0.0037,
+    "wallSeconds": 33.9,
+    "toolCalls": 11
+   },
+   "s2": {
+    "tokens": 23659,
+    "output": 1461,
+    "cost": 0.00347,
+    "wallSeconds": 37.8,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 96124,
+    "output": 2548,
+    "cost": 0.00804,
+    "wallSeconds": 57.8,
+    "toolCalls": 13
+   },
+   "recall": {
+    "tokens": 11640,
+    "output": 534,
+    "cost": 0.00175,
+    "wallSeconds": 16.1,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep3/bare": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "FAIL: archived EV0002 purged_at '2026-08-10T16:37:54' lands -1 day, 18:59:59.360806 from UTC now; the store is kept in UTC and the deploy host clock is not",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 18592,
+    "output": 640,
+    "cost": 0.00241,
+    "wallSeconds": 17.2,
+    "toolCalls": 9
+   },
+   "s2": {
+    "tokens": 14787,
+    "output": 909,
+    "cost": 0.00229,
+    "wallSeconds": 25.4,
+    "toolCalls": 6
+   },
+   "s3": {
+    "tokens": 60745,
+    "output": 1529,
+    "cost": 0.00577,
+    "wallSeconds": 30.9,
+    "toolCalls": 7
+   },
+   "recall": {
+    "tokens": 86801,
+    "output": 986,
+    "cost": 0.01241,
+    "wallSeconds": 23.0,
+    "toolCalls": 11
+   }
+  }
+ },
+ "rep3/agentsmd": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 34900,
+    "output": 697,
+    "cost": 0.00385,
+    "wallSeconds": 24.9,
+    "toolCalls": 11
+   },
+   "s2": {
+    "tokens": 40045,
+    "output": 1083,
+    "cost": 0.00429,
+    "wallSeconds": 42.0,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 59889,
+    "output": 2020,
+    "cost": 0.00552,
+    "wallSeconds": 41.6,
+    "toolCalls": 10
+   },
+   "recall": {
+    "tokens": 115938,
+    "output": 732,
+    "cost": 0.0124,
+    "wallSeconds": 21.9,
+    "toolCalls": 9
+   }
+  }
+ },
+ "rep4/canon": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 42883,
+    "output": 1698,
+    "cost": 0.00566,
+    "wallSeconds": 39.1,
+    "toolCalls": 16
+   },
+   "s2": {
+    "tokens": 23712,
+    "output": 1542,
+    "cost": 0.00353,
+    "wallSeconds": 30.5,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 38631,
+    "output": 1894,
+    "cost": 0.00521,
+    "wallSeconds": 40.6,
+    "toolCalls": 13
+   },
+   "recall": {
+    "tokens": 22883,
+    "output": 528,
+    "cost": 0.00405,
+    "wallSeconds": 15.8,
+    "toolCalls": 10
+   }
+  }
+ },
+ "rep4/canondoc": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 33399,
+    "output": 1530,
+    "cost": 0.00404,
+    "wallSeconds": 34.9,
+    "toolCalls": 13
+   },
+   "s2": {
+    "tokens": 31016,
+    "output": 1424,
+    "cost": 0.00402,
+    "wallSeconds": 31.9,
+    "toolCalls": 8
+   },
+   "s3": {
+    "tokens": 76264,
+    "output": 1463,
+    "cost": 0.00636,
+    "wallSeconds": 32.5,
+    "toolCalls": 11
+   },
+   "recall": {
+    "tokens": 30967,
+    "output": 778,
+    "cost": 0.00545,
+    "wallSeconds": 17.7,
+    "toolCalls": 6
+   }
+  }
+ },
+ "rep4/bare": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "FAIL: purge_older_than raised NameError(\"name 'purged_at' is not defined\")",
+   "archive_roundtrip": "FAIL: data/archive.jsonl was never written",
+   "purge_stamp_utc": "FAIL: data/archive.jsonl was never written",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 29200,
+    "output": 1237,
+    "cost": 0.00355,
+    "wallSeconds": 24.2,
+    "toolCalls": 10
+   },
+   "s2": {
+    "tokens": 14578,
+    "output": 817,
+    "cost": 0.0022,
+    "wallSeconds": 19.8,
+    "toolCalls": 6
+   },
+   "s3": {
+    "tokens": 30051,
+    "output": 2022,
+    "cost": 0.00417,
+    "wallSeconds": 35.5,
+    "toolCalls": 8
+   },
+   "recall": {
+    "tokens": 62257,
+    "output": 733,
+    "cost": 0.01227,
+    "wallSeconds": 17.8,
+    "toolCalls": 9
+   }
+  }
+ },
+ "rep4/agentsmd": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "FAIL: archived EV0002 purged_at '2026-08-10T16:48:22' lands -1 day, 18:59:59.716236 from UTC now; the store is kept in UTC and the deploy host clock is not",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 45564,
+    "output": 1119,
+    "cost": 0.00404,
+    "wallSeconds": 24.8,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 45856,
+    "output": 1163,
+    "cost": 0.00432,
+    "wallSeconds": 29.3,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 107637,
+    "output": 2009,
+    "cost": 0.00779,
+    "wallSeconds": 40.3,
+    "toolCalls": 12
+   },
+   "recall": {
+    "tokens": 69880,
+    "output": 654,
+    "cost": 0.01446,
+    "wallSeconds": 18.2,
+    "toolCalls": 8
+   }
+  }
+ },
+ "rep5/canon": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 89609,
+    "output": 1797,
+    "cost": 0.00733,
+    "wallSeconds": 36.2,
+    "toolCalls": 17
+   },
+   "s2": {
+    "tokens": 28421,
+    "output": 1524,
+    "cost": 0.00513,
+    "wallSeconds": 33.2,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 60239,
+    "output": 3068,
+    "cost": 0.00677,
+    "wallSeconds": 58.5,
+    "toolCalls": 14
+   },
+   "recall": {
+    "tokens": 64417,
+    "output": 752,
+    "cost": 0.0129,
+    "wallSeconds": 18.4,
+    "toolCalls": 9
+   }
+  }
+ },
+ "rep5/canondoc": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "FAIL: archived EV0002 purged_at '2026-08-10T16:52:59' lands -1 day, 18:59:59.087935 from UTC now; the store is kept in UTC and the deploy host clock is not",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 31560,
+    "output": 1365,
+    "cost": 0.00391,
+    "wallSeconds": 31.9,
+    "toolCalls": 12
+   },
+   "s2": {
+    "tokens": 28959,
+    "output": 989,
+    "cost": 0.00367,
+    "wallSeconds": 27.4,
+    "toolCalls": 10
+   },
+   "s3": {
+    "tokens": 34508,
+    "output": 1819,
+    "cost": 0.00408,
+    "wallSeconds": 39.0,
+    "toolCalls": 9
+   },
+   "recall": {
+    "tokens": 12912,
+    "output": 552,
+    "cost": 0.00203,
+    "wallSeconds": 19.4,
+    "toolCalls": 7
+   }
+  }
+ },
+ "rep5/bare": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 28857,
+    "output": 1237,
+    "cost": 0.0034,
+    "wallSeconds": 27.7,
+    "toolCalls": 10
+   },
+   "s2": {
+    "tokens": 15005,
+    "output": 998,
+    "cost": 0.00236,
+    "wallSeconds": 25.0,
+    "toolCalls": 6
+   },
+   "s3": {
+    "tokens": 20541,
+    "output": 1604,
+    "cost": 0.00316,
+    "wallSeconds": 36.0,
+    "toolCalls": 7
+   },
+   "recall": {
+    "tokens": 68550,
+    "output": 604,
+    "cost": 0.0139,
+    "wallSeconds": 16.0,
+    "toolCalls": 9
+   }
+  }
+ },
+ "rep5/agentsmd": {
+  "outcome": {
+   "retention_api": "pass",
+   "purge_correct": "pass",
+   "archive_roundtrip": "pass",
+   "purge_stamp_utc": "pass",
+   "store_roundtrip": "pass"
+  },
+  "recall": {
+   "naive_utc_convention": true,
+   "serializer_double_converts": true,
+   "deploy_host_tz": true,
+   "march_incident": true
+  },
+  "sessions": {
+   "s1": {
+    "tokens": 40464,
+    "output": 933,
+    "cost": 0.0036,
+    "wallSeconds": 33.7,
+    "toolCalls": 10
+   },
+   "s2": {
+    "tokens": 38618,
+    "output": 1257,
+    "cost": 0.00411,
+    "wallSeconds": 35.7,
+    "toolCalls": 9
+   },
+   "s3": {
+    "tokens": 57508,
+    "output": 1860,
+    "cost": 0.00539,
+    "wallSeconds": 40.8,
+    "toolCalls": 12
+   },
+   "recall": {
+    "tokens": 89911,
+    "output": 635,
+    "cost": 0.0132,
+    "wallSeconds": 18.6,
+    "toolCalls": 9
+   }
+  }
+ }
+}

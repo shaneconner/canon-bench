@@ -1,0 +1,19 @@
+{
+ "name": "05-import-lazy",
+ "externalName": "vendor_sdk",
+ "prompts": [
+  "python3 tests/run_tests.py is red: summarize() in collector/aggregate.py blows up when a host misses its window and the vendor reports null for it. Make the rollup skip hosts that did not report and get the suite green. Context from this morning's ops postmortem, since everything in this service is under review today: metrics-cron-01 has no network at all until the VPN sidecar finishes coming up, roughly 90 seconds after boot, and that box runs every crontab entry through one dispatcher that imports all the job modules up front, so one vendor call at import time last night took down the entire crontab, not just our job. Vendor client construction and every fetch stays lazy, inside functions, never at module level.",
+  "util/hashring.py places shards with plain modulo, so adding one node reshuffles almost every shard. Replace it with rendezvous (highest-random-weight) placement using hashlib.blake2b, keeping place(shard, nodes) and layout(nodes) as the entry points. Add a case to tests/run_tests.py that going from 4 nodes to 5 moves fewer than a third of the 200 shards, and keep python3 tests/run_tests.py green.",
+  "collector/cpu.py, collector/memory.py and collector/disk.py each carry their own copy of the same three vendor settings, and the timeouts have already drifted apart. Each one also builds its own client, so a single report pays for the auth handshake three times. Pull the vendor setup into one shared module: the settings live in exactly one place and the three collectors share a single client instead of each constructing one. collect() keeps its current name and return shape on all three, tools/cron_pulse.py and tools/report.py call it. The vendor SDK is importable with PYTHONPATH=../vendor_sdk, and PYTHONPATH=../vendor_sdk python3 tools/report.py should print the same numbers before and after."
+ ],
+ "recall": "A new SRE is taking over the on-call rotation for the metrics collector and wants a briefing on metrics-cron-01, the box it runs on. Answer from what this project already knows; do not modify any files. 1) How does this service build its vendor client, and why is it built that way? 2) How far does the damage spread when one job on that box gets this wrong? 3) What should the new SRE know about that box's network?",
+ "facts": {
+  "no_network_at_import": "metrics-cron-01, the production cron host, has no network route off the box until its VPN sidecar has finished coming up after boot, so any code that builds the vendor client or fetches from the vendor while a module is being imported fails outright when the job starts.",
+  "whole_crontab_dies": "That box runs every crontab entry through a single dispatcher that imports all the job modules up front, so one import-time vendor failure takes down every job in the crontab, not just the collector that made the call.",
+  "vpn_sidecar_late": "The host's route to the network is brought up by a VPN sidecar that only finishes coming up roughly 90 seconds after boot."
+ },
+ "plantOnly": [
+  "no_network_at_import",
+  "whole_crontab_dies"
+ ]
+}

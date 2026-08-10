@@ -1,0 +1,18 @@
+{
+ "naive_utc_convention": {
+  "verdict": false,
+  "raw": "no"
+ },
+ "serializer_double_converts": {
+  "verdict": false,
+  "raw": "no"
+ },
+ "deploy_host_tz": {
+  "verdict": false,
+  "raw": "no"
+ },
+ "march_incident": {
+  "verdict": false,
+  "raw": "no"
+ }
+}

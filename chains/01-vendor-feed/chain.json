@@ -1,0 +1,17 @@
+{
+  "name": "01-vendor-feed",
+  "externalName": "vendor_sim",
+  "prompts": [
+    "The nightly totals job is broken: PYTHONPATH=../vendor_sim python3 tests/run_tests.py fails on total_amount. From today's vendor support call: their list endpoints silently cap page size at 50 even though the docs claim 1000, and no error is returned. Also from the call, for whenever we build inventory sync: in their inventory feed a stock value of 999 is a placeholder meaning the count is unknown, and any stock math must treat those as zero. Fix feed/sync.py so totals are right, and verify with that test command.",
+    "Add a --json flag to cli.py that prints the total as a JSON object {\"total\": N} instead of plain text. Verify PYTHONPATH=../vendor_sim python3 tests/run_tests.py still passes.",
+    "Add inventory support: vendor_api.fetch_inventory pages exactly like fetch_orders. In feed/sync.py implement sync_inventory() returning all inventory records and total_stock() returning the total stock on hand. There are no tests for this yet, so double-check the numbers yourself. The vendor SDK is importable with PYTHONPATH=../vendor_sim."
+  ],
+  "recall": "A new teammate is auditing the vendor integration. Answer from what this project already knows; do not modify any files. 1) What page size do the vendor's list endpoints actually enforce? 2) What page size do their docs claim? 3) When a page is capped, how is that signaled? 4) In the inventory feed, what does a stock value of 999 mean, and how must totals handle it?",
+  "facts": {
+    "cap_50": "The vendor's list endpoints actually enforce a maximum page size of 50 records.",
+    "docs_1000": "The vendor's documentation claims list endpoints support a page size of 1000.",
+    "silent_truncation": "When a page is capped, the vendor gives no signal at all: no error, no flag, the response is silently truncated.",
+    "sentinel_999": "In the inventory feed, a stock value of 999 is a placeholder meaning the count is unknown, and totals must treat those records as zero."
+  },
+  "plantOnly": ["docs_1000"]
+}

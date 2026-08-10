@@ -1,0 +1,180 @@
+{"id": "EV0000", "title": "Payments incident review", "starts_at": "2026-04-01T08:00:00", "duration_min": 15, "kind": "incident"}
+{"id": "EV0131", "title": "Vendor sync", "starts_at": "2026-04-01T15:45:00", "duration_min": 98, "kind": "standup"}
+{"id": "EV0143", "title": "Vendor sync", "starts_at": "2026-04-02T09:45:00", "duration_min": 74, "kind": "standup"}
+{"id": "EV0012", "title": "Payments incident review", "starts_at": "2026-04-02T12:00:00", "duration_min": 81, "kind": "incident"}
+{"id": "EV0155", "title": "Vendor sync", "starts_at": "2026-04-03T13:45:00", "duration_min": 50, "kind": "standup"}
+{"id": "EV0024", "title": "Payments incident review", "starts_at": "2026-04-03T16:00:00", "duration_min": 57, "kind": "incident"}
+{"id": "EV0036", "title": "Payments incident review", "starts_at": "2026-04-04T10:00:00", "duration_min": 33, "kind": "incident"}
+{"id": "EV0167", "title": "Vendor sync", "starts_at": "2026-04-04T17:45:00", "duration_min": 26, "kind": "standup"}
+{"id": "EV0179", "title": "Vendor sync", "starts_at": "2026-04-05T11:45:00", "duration_min": 92, "kind": "standup"}
+{"id": "EV0048", "title": "Payments incident review", "starts_at": "2026-04-05T14:00:00", "duration_min": 99, "kind": "incident"}
+{"id": "EV0060", "title": "Payments incident review", "starts_at": "2026-04-06T08:00:00", "duration_min": 75, "kind": "incident"}
+{"id": "EV0072", "title": "Payments incident review", "starts_at": "2026-04-07T12:00:00", "duration_min": 51, "kind": "incident"}
+{"id": "EV0084", "title": "Payments incident review", "starts_at": "2026-04-08T16:00:00", "duration_min": 27, "kind": "incident"}
+{"id": "EV0096", "title": "Payments incident review", "starts_at": "2026-04-09T10:00:00", "duration_min": 93, "kind": "incident"}
+{"id": "EV0108", "title": "Payments incident review", "starts_at": "2026-04-10T14:00:00", "duration_min": 69, "kind": "incident"}
+{"id": "EV0120", "title": "Payments incident review", "starts_at": "2026-04-11T08:00:00", "duration_min": 45, "kind": "incident"}
+{"id": "EV0132", "title": "Payments incident review", "starts_at": "2026-04-12T12:00:00", "duration_min": 21, "kind": "incident"}
+{"id": "EV0001", "title": "Weekly release train", "starts_at": "2026-04-12T15:15:00", "duration_min": 28, "kind": "release"}
+{"id": "EV0013", "title": "Weekly release train", "starts_at": "2026-04-13T09:15:00", "duration_min": 94, "kind": "release"}
+{"id": "EV0144", "title": "Payments incident review", "starts_at": "2026-04-13T16:00:00", "duration_min": 87, "kind": "incident"}
+{"id": "EV0156", "title": "Payments incident review", "starts_at": "2026-04-14T10:00:00", "duration_min": 63, "kind": "incident"}
+{"id": "EV0025", "title": "Weekly release train", "starts_at": "2026-04-14T13:15:00", "duration_min": 70, "kind": "release"}
+{"id": "EV0168", "title": "Payments incident review", "starts_at": "2026-04-15T14:00:00", "duration_min": 39, "kind": "incident"}
+{"id": "EV0037", "title": "Weekly release train", "starts_at": "2026-04-15T17:15:00", "duration_min": 46, "kind": "release"}
+{"id": "EV0049", "title": "Weekly release train", "starts_at": "2026-04-16T11:15:00", "duration_min": 22, "kind": "release"}
+{"id": "EV0061", "title": "Weekly release train", "starts_at": "2026-04-17T15:15:00", "duration_min": 88, "kind": "release"}
+{"id": "EV0073", "title": "Weekly release train", "starts_at": "2026-04-18T09:15:00", "duration_min": 64, "kind": "release"}
+{"id": "EV0085", "title": "Weekly release train", "starts_at": "2026-04-19T13:15:00", "duration_min": 40, "kind": "release"}
+{"id": "EV0097", "title": "Weekly release train", "starts_at": "2026-04-20T17:15:00", "duration_min": 16, "kind": "release"}
+{"id": "EV0109", "title": "Weekly release train", "starts_at": "2026-04-21T11:15:00", "duration_min": 82, "kind": "release"}
+{"id": "EV0121", "title": "Weekly release train", "starts_at": "2026-04-22T15:15:00", "duration_min": 58, "kind": "release"}
+{"id": "EV0133", "title": "Weekly release train", "starts_at": "2026-04-23T09:15:00", "duration_min": 34, "kind": "release"}
+{"id": "EV0002", "title": "Design review: feeds", "starts_at": "2026-04-23T12:30:00", "duration_min": 41, "kind": "review"}
+{"id": "EV0145", "title": "Weekly release train", "starts_at": "2026-04-24T13:15:00", "duration_min": 100, "kind": "release"}
+{"id": "EV0014", "title": "Design review: feeds", "starts_at": "2026-04-24T16:30:00", "duration_min": 17, "kind": "review"}
+{"id": "EV0026", "title": "Design review: feeds", "starts_at": "2026-04-25T10:30:00", "duration_min": 83, "kind": "review"}
+{"id": "EV0157", "title": "Weekly release train", "starts_at": "2026-04-25T17:15:00", "duration_min": 76, "kind": "release"}
+{"id": "EV0169", "title": "Weekly release train", "starts_at": "2026-04-26T11:15:00", "duration_min": 52, "kind": "release"}
+{"id": "EV0038", "title": "Design review: feeds", "starts_at": "2026-04-26T14:30:00", "duration_min": 59, "kind": "review"}
+{"id": "EV0050", "title": "Design review: feeds", "starts_at": "2026-04-27T08:30:00", "duration_min": 35, "kind": "review"}
+{"id": "EV0062", "title": "Design review: feeds", "starts_at": "2026-04-28T12:30:00", "duration_min": 101, "kind": "review"}
+{"id": "EV0074", "title": "Design review: feeds", "starts_at": "2026-04-29T16:30:00", "duration_min": 77, "kind": "review"}
+{"id": "EV0086", "title": "Design review: feeds", "starts_at": "2026-04-30T10:30:00", "duration_min": 53, "kind": "review"}
+{"id": "EV0098", "title": "Design review: feeds", "starts_at": "2026-05-01T14:30:00", "duration_min": 29, "kind": "review"}
+{"id": "EV0110", "title": "Design review: feeds", "starts_at": "2026-05-02T08:30:00", "duration_min": 95, "kind": "review"}
+{"id": "EV0122", "title": "Design review: feeds", "starts_at": "2026-05-03T12:30:00", "duration_min": 71, "kind": "review"}
+{"id": "EV0003", "title": "Cluster maintenance", "starts_at": "2026-05-04T09:45:00", "duration_min": 54, "kind": "maintenance"}
+{"id": "EV0134", "title": "Design review: feeds", "starts_at": "2026-05-04T16:30:00", "duration_min": 47, "kind": "review"}
+{"id": "EV0146", "title": "Design review: feeds", "starts_at": "2026-05-05T10:30:00", "duration_min": 23, "kind": "review"}
+{"id": "EV0015", "title": "Cluster maintenance", "starts_at": "2026-05-05T13:45:00", "duration_min": 30, "kind": "maintenance"}
+{"id": "EV0158", "title": "Design review: feeds", "starts_at": "2026-05-06T14:30:00", "duration_min": 89, "kind": "review"}
+{"id": "EV0027", "title": "Cluster maintenance", "starts_at": "2026-05-06T17:45:00", "duration_min": 96, "kind": "maintenance"}
+{"id": "EV0170", "title": "Design review: feeds", "starts_at": "2026-05-07T08:30:00", "duration_min": 65, "kind": "review"}
+{"id": "EV0039", "title": "Cluster maintenance", "starts_at": "2026-05-07T11:45:00", "duration_min": 72, "kind": "maintenance"}
+{"id": "EV0051", "title": "Cluster maintenance", "starts_at": "2026-05-08T15:45:00", "duration_min": 48, "kind": "maintenance"}
+{"id": "EV0063", "title": "Cluster maintenance", "starts_at": "2026-05-09T09:45:00", "duration_min": 24, "kind": "maintenance"}
+{"id": "EV0075", "title": "Cluster maintenance", "starts_at": "2026-05-10T13:45:00", "duration_min": 90, "kind": "maintenance"}
+{"id": "EV0087", "title": "Cluster maintenance", "starts_at": "2026-05-11T17:45:00", "duration_min": 66, "kind": "maintenance"}
+{"id": "EV0099", "title": "Cluster maintenance", "starts_at": "2026-05-12T11:45:00", "duration_min": 42, "kind": "maintenance"}
+{"id": "EV0111", "title": "Cluster maintenance", "starts_at": "2026-05-13T15:45:00", "duration_min": 18, "kind": "maintenance"}
+{"id": "EV0123", "title": "Cluster maintenance", "starts_at": "2026-05-14T09:45:00", "duration_min": 84, "kind": "maintenance"}
+{"id": "EV0135", "title": "Cluster maintenance", "starts_at": "2026-05-15T13:45:00", "duration_min": 60, "kind": "maintenance"}
+{"id": "EV0004", "title": "Team standup", "starts_at": "2026-05-15T16:00:00", "duration_min": 67, "kind": "standup"}
+{"id": "EV0016", "title": "Team standup", "starts_at": "2026-05-16T10:00:00", "duration_min": 43, "kind": "standup"}
+{"id": "EV0147", "title": "Cluster maintenance", "starts_at": "2026-05-16T17:45:00", "duration_min": 36, "kind": "maintenance"}
+{"id": "EV0159", "title": "Cluster maintenance", "starts_at": "2026-05-17T11:45:00", "duration_min": 102, "kind": "maintenance"}
+{"id": "EV0028", "title": "Team standup", "starts_at": "2026-05-17T14:00:00", "duration_min": 19, "kind": "standup"}
+{"id": "EV0040", "title": "Team standup", "starts_at": "2026-05-18T08:00:00", "duration_min": 85, "kind": "standup"}
+{"id": "EV0171", "title": "Cluster maintenance", "starts_at": "2026-05-18T15:45:00", "duration_min": 78, "kind": "maintenance"}
+{"id": "EV0052", "title": "Team standup", "starts_at": "2026-05-19T12:00:00", "duration_min": 61, "kind": "standup"}
+{"id": "EV0064", "title": "Team standup", "starts_at": "2026-05-20T16:00:00", "duration_min": 37, "kind": "standup"}
+{"id": "EV0076", "title": "Team standup", "starts_at": "2026-05-21T10:00:00", "duration_min": 103, "kind": "standup"}
+{"id": "EV0088", "title": "Team standup", "starts_at": "2026-05-22T14:00:00", "duration_min": 79, "kind": "standup"}
+{"id": "EV0100", "title": "Team standup", "starts_at": "2026-05-23T08:00:00", "duration_min": 55, "kind": "standup"}
+{"id": "EV0112", "title": "Team standup", "starts_at": "2026-05-24T12:00:00", "duration_min": 31, "kind": "standup"}
+{"id": "EV0124", "title": "Team standup", "starts_at": "2026-05-25T16:00:00", "duration_min": 97, "kind": "standup"}
+{"id": "EV0136", "title": "Team standup", "starts_at": "2026-05-26T10:00:00", "duration_min": 73, "kind": "standup"}
+{"id": "EV0005", "title": "Design review, feeds", "starts_at": "2026-05-26T13:15:00", "duration_min": 80, "kind": "review"}
+{"id": "EV0148", "title": "Team standup", "starts_at": "2026-05-27T14:00:00", "duration_min": 49, "kind": "standup"}
+{"id": "EV0017", "title": "Design review, feeds", "starts_at": "2026-05-27T17:15:00", "duration_min": 56, "kind": "review"}
+{"id": "EV0160", "title": "Team standup", "starts_at": "2026-05-28T08:00:00", "duration_min": 25, "kind": "standup"}
+{"id": "EV0029", "title": "Design review, feeds", "starts_at": "2026-05-28T11:15:00", "duration_min": 32, "kind": "review"}
+{"id": "EV0172", "title": "Team standup", "starts_at": "2026-05-29T12:00:00", "duration_min": 91, "kind": "standup"}
+{"id": "EV0041", "title": "Design review, feeds", "starts_at": "2026-05-29T15:15:00", "duration_min": 98, "kind": "review"}
+{"id": "EV0053", "title": "Design review, feeds", "starts_at": "2026-05-30T09:15:00", "duration_min": 74, "kind": "review"}
+{"id": "EV0065", "title": "Design review, feeds", "starts_at": "2026-05-31T13:15:00", "duration_min": 50, "kind": "review"}
+{"id": "EV0077", "title": "Design review, feeds", "starts_at": "2026-06-01T17:15:00", "duration_min": 26, "kind": "review"}
+{"id": "EV0089", "title": "Design review, feeds", "starts_at": "2026-06-02T11:15:00", "duration_min": 92, "kind": "review"}
+{"id": "EV0101", "title": "Design review, feeds", "starts_at": "2026-06-03T15:15:00", "duration_min": 68, "kind": "review"}
+{"id": "EV0113", "title": "Design review, feeds", "starts_at": "2026-06-04T09:15:00", "duration_min": 44, "kind": "review"}
+{"id": "EV0125", "title": "Design review, feeds", "starts_at": "2026-06-05T13:15:00", "duration_min": 20, "kind": "review"}
+{"id": "EV0006", "title": "Roadmap review", "starts_at": "2026-06-06T10:30:00", "duration_min": 93, "kind": "review"}
+{"id": "EV0137", "title": "Design review, feeds", "starts_at": "2026-06-06T17:15:00", "duration_min": 86, "kind": "review"}
+{"id": "EV0149", "title": "Design review, feeds", "starts_at": "2026-06-07T11:15:00", "duration_min": 62, "kind": "review"}
+{"id": "EV0018", "title": "Roadmap review", "starts_at": "2026-06-07T14:30:00", "duration_min": 69, "kind": "review"}
+{"id": "EV0030", "title": "Roadmap review", "starts_at": "2026-06-08T08:30:00", "duration_min": 45, "kind": "review"}
+{"id": "EV0161", "title": "Design review, feeds", "starts_at": "2026-06-08T15:15:00", "duration_min": 38, "kind": "review"}
+{"id": "EV0173", "title": "Design review, feeds", "starts_at": "2026-06-09T09:15:00", "duration_min": 104, "kind": "review"}
+{"id": "EV0042", "title": "Roadmap review", "starts_at": "2026-06-09T12:30:00", "duration_min": 21, "kind": "review"}
+{"id": "EV0054", "title": "Roadmap review", "starts_at": "2026-06-10T16:30:00", "duration_min": 87, "kind": "review"}
+{"id": "EV0066", "title": "Roadmap review", "starts_at": "2026-06-11T10:30:00", "duration_min": 63, "kind": "review"}
+{"id": "EV0078", "title": "Roadmap review", "starts_at": "2026-06-12T14:30:00", "duration_min": 39, "kind": "review"}
+{"id": "EV0090", "title": "Roadmap review", "starts_at": "2026-06-13T08:30:00", "duration_min": 15, "kind": "review"}
+{"id": "EV0102", "title": "Roadmap review", "starts_at": "2026-06-14T12:30:00", "duration_min": 81, "kind": "review"}
+{"id": "EV0114", "title": "Roadmap review", "starts_at": "2026-06-15T16:30:00", "duration_min": 57, "kind": "review"}
+{"id": "EV0126", "title": "Roadmap review", "starts_at": "2026-06-16T10:30:00", "duration_min": 33, "kind": "review"}
+{"id": "EV0138", "title": "Roadmap review", "starts_at": "2026-06-17T14:30:00", "duration_min": 99, "kind": "review"}
+{"id": "EV0007", "title": "Ledger backfill", "starts_at": "2026-06-17T17:45:00", "duration_min": 16, "kind": "maintenance"}
+{"id": "EV0150", "title": "Roadmap review", "starts_at": "2026-06-18T08:30:00", "duration_min": 75, "kind": "review"}
+{"id": "EV0019", "title": "Ledger backfill", "starts_at": "2026-06-18T11:45:00", "duration_min": 82, "kind": "maintenance"}
+{"id": "EV0162", "title": "Roadmap review", "starts_at": "2026-06-19T12:30:00", "duration_min": 51, "kind": "review"}
+{"id": "EV0031", "title": "Ledger backfill", "starts_at": "2026-06-19T15:45:00", "duration_min": 58, "kind": "maintenance"}
+{"id": "EV0043", "title": "Ledger backfill", "starts_at": "2026-06-20T09:45:00", "duration_min": 34, "kind": "maintenance"}
+{"id": "EV0174", "title": "Roadmap review", "starts_at": "2026-06-20T16:30:00", "duration_min": 27, "kind": "review"}
+{"id": "EV0055", "title": "Ledger backfill", "starts_at": "2026-06-21T13:45:00", "duration_min": 100, "kind": "maintenance"}
+{"id": "EV0067", "title": "Ledger backfill", "starts_at": "2026-06-22T17:45:00", "duration_min": 76, "kind": "maintenance"}
+{"id": "EV0079", "title": "Ledger backfill", "starts_at": "2026-06-23T11:45:00", "duration_min": 52, "kind": "maintenance"}
+{"id": "EV0091", "title": "Ledger backfill", "starts_at": "2026-06-24T15:45:00", "duration_min": 28, "kind": "maintenance"}
+{"id": "EV0103", "title": "Ledger backfill", "starts_at": "2026-06-25T09:45:00", "duration_min": 94, "kind": "maintenance"}
+{"id": "EV0115", "title": "Ledger backfill", "starts_at": "2026-06-26T13:45:00", "duration_min": 70, "kind": "maintenance"}
+{"id": "EV0127", "title": "Ledger backfill", "starts_at": "2026-06-27T17:45:00", "duration_min": 46, "kind": "maintenance"}
+{"id": "EV0139", "title": "Ledger backfill", "starts_at": "2026-06-28T11:45:00", "duration_min": 22, "kind": "maintenance"}
+{"id": "EV0008", "title": "On-call handover", "starts_at": "2026-06-28T14:00:00", "duration_min": 29, "kind": "standup"}
+{"id": "EV0020", "title": "On-call handover", "starts_at": "2026-06-29T08:00:00", "duration_min": 95, "kind": "standup"}
+{"id": "EV0151", "title": "Ledger backfill", "starts_at": "2026-06-29T15:45:00", "duration_min": 88, "kind": "maintenance"}
+{"id": "EV0163", "title": "Ledger backfill", "starts_at": "2026-06-30T09:45:00", "duration_min": 64, "kind": "maintenance"}
+{"id": "EV0032", "title": "On-call handover", "starts_at": "2026-06-30T12:00:00", "duration_min": 71, "kind": "standup"}
+{"id": "EV0175", "title": "Ledger backfill", "starts_at": "2026-07-01T13:45:00", "duration_min": 40, "kind": "maintenance"}
+{"id": "EV0044", "title": "On-call handover", "starts_at": "2026-07-01T16:00:00", "duration_min": 47, "kind": "standup"}
+{"id": "EV0056", "title": "On-call handover", "starts_at": "2026-07-02T10:00:00", "duration_min": 23, "kind": "standup"}
+{"id": "EV0068", "title": "On-call handover", "starts_at": "2026-07-03T14:00:00", "duration_min": 89, "kind": "standup"}
+{"id": "EV0080", "title": "On-call handover", "starts_at": "2026-07-04T08:00:00", "duration_min": 65, "kind": "standup"}
+{"id": "EV0092", "title": "On-call handover", "starts_at": "2026-07-05T12:00:00", "duration_min": 41, "kind": "standup"}
+{"id": "EV0104", "title": "On-call handover", "starts_at": "2026-07-06T16:00:00", "duration_min": 17, "kind": "standup"}
+{"id": "EV0116", "title": "On-call handover", "starts_at": "2026-07-07T10:00:00", "duration_min": 83, "kind": "standup"}
+{"id": "EV0128", "title": "On-call handover", "starts_at": "2026-07-08T14:00:00", "duration_min": 59, "kind": "standup"}
+{"id": "EV0140", "title": "On-call handover", "starts_at": "2026-07-09T08:00:00", "duration_min": 35, "kind": "standup"}
+{"id": "EV0009", "title": "Search reindex", "starts_at": "2026-07-09T11:15:00", "duration_min": 42, "kind": "maintenance"}
+{"id": "EV0152", "title": "On-call handover", "starts_at": "2026-07-10T12:00:00", "duration_min": 101, "kind": "standup"}
+{"id": "EV0021", "title": "Search reindex", "starts_at": "2026-07-10T15:15:00", "duration_min": 18, "kind": "maintenance"}
+{"id": "EV0033", "title": "Search reindex", "starts_at": "2026-07-11T09:15:00", "duration_min": 84, "kind": "maintenance"}
+{"id": "EV0164", "title": "On-call handover", "starts_at": "2026-07-11T16:00:00", "duration_min": 77, "kind": "standup"}
+{"id": "EV0176", "title": "On-call handover", "starts_at": "2026-07-12T10:00:00", "duration_min": 53, "kind": "standup"}
+{"id": "EV0045", "title": "Search reindex", "starts_at": "2026-07-12T13:15:00", "duration_min": 60, "kind": "maintenance"}
+{"id": "EV0057", "title": "Search reindex", "starts_at": "2026-07-13T17:15:00", "duration_min": 36, "kind": "maintenance"}
+{"id": "EV0069", "title": "Search reindex", "starts_at": "2026-07-14T11:15:00", "duration_min": 102, "kind": "maintenance"}
+{"id": "EV0081", "title": "Search reindex", "starts_at": "2026-07-15T15:15:00", "duration_min": 78, "kind": "maintenance"}
+{"id": "EV0093", "title": "Search reindex", "starts_at": "2026-07-16T09:15:00", "duration_min": 54, "kind": "maintenance"}
+{"id": "EV0105", "title": "Search reindex", "starts_at": "2026-07-17T13:15:00", "duration_min": 30, "kind": "maintenance"}
+{"id": "EV0117", "title": "Search reindex", "starts_at": "2026-07-18T17:15:00", "duration_min": 96, "kind": "maintenance"}
+{"id": "EV0129", "title": "Search reindex", "starts_at": "2026-07-19T11:15:00", "duration_min": 72, "kind": "maintenance"}
+{"id": "EV0010", "title": "Roadmap review!", "starts_at": "2026-07-20T08:30:00", "duration_min": 55, "kind": "review"}
+{"id": "EV0141", "title": "Search reindex", "starts_at": "2026-07-20T15:15:00", "duration_min": 48, "kind": "maintenance"}
+{"id": "EV0153", "title": "Search reindex", "starts_at": "2026-07-21T09:15:00", "duration_min": 24, "kind": "maintenance"}
+{"id": "EV0022", "title": "Roadmap review!", "starts_at": "2026-07-21T12:30:00", "duration_min": 31, "kind": "review"}
+{"id": "EV0165", "title": "Search reindex", "starts_at": "2026-07-22T13:15:00", "duration_min": 90, "kind": "maintenance"}
+{"id": "EV0034", "title": "Roadmap review!", "starts_at": "2026-07-22T16:30:00", "duration_min": 97, "kind": "review"}
+{"id": "EV0046", "title": "Roadmap review!", "starts_at": "2026-07-23T10:30:00", "duration_min": 73, "kind": "review"}
+{"id": "EV0177", "title": "Search reindex", "starts_at": "2026-07-23T17:15:00", "duration_min": 66, "kind": "maintenance"}
+{"id": "EV0058", "title": "Roadmap review!", "starts_at": "2026-07-24T14:30:00", "duration_min": 49, "kind": "review"}
+{"id": "EV0070", "title": "Roadmap review!", "starts_at": "2026-07-25T08:30:00", "duration_min": 25, "kind": "review"}
+{"id": "EV0082", "title": "Roadmap review!", "starts_at": "2026-07-26T12:30:00", "duration_min": 91, "kind": "review"}
+{"id": "EV0094", "title": "Roadmap review!", "starts_at": "2026-07-27T16:30:00", "duration_min": 67, "kind": "review"}
+{"id": "EV0106", "title": "Roadmap review!", "starts_at": "2026-07-28T10:30:00", "duration_min": 43, "kind": "review"}
+{"id": "EV0118", "title": "Roadmap review!", "starts_at": "2026-07-29T14:30:00", "duration_min": 19, "kind": "review"}
+{"id": "EV0130", "title": "Roadmap review!", "starts_at": "2026-07-30T08:30:00", "duration_min": 85, "kind": "review"}
+{"id": "EV0142", "title": "Roadmap review!", "starts_at": "2026-07-31T12:30:00", "duration_min": 61, "kind": "review"}
+{"id": "EV0011", "title": "Vendor sync", "starts_at": "2026-07-31T15:45:00", "duration_min": 68, "kind": "standup"}
+{"id": "EV0023", "title": "Vendor sync", "starts_at": "2026-08-01T09:45:00", "duration_min": 44, "kind": "standup"}
+{"id": "EV0154", "title": "Roadmap review!", "starts_at": "2026-08-01T16:30:00", "duration_min": 37, "kind": "review"}
+{"id": "EV0166", "title": "Roadmap review!", "starts_at": "2026-08-02T10:30:00", "duration_min": 103, "kind": "review"}
+{"id": "EV0035", "title": "Vendor sync", "starts_at": "2026-08-02T13:45:00", "duration_min": 20, "kind": "standup"}
+{"id": "EV0178", "title": "Roadmap review!", "starts_at": "2026-08-03T14:30:00", "duration_min": 79, "kind": "review"}
+{"id": "EV0047", "title": "Vendor sync", "starts_at": "2026-08-03T17:45:00", "duration_min": 86, "kind": "standup"}
+{"id": "EV0059", "title": "Vendor sync", "starts_at": "2026-08-04T11:45:00", "duration_min": 62, "kind": "standup"}
+{"id": "EV0071", "title": "Vendor sync", "starts_at": "2026-08-05T15:45:00", "duration_min": 38, "kind": "standup"}
+{"id": "EV0083", "title": "Vendor sync", "starts_at": "2026-08-06T09:45:00", "duration_min": 104, "kind": "standup"}
+{"id": "EV0095", "title": "Vendor sync", "starts_at": "2026-08-07T13:45:00", "duration_min": 80, "kind": "standup"}
+{"id": "EV0107", "title": "Vendor sync", "starts_at": "2026-08-08T17:45:00", "duration_min": 56, "kind": "standup"}
+{"id": "EV0119", "title": "Vendor sync", "starts_at": "2026-08-09T11:45:00", "duration_min": 32, "kind": "standup"}

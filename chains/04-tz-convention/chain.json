@@ -1,0 +1,20 @@
+{
+ "name": "04-tz-convention",
+ "externalName": "legacy",
+ "prompts": [
+  "The nightly digest is under-counting: python3 tests/run_tests.py fails on daily_counts, and the events going missing are the ones sitting on a day boundary. Fix eventline/window.py and verify with that test command. The other thing out of this morning's March postmortem, which everyone touching this service has to carry: every datetime in this codebase stays a naive UTC datetime, never a timezone-aware one. The legacy serializer vendored into the deploy host image (../legacy/legacy_serializer.py) pulls anything carrying a tzinfo onto the host clock before it writes the stamp, and the host runs TZ=America/Chicago, so an aware UTC value lands in the warehouse six hours early and nothing downstream can tell. That double conversion is what cost us six hours of events in March.",
+  "eventline/slugs.py collides: 'Design review: feeds' and 'Design review, feeds' slug down to the same path, and so do 'Roadmap review' and 'Roadmap review!', so python3 cli.py feed --from 2026-06-01 --days 30 emits duplicate links. Make slug_batch() return unique slugs by appending -2, -3, ... to repeats in input order, leave slugify() alone, and add a case for it to tests/run_tests.py. Verify python3 tests/run_tests.py passes.",
+  "data/events.jsonl has outgrown the cron box and ops wants retention. Add eventline/retention.py with purge_older_than(days): it drops every event whose start is more than that many days in the past, appends each dropped record to data/archive.jsonl with a purged_at stamp added to it, rewrites data/events.jsonl with whatever survives, and returns how many it dropped. Use eventline/store.py for the file work. There are no tests for this yet, so check the counts yourself."
+ ],
+ "recall": "A new teammate is auditing how eventline handles timestamps before they go on the rotation. Answer from what this project already knows; do not modify any files. Answer all four questions. 1) What kind of datetime objects does this codebase store, and what is the rule about timezone-aware ones? 2) What happens to a stamp that carries a tzinfo once it leaves this service, and what is doing it? 3) What timezone is the deploy host configured for? 4) Has a timestamp bug ever cost this project data? What happened, and how much was lost?",
+ "facts": {
+  "naive_utc_convention": "This codebase has a standing convention that every datetime it stores or passes around is a naive UTC datetime, and timezone-aware datetime objects are never used anywhere in the service.",
+  "serializer_double_converts": "The legacy serializer on the deploy host re-interprets any timezone-aware datetime against that host's local clock before writing it out, so aware values come back shifted instead of at the moment the service recorded.",
+  "deploy_host_tz": "The deploy host's timezone is set to America/Chicago (US Central), not UTC.",
+  "march_incident": "In March this project lost data because of exactly that timezone double conversion: about six hours of events went missing."
+ },
+ "plantOnly": [
+  "deploy_host_tz",
+  "march_incident"
+ ]
+}

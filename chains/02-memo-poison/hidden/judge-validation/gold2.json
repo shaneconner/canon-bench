@@ -1,0 +1,18 @@
+{
+ "no_memo_rule": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "rebalancer_mutates": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "stale_alias_incident": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "sanctioned_batch": {
+  "verdict": true,
+  "raw": "yes"
+ }
+}

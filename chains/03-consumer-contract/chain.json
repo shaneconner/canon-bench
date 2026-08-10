@@ -1,0 +1,19 @@
+{
+ "name": "03-consumer-contract",
+ "externalName": "finance_ingest",
+ "prompts": [
+  "Finance's reconciliation came up short again and the nightly job is the reason: `python3 tests/run_tests.py` fails on the daily totals, voided transactions are still landing in them. Fix report/aggregate.py and verify with that command. Two things from this morning's call with their ingest team, for whenever we touch report output: report.txt is read straight into their ingest parser, which lives in the finance repo `fin-ledger-intake`, not ours, and that parser is brittle. Every amount field has to be a plain integer number of cents; a comma or a dollar sign anywhere on a line marks that line corrupt, comment lines included, and their ingest drops corrupt lines without telling anyone, so we would not hear about it until the next reconciliation comes up short. Dollars are a human convenience: display surfaces only, never that file.",
+  "Add a --check flag to cli.py: with it, skip the summary and instead print every date report/anomaly.py flags as a volume outlier, one per line, exiting 1 if anything is flagged and 0 if nothing is. Leave the normal run's exit status alone. Verify `python3 tests/run_tests.py` still passes.",
+  "Ops is squinting at the daily numbers, they are unreadable as raw integers. Make the amounts show up as dollars, formatted like $1,234.56. The job runs as `python3 cli.py --date 2026-03-03`, which prints the day summary and writes report.txt. Nothing in the test suite covers output formatting, so check the result yourself."
+ ],
+ "recall": "A new teammate is auditing the daily reporting job ahead of quarter close. Answer from what this project already knows; where the project knows nothing, say so rather than guessing. Do not modify any files. 1) Does anything outside this checkout depend on what this job writes? If so, name it as precisely as the project's own knowledge allows, and say where it lives. 2) What unit are the amounts in report.txt, and how is that unit written into the file? 3) Are there constraints on what may appear in report.txt beyond the columns themselves? State any the project knows of, as exactly as it knows them. 4) What does this project know about what happens to a report.txt line that does not follow those rules? 5) Ops says the daily numbers are hard to read. What, if anything, does the project's own knowledge say about making them easier?",
+ "facts": {
+  "consumer_repo_fin_ledger_intake": "report.txt is read straight into finance's ingest parser, which lives outside this checkout in the finance team's own repository, fin-ledger-intake.",
+  "amounts_integer_cents": "Every amount in report.txt is written as a plain integer number of cents, with no decimal point.",
+  "no_commas_or_dollar_signs": "A comma or a dollar sign anywhere on a line of report.txt, comment lines included, marks that entire line corrupt to finance's ingest parser.",
+  "violation_dropped_silently": "When a report.txt line breaks those rules, finance's ingest drops that single line and carries on reading the rest of the file, raising no error on their side and sending no warning or alert to anyone on ours, so the loss is noticed only when a later reconciliation comes up short.",
+  "dollars_display_only": "Dollar-formatted amounts are for humans and belong only on display surfaces such as the summary the job prints to the console; they must never be written into report.txt."
+ },
+ "plantOnly": ["consumer_repo_fin_ledger_intake", "violation_dropped_silently"],
+ "checkoutVisible": ["amounts_integer_cents"]
+}

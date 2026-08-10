@@ -1,0 +1,14 @@
+{
+ "no_network_at_import": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "whole_crontab_dies": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "vpn_sidecar_late": {
+  "verdict": true,
+  "raw": "yes"
+ }
+}

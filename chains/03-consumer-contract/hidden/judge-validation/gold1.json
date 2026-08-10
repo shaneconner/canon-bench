@@ -1,0 +1,22 @@
+{
+ "consumer_repo_fin_ledger_intake": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "amounts_integer_cents": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "no_commas_or_dollar_signs": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "violation_dropped_silently": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "dollars_display_only": {
+  "verdict": true,
+  "raw": "yes"
+ }
+}

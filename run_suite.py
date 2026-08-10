@@ -79,10 +79,17 @@ def usage_of(out: Path) -> dict:
     }
 
 
+# Worker model for the sessions under test; the judge stays pinned in judge() regardless,
+# so grading is identical across spot-check models. Post-freeze amendment, disclosed in
+# PLAN.md: the headline run used the frozen driver with these exact defaults.
+WORKER = {"model": "gpt-5.6-luna", "provider": "openai-codex"}
+
+
 def run_session(condition: str, work: Path, out: Path, prompt: str) -> None:
     subprocess.run(
         [sys.executable, str(BENCH / "run_session.py"), "--condition", condition,
-         "--workdir", str(work), "--out", str(out), "--prompt", prompt],
+         "--workdir", str(work), "--out", str(out), "--prompt", prompt,
+         "--model", WORKER["model"], "--provider", WORKER["provider"]],
         check=False,
     )
 
@@ -232,7 +239,10 @@ def main() -> None:
     ap.add_argument("--tag", default="study")
     ap.add_argument("--runs-root", default=str(RUNS_ROOT))
     ap.add_argument("--cold", action="store_true", help="probe-cold + recall-cold leakage controls")
+    ap.add_argument("--model", default=WORKER["model"])
+    ap.add_argument("--provider", default=WORKER["provider"])
     args = ap.parse_args()
+    WORKER.update(model=args.model, provider=args.provider)
 
     chain = Chain(args.chain)
     base = Path(args.runs_root) / args.tag / chain.name

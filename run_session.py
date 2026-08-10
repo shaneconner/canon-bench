@@ -31,6 +31,7 @@ def main() -> None:
     ap.add_argument("--workdir", required=True)
     ap.add_argument("--prompt", required=True)
     ap.add_argument("--model", default="gpt-5.6-luna")
+    ap.add_argument("--provider", default="openai-codex")
     ap.add_argument("--thinking", default="low")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
@@ -43,7 +44,7 @@ def main() -> None:
 
     cmd = [
         "pi", "-p", "--mode", "json",
-        "--provider", "openai-codex", "--model", args.model,
+        "--provider", args.provider, "--model", args.model,
         "--thinking", args.thinking,
         "--no-extensions", "--no-skills", "--no-prompt-templates", "--no-session",
     ]

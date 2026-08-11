@@ -15,9 +15,13 @@ That amendment is disclosed in Section 7 of the paper and is visible in the git
 history. This script names those two files explicitly and fails on anything
 else, so an unexpected difference is loud.
 
-To see the frozen state verify completely:
+To see the frozen state verify completely, restore just the two amended files
+(checking out the freeze commit itself would remove this script, which postdates
+it):
 
-    git stash && git checkout a1bf589 && python3 tests/verify_freeze.py
+    git checkout a1bf589 -- run_suite.py run_session.py
+    python3 tests/verify_freeze.py      # 115 of 115
+    git checkout HEAD -- run_suite.py run_session.py
 """
 
 import hashlib

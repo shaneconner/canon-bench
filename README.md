@@ -68,7 +68,13 @@ reports 115 of 115 at the freeze commit `a1bf589` and 113 of 115 at HEAD: one
 disclosed post-freeze commit (`ad6aa45`) added a worker-model passthrough to
 `run_suite.py` and `run_session.py` so the robustness pass could swap the worker,
 with defaults untouched and the judge pinned regardless. Any other difference
-fails the script.
+fails the script. To watch the frozen state verify completely, restore just
+those two files (checking out the freeze commit would remove the script, which
+postdates it):
+
+    git checkout a1bf589 -- run_suite.py run_session.py
+    python3 tests/verify_freeze.py      # 115 of 115
+    git checkout HEAD -- run_suite.py run_session.py
 
 ## Layout
 

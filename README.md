@@ -1,13 +1,15 @@
 # canon-bench
 
 The benchmark behind *pi-canon: Mutable Canonical Memory over an Immutable
-Journal, with Recall by Surfacing* (Conner, 2026). Five multi-session chains
-that measure whether a coding agent respects a constraint it was told about in
-an earlier session and never told again.
+Journal, with Recall by Surfacing* (Conner, 2026),
+[doi:10.5281/zenodo.21890647](https://doi.org/10.5281/zenodo.21890647). Five
+multi-session chains that measure whether a coding agent respects a constraint
+it was told about in an earlier session and never told again.
 
 The package under test is [pi-canon](https://github.com/shaneconner/pi-canon).
 The per-cell artifact trail (transcripts, store snapshots, judge verdicts) is
-too large for git and ships with the Zenodo deposit.
+too large for git and ships with the Zenodo deposit,
+[10.5281/zenodo.21890648](https://doi.org/10.5281/zenodo.21890648).
 
 ## What it measures
 

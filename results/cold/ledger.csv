@@ -1,0 +1,15 @@
+chain,rep,condition,session,cost
+01-vendor-feed,,,cold-probe,0.00406284
+01-vendor-feed,,,cold-recall,0.012179360000000002
+02-memo-poison,,,cold-probe,0.00567416
+02-memo-poison,,,cold-recall,0.00739796
+03-consumer-contract,,,cold-probe,0.0039722
+03-consumer-contract,,,cold-recall,0.0032844799999999998
+04-tz-convention,,,cold-probe,0.00437164
+04-tz-convention,,,cold-recall,0.01534608
+05-import-lazy,,,cold-probe,0.005390240000000001
+05-import-lazy,,,cold-recall,0.00295048
+05-import-lazy-20260810-130255,,,cold-probe,0.005614720000000001
+05-import-lazy-20260810-130255,,,cold-recall,0.00222252
+05-import-lazy-20260810-134805,,,cold-probe,0.006406439999999999
+05-import-lazy-20260810-134805,,,cold-recall,0.0040154000000000006

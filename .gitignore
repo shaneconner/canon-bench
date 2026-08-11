@@ -1,0 +1,7 @@
+# Bytecode is ignored EXCEPT where the freeze manifest pins it: one chain's
+# external package shipped a .pyc inside the frozen tree, so the manifest covers
+# it and a clone must carry it to verify 115 of 115 at the freeze commit.
+__pycache__/
+*.pyc
+!chains/01-vendor-feed/external/__pycache__/
+!chains/01-vendor-feed/external/__pycache__/vendor_api.cpython-314.pyc

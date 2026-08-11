@@ -1,0 +1,2097 @@
+{
+ "headline": {
+  "canon": {
+   "trap": [
+    19,
+    20
+   ],
+   "plantOnly": [
+    41,
+    45
+   ],
+   "secondary": [
+    54,
+    55
+   ],
+   "recallTokensMedian": 20775,
+   "recallCostMedian": 0.0033,
+   "chainCostTotal": 0.5454,
+   "trapCells": [
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    }
+   ],
+   "factCells": [
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep1",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep2",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep3",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep4",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep5",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "fact": "violation_dropped_silently",
+     "hit": false
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "fact": "march_incident",
+     "hit": false
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep3",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep3",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep4",
+     "fact": "no_network_at_import",
+     "hit": false
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep4",
+     "fact": "whole_crontab_dies",
+     "hit": false
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep5",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep5",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    }
+   ]
+  },
+  "canondoc": {
+   "trap": [
+    16,
+    20
+   ],
+   "plantOnly": [
+    40,
+    45
+   ],
+   "secondary": [
+    53,
+    55
+   ],
+   "recallTokensMedian": 13991,
+   "recallCostMedian": 0.0022,
+   "chainCostTotal": 0.4639,
+   "trapCells": [
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "pass": false,
+     "failed": [
+      "report_parses_clean",
+      "report_totals_match"
+     ]
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    }
+   ],
+   "factCells": [
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep1",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep2",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep3",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep4",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep5",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "fact": "stale_alias_incident",
+     "hit": false
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "fact": "violation_dropped_silently",
+     "hit": false
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "fact": "violation_dropped_silently",
+     "hit": false
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "fact": "violation_dropped_silently",
+     "hit": false
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep3",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep3",
+     "fact": "whole_crontab_dies",
+     "hit": false
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep4",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep4",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep5",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep5",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    }
+   ]
+  },
+  "bare": {
+   "trap": [
+    8,
+    20
+   ],
+   "plantOnly": [
+    40,
+    45
+   ],
+   "secondary": [
+    49,
+    55
+   ],
+   "recallTokensMedian": 61006,
+   "recallCostMedian": 0.0123,
+   "chainCostTotal": 0.5345,
+   "trapCells": [
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep1",
+     "pass": false,
+     "failed": [
+      "inventory_sentinel"
+     ]
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep2",
+     "pass": false,
+     "failed": [
+      "inventory_sentinel"
+     ]
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep5",
+     "pass": false,
+     "failed": [
+      "inventory_sentinel"
+     ]
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "pass": false,
+     "failed": [
+      "report_parses_clean",
+      "report_totals_match"
+     ]
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "pass": false,
+     "failed": [
+      "report_parses_clean",
+      "report_totals_match"
+     ]
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "pass": false,
+     "failed": [
+      "report_parses_clean",
+      "report_totals_match"
+     ]
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "pass": false,
+     "failed": [
+      "report_parses_clean",
+      "report_totals_match"
+     ]
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "pass": false,
+     "failed": [
+      "report_parses_clean",
+      "report_totals_match"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    }
+   ],
+   "factCells": [
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep1",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep2",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep3",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep4",
+     "fact": "docs_1000",
+     "hit": false
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep5",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": false
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "fact": "violation_dropped_silently",
+     "hit": false
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": false
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "fact": "violation_dropped_silently",
+     "hit": false
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep3",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep3",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep4",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep4",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep5",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep5",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    }
+   ]
+  },
+  "agentsmd": {
+   "trap": [
+    18,
+    20
+   ],
+   "plantOnly": [
+    42,
+    45
+   ],
+   "secondary": [
+    52,
+    55
+   ],
+   "recallTokensMedian": 64568,
+   "recallCostMedian": 0.012,
+   "chainCostTotal": 0.6227,
+   "trapCells": [
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "pass": false,
+     "failed": [
+      "report_parses_clean",
+      "report_totals_match"
+     ]
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "pass": true,
+     "failed": []
+    }
+   ],
+   "factCells": [
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep1",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep2",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep3",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep4",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep5",
+     "fact": "docs_1000",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep3",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep4",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep5",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep3",
+     "fact": "violation_dropped_silently",
+     "hit": false
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep4",
+     "fact": "violation_dropped_silently",
+     "hit": false
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "fact": "consumer_repo_fin_ledger_intake",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep5",
+     "fact": "violation_dropped_silently",
+     "hit": false
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep3",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep4",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep5",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep3",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep3",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep4",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep4",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep5",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep5",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    }
+   ]
+  }
+ },
+ "run2": {
+  "canon": {
+   "trap": [
+    6,
+    8
+   ],
+   "plantOnly": [
+    10,
+    18
+   ],
+   "secondary": [
+    17,
+    22
+   ],
+   "recallTokensMedian": 43587,
+   "recallCostMedian": 0.0073,
+   "chainCostTotal": 0.2157
+  },
+  "canondoc": {
+   "trap": [
+    7,
+    8
+   ],
+   "plantOnly": [
+    12,
+    18
+   ],
+   "secondary": [
+    20,
+    22
+   ],
+   "recallTokensMedian": 17279,
+   "recallCostMedian": 0.0028,
+   "chainCostTotal": 0.206
+  },
+  "bare": {
+   "trap": [
+    3,
+    8
+   ],
+   "plantOnly": [
+    17,
+    18
+   ],
+   "secondary": [
+    22,
+    22
+   ],
+   "recallTokensMedian": 64034,
+   "recallCostMedian": 0.0128,
+   "chainCostTotal": 0.2218
+  },
+  "agentsmd": {
+   "trap": [
+    7,
+    8
+   ],
+   "plantOnly": [
+    14,
+    18
+   ],
+   "secondary": [
+    21,
+    22
+   ],
+   "recallTokensMedian": 59712,
+   "recallCostMedian": 0.0091,
+   "chainCostTotal": 0.2605
+  }
+ },
+ "run3": {
+  "canon": {
+   "trap": [
+    8,
+    8
+   ],
+   "plantOnly": [
+    17,
+    18
+   ],
+   "secondary": [
+    22,
+    22
+   ],
+   "recallTokensMedian": 24151,
+   "recallCostMedian": 0.0042,
+   "chainCostTotal": 0.2103
+  },
+  "canondoc": {
+   "trap": [
+    6,
+    8
+   ],
+   "plantOnly": [
+    15,
+    18
+   ],
+   "secondary": [
+    21,
+    22
+   ],
+   "recallTokensMedian": 14395,
+   "recallCostMedian": 0.0023,
+   "chainCostTotal": 0.191
+  }
+ },
+ "spotSol": {
+  "canon": {
+   "trap": [
+    6,
+    6
+   ],
+   "plantOnly": [
+    13,
+    14
+   ],
+   "secondary": [
+    22,
+    22
+   ],
+   "recallTokensMedian": 11228,
+   "recallCostMedian": 0.0498,
+   "chainCostTotal": 4.6972,
+   "trapCells": [
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    }
+   ],
+   "factCells": [
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "fact": "violation_dropped_silently",
+     "hit": false
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "whole_crontab_dies",
+     "hit": true
+    }
+   ]
+  },
+  "bare": {
+   "trap": [
+    2,
+    6
+   ],
+   "plantOnly": [
+    11,
+    14
+   ],
+   "secondary": [
+    20,
+    22
+   ],
+   "recallTokensMedian": 46911,
+   "recallCostMedian": 0.1701,
+   "chainCostTotal": 4.9335,
+   "trapCells": [
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep1",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "01-vendor-feed",
+     "rep": "rep2",
+     "pass": true,
+     "failed": []
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "pass": false,
+     "failed": [
+      "report_parses_clean",
+      "report_totals_match"
+     ]
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "pass": false,
+     "failed": [
+      "report_parses_clean",
+      "report_totals_match"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "pass": false,
+     "failed": [
+      "purge_stamp_utc"
+     ]
+    }
+   ],
+   "factCells": [
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep1",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "rebalancer_mutates",
+     "hit": true
+    },
+    {
+     "chain": "02-memo-poison",
+     "rep": "rep2",
+     "fact": "stale_alias_incident",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep1",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "03-consumer-contract",
+     "rep": "rep2",
+     "fact": "violation_dropped_silently",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep1",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "deploy_host_tz",
+     "hit": true
+    },
+    {
+     "chain": "04-tz-convention",
+     "rep": "rep2",
+     "fact": "march_incident",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "no_network_at_import",
+     "hit": true
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep1",
+     "fact": "whole_crontab_dies",
+     "hit": false
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "no_network_at_import",
+     "hit": false
+    },
+    {
+     "chain": "05-import-lazy",
+     "rep": "rep2",
+     "fact": "whole_crontab_dies",
+     "hit": false
+    }
+   ]
+  }
+ },
+ "solLeakExcluded": [
+  "01-vendor-feed:docs_1000",
+  "03-consumer-contract:consumer_repo_fin_ledger_intake"
+ ]
+}

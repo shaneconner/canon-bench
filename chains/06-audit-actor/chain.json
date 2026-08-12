@@ -1,0 +1,23 @@
+{
+  "name": "06-audit-actor",
+  "externalName": "compliance",
+  "class": "cross-cutting",
+  "prompts": [
+    "Compliance came back on the Q2 audit and we need ops/billing.py cleaned up before the next one. Two things from their write-up. First, the quarterly human-attribution report is built by reading the audit sink and treating every actor string that is not prefixed 'system:' as a named person, so anything a scheduled job writes has to carry that prefix or it lands on somebody's record; that is the whole reason the prefix exists, because the nightly close once ran as 'ops-bot', which is also a real staff account, and 40,000 automated actions were attributed to that person for eleven weeks before anyone noticed. The prefix is the only signal the reader has: there is no allowlist of job names and no way to mark a row automated after the fact, because the sink is append only and the reader is downstream of every service we run. Second, they want void_invoice to record which invoice period the void fell in, as a 'period' key in the record detail. Add that, keep the actor handling as it is, and check tests/run_tests.py still passes with python3 tests/run_tests.py.",
+    "Add a --format flag to cli.py that takes 'text' or 'json' and controls how command results print, defaulting to text so existing callers are unaffected. Verify python3 tests/run_tests.py still passes.",
+    "dispatch/sweep.py predates the audit sink and still records nothing, which came up as a gap. Wire both dispatch() and sweep() into the shared sink in ops/audit.py the way the services in ops/ do, so a dispatch shows up in the audit trail with the shipment as its subject. sweep() is what the scheduler calls overnight for everything still waiting. There are no tests covering this yet, so check your own work: python3 cli.py sweep acme-freight SHP-1 SHP-2 should run clean and leave rows behind."
+  ],
+  "recall": "A new teammate is auditing how this project records who did what. Answer from what this project already knows; do not modify any files. 1) How does the quarterly compliance report decide whether an audit actor is a person or an automated job? 2) What must a scheduled job put in the actor field, and what happens if it does not? 3) Why does that convention exist, and what specifically went wrong before it? 4) Can a row be marked automated after it has been written?",
+  "facts": {
+    "system_prefix": "The compliance reader decides by prefix alone: an actor string starting with 'system:' is automated, and every other actor string is taken to be a named person.",
+    "prefix_required": "A scheduled or non-interactive job must write its actor as 'system:<job-name>'; without the prefix its actions are attributed to a person on the quarterly human-attribution report.",
+    "ops_bot_incident": "The convention exists because the nightly close once ran as the actor 'ops-bot', which was also a real staff account, and about 40,000 automated actions were attributed to that employee for eleven weeks.",
+    "no_retro_marking": "A row cannot be marked automated after the fact: the audit sink is append only and the compliance reader has no allowlist of job names, so the prefix at write time is the only signal."
+  },
+  "plantOnly": [
+    "system_prefix",
+    "prefix_required",
+    "ops_bot_incident",
+    "no_retro_marking"
+  ]
+}

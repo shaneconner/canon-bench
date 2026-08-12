@@ -139,3 +139,79 @@ crontab dies), the trigger (VPN sidecar comes up late).
 sessions. Plus one cold control per chain before the study: bare condition, probe prompt only
 on a fresh seed; if it passes the hidden grade without the plant, the chain leaks and goes
 back to design. Cold controls are the empirical guessability test; opinions do not count.
+
+## Knowledge classes, and the class the suite was missing (2026-08-12)
+
+Chains 01-05 are all **asset-scoped**: the planted constraint belongs to a file, the
+plant session works on that file, and the probe session works on that file or a
+descendant of it. That is a deliberate design, because it is the shape pi-canon's
+address spine is built for, and the headline run measures it.
+
+It is also why the 1.0 forensic could not see a retrieval failure. All 14 missed facts
+were classified as write-desk failures (8 never captured, 5 overwritten, 1 judge error,
+0 lost at retrieval), and the natural reading is that retrieval is not the problem. The
+survivorship structure has to be read beside it: in a suite where every planted fact has
+an owning asset, a retrieval miss is not a failure the population contains. The chains
+cannot fail the way retrieval would fix. A null result from these five arms would
+therefore say nothing about a ranker, in either direction.
+
+**A cross-cutting chain** closes that. Its planted constraint governs many assets and
+owns none, so the address that would carry it does not exist:
+
+- The plant session learns the rule while working on one asset.
+- The probe session needs the rule while working on an asset with **no shared ancestor
+  short of the root**. pi-canon resolves by exact address then by ancestor walk, so this
+  is the precise condition under which the spine provably cannot carry the rule across.
+  A root article would reach it, and surfaces on every touch of anything, which is the
+  degenerate case rather than a filing.
+- Every other invariant above still holds: non-guessable, enforcement outside the
+  checkout, distinct deterministic signatures, ground-truth statements for the judge.
+
+A chain declares its class in chain.json as `"class": "asset-scoped" | "cross-cutting"`,
+so an analysis can split the two rather than pooling them. Chains 01-05 are asset-scoped
+by construction and are not being relabelled by hand: the field is read as asset-scoped
+when absent.
+
+The scoping property is not a comment. `validate.py` asserts it, by computing the
+ancestor sets of the plant and probe addresses and requiring the intersection to be
+empty, and by requiring that no plant prompt touches the probe's package.
+
+## 06-audit-actor (cross-cutting) - built, validated offline, not yet run
+
+Seed: a small ops repo. `ops/audit.py` is a shared append-only sink; `ops/billing.py`
+and `ops/inventory.py` emit to it; `dispatch/sweep.py` is a separate top-level package
+that predates the sink and emits nothing. Unrelated modules (`ops/pricing.py`,
+`ops/textutil.py`, `ops/config.py`) carry real exploration cost.
+
+Plant (compliance write-up framing, session 1 works on `ops/billing.py`): the quarterly
+human-attribution report treats every actor string not prefixed `system:` as a named
+person, so a scheduled job must write `system:<job-name>`. The prefix is the reader's
+only signal: no allowlist, no way to mark a row automated afterwards, because the sink
+is append only and the reader is downstream of every service. It exists because the
+nightly close once ran as `ops-bot`, also a real staff account, and about 40,000
+automated actions were attributed to that employee for eleven weeks.
+
+Distract: a `--format` flag on `cli.py`.
+
+Probe: wire `dispatch/sweep.py` into the sink. The obvious actor is a descriptive job
+name with no prefix, and nothing in the checkout says otherwise: `ops/audit.py`
+validates shape and never policy, and the seed never mentions the reader, the incident,
+or attribution. The external `compliance_reader.py` then attributes the automated
+dispatches to a person.
+
+Signatures (`sweep_runs_clean` / `dispatch_audited` / `sweep_not_human_attributed` /
+`suite_still_passes`):
+
+    correct        pass / pass / pass / pass
+    trap           pass / pass / FAIL / pass
+    probe ignored  pass / FAIL / pass / pass
+    entry broken   FAIL / *    / *    / *
+
+`dispatch_audited` is blind to the actor and `sweep_not_human_attributed` is evaluated
+only against rows the sweep itself produced, so a seed row can neither rescue nor
+condemn the probe. Three near misses are validated as traps rather than passes: a bare
+`system` with no job name, a `-bot` suffix, and a short human-shaped name.
+
+Still owed before this chain can run: `hidden/recall_fixtures.json` and
+`hidden/judge-validation/` gold and zero-knowledge answers, and a pass through
+`validate_judge.py`.

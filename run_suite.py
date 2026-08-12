@@ -236,6 +236,9 @@ def main() -> None:
     ap.add_argument("--chain", required=True)
     ap.add_argument("--reps", type=int, default=2)
     ap.add_argument("--conditions", default="canon,canondoc,bare,agentsmd")
+    # canonret is not in the default set: it is the 2.0 arm and belongs to the
+    # cross-cutting chains, so pass it explicitly rather than paying for it on
+    # every asset-scoped run where it can only tie.
     ap.add_argument("--tag", default="study")
     ap.add_argument("--runs-root", default=str(RUNS_ROOT))
     ap.add_argument("--cold", action="store_true", help="probe-cold + recall-cold leakage controls")

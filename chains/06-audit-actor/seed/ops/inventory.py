@@ -1,7 +1,7 @@
 """Stock adjustments. Emits to the shared audit sink."""
 from . import audit
 
-RECONCILE_JOB = "system:inventory-reconcile"
+RECONCILE_JOB = "ops-inventory-reconcile"
 
 
 def adjust(workdir, sku, delta, actor):

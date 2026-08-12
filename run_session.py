@@ -18,6 +18,35 @@ from pathlib import Path
 
 PI_CANON = Path(__file__).resolve().parents[2] / "extensions/index.js"
 
+# canonret: the same package, registered with retrieval enabled.
+#
+# Turning retrieval on varies two things at once, and the study has to be read knowing
+# that. It gives the run a ranker over articles governing no asset, AND it flips the
+# tool's filing rule from "knowledge filed off the asset path never surfaces" to "a
+# constraint governing many assets and owning none belongs at its own address". They are
+# coupled deliberately: a ranker with nothing to find is not a mechanism, and inviting
+# off-path filing with no ranker is advice to lose information. This arm measures the
+# pair, not the ranker alone.
+#
+# The shim is generated per session with an ABSOLUTE import rather than committed with a
+# relative one, so the bench runs the same from the working copy inside pi-canon and from
+# a standalone clone, where a fixed ../.. would resolve somewhere else entirely.
+RETRIEVAL_SHIM = """import {{ registerPiCanon }} from "{canon}";
+
+export default function piCanonRetrieval(pi) {{
+  return registerPiCanon(pi, {{ retrieval: "lexical" }});
+}}
+"""
+
+
+def retrieval_shim(out: Path) -> Path:
+    canon = (PI_CANON.parent / "canon.ts").resolve()
+    if not canon.exists():
+        raise SystemExit(f"canonret needs {canon}, which does not exist")
+    path = out / "canon-retrieval.mjs"
+    path.write_text(RETRIEVAL_SHIM.format(canon=canon))
+    return path
+
 
 def snapshot(canon_dir: Path, dest: Path) -> None:
     if canon_dir.exists():
@@ -27,7 +56,7 @@ def snapshot(canon_dir: Path, dest: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--condition", choices=["canon", "canondoc", "bare", "agentsmd"], required=True)
+    ap.add_argument("--condition", choices=["canon", "canondoc", "canonret", "bare", "agentsmd"], required=True)
     ap.add_argument("--workdir", required=True)
     ap.add_argument("--prompt", required=True)
     ap.add_argument("--model", default="gpt-5.6-luna")
@@ -50,12 +79,14 @@ def main() -> None:
     ]
     if args.condition not in ("agentsmd", "canondoc"):
         cmd.append("--no-context-files")
-    if args.condition in ("canon", "canondoc"):
+    if args.condition == "canonret":
+        cmd += ["-e", str(retrieval_shim(out))]
+    elif args.condition in ("canon", "canondoc"):
         cmd += ["-e", str(PI_CANON)]
     cmd.append(args.prompt)
 
     env = dict(os.environ)
-    if args.condition in ("canon", "canondoc"):
+    if args.condition in ("canon", "canondoc", "canonret"):
         env["PI_CANON_TRACE"] = str(out / "canon-trace.jsonl")
 
     start = time.time()

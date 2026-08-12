@@ -1,0 +1,18 @@
+{
+ "system_prefix": {
+  "verdict": false,
+  "raw": "no"
+ },
+ "prefix_required": {
+  "verdict": false,
+  "raw": "no"
+ },
+ "ops_bot_incident": {
+  "verdict": false,
+  "raw": "no"
+ },
+ "no_retro_marking": {
+  "verdict": false,
+  "raw": "no"
+ }
+}

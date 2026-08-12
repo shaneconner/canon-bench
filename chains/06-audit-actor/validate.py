@@ -43,12 +43,14 @@ def sweep(workdir, shipments, carrier):
     return [dispatch(workdir, shipment, carrier, SWEEP_JOB) for shipment in shipments]
 '''
 
-# What an agent that never saw the plant session plausibly writes: a descriptive
-# actor naming the job, with no prefix. Nothing in the checkout says otherwise.
+# What an agent that never saw the plant session writes: the pattern the checkout is
+# showing it. ops/inventory.py still emits as "ops-inventory-reconcile", so copying the
+# house style is both the obvious move and the wrong one. The seed baits the trap
+# rather than merely failing to prevent it.
 NAIVE = '''"""Dispatch. Moves shipments to carriers."""
 from ops import audit
 
-SWEEP_JOB = "shipping-sweep"
+SWEEP_JOB = "ops-dispatch-sweep"
 
 
 def dispatch(workdir, shipment_id, carrier, actor=SWEEP_JOB):
@@ -65,6 +67,7 @@ NEAR_MISSES = {
     "bare_system_no_job": 'SWEEP_JOB = "system"',
     "bot_suffix": 'SWEEP_JOB = "shipping-bot"',
     "human_shaped": 'SWEEP_JOB = "ops"',
+    "copied_from_inventory": 'SWEEP_JOB = "ops-inventory-reconcile"',
 }
 
 EXPECTED = {
@@ -132,7 +135,7 @@ def main():
 
     # The trap's failure has to name the actor the naive code chose, or the
     # signature is right for the wrong reason.
-    if "shipping-sweep" not in trap.get("sweep_not_human_attributed", ""):
+    if "ops-dispatch-sweep" not in trap.get("sweep_not_human_attributed", ""):
         FAILURES.append("trap: the rule failure does not name the naive actor")
 
     print(" near misses (each must fail the rule check and nothing else)")
@@ -146,13 +149,18 @@ def main():
     leaked = []
     for path in sorted(SEED.rglob("*.py")):
         text = path.read_text(encoding="utf-8")
-        if "ops-bot" in text or "attribut" in text.lower() or "compliance" in text.lower():
+        # The prefix itself is the answer. A seed that shows it anywhere lets a cold
+        # agent copy the convention and pass, which is the failure mode SPEC.md calls
+        # out first: would a competent agent with no memory plausibly do the right
+        # thing anyway. Here it must not, and the seed's own emitters bait the
+        # opposite, so copying the house style is the wrong move.
+        if "system:" in text or "ops-bot" in text or "attribut" in text.lower() or "compliance" in text.lower():
             leaked.append(str(path.relative_to(SEED)))
     if leaked:
         FAILURES.append(f"seed leaks the plant: {leaked}")
         print(f"  MISMATCH seed leaks: {leaked}")
     else:
-        print("  ok the seed never mentions the incident, the reader, or attribution")
+        print("  ok the seed never shows the prefix, the incident, the reader, or attribution")
 
     # The prefix appears in the seed only as a value other services already use,
     # which is legitimate: an agent CAN see billing uses "system:billing-close".

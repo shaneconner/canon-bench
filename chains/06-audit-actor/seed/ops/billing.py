@@ -1,7 +1,7 @@
 """Invoice actions. Emits to the shared audit sink."""
 from . import audit
 
-NIGHTLY_JOB = "system:billing-close"
+NIGHTLY_JOB = "ops-billing-close"
 
 
 def void_invoice(workdir, invoice_id, actor):

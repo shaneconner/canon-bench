@@ -20,5 +20,13 @@
     "ids_are_the_schedulers",
     "ops_bot_incident",
     "registered_ids"
+  ],
+  "captureValues": [
+    "billing-close",
+    "inventory-reconcile",
+    "nightly-dispatch",
+    "ops-bot",
+    "40,000",
+    "eleven weeks"
   ]
 }

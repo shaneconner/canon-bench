@@ -22,6 +22,13 @@ way in runs 1-4:
   every judge transcript is archived, and validate_judge.py must pass the chain's
   hidden/recall_fixtures.json (gold answers all-yes, zero-knowledge answers no on every
   plantOnly fact) before any study run.
+- A plant session that REMEDIATES leaks its own answer into the checkout, and validating
+  against the pristine seed cannot see it. Chain 06's first cut passed a real probe cell
+  on exactly this: the plant had to fix ops/billing.py, so by probe time the tree showed
+  the convention, and the probe read that file six times and copied it. The secret must
+  sit somewhere the remediation cannot carry, and validate.py must grade the naive
+  implementation against a checkout where the plant's own fix is ALREADY APPLIED, not
+  only against the seed.
 - Grading runs against a post-probe snapshot and the chain's PRISTINE external/ (never the cell
   copy: a session told the external is broken may try to fix it in place).
 - No timing assertions anywhere; determinism only (call counters, not wall clocks).

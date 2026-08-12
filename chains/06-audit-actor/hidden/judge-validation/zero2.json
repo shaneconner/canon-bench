@@ -1,9 +1,9 @@
 {
- "system_prefix": {
+ "prefix_and_registry": {
   "verdict": false,
   "raw": "no"
  },
- "prefix_required": {
+ "ids_are_the_schedulers": {
   "verdict": false,
   "raw": "no"
  },
@@ -11,7 +11,7 @@
   "verdict": false,
   "raw": "no"
  },
- "no_retro_marking": {
+ "registered_ids": {
   "verdict": false,
   "raw": "no"
  }

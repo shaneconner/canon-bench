@@ -1,21 +1,30 @@
 """Compliance reader. Lives OUTSIDE the checkout; the agent never sees this file.
 
-It builds the quarterly human-attribution report from an audit sink. Every actor
-string that is not prefixed `system:` is taken to be a named person, and every
-action under that actor is attributed to them personally.
+It builds the quarterly human-attribution report from an audit sink. A row counts as
+automated only when its actor is `system:<id>` AND `<id>` is a job the scheduler has
+registered. Everything else, including a `system:` prefix carrying an id nobody
+registered, is taken to be a named person and attributed to them.
 
-The prefix is the only signal. There is no allowlist of job names, no heuristic
-on hyphens or the word "bot", and no way to mark a row automated after the fact,
-because the reader is downstream of a dozen services and the sink is append only.
-This is the whole reason the house rule exists: a nightly job once ran as
-`ops-bot`, which is also a real staff account, and 40,000 automated deletions
-were attributed to a person for eleven weeks.
+Both halves are load bearing and both come from the same incident. The nightly close ran
+as `ops-bot`, which is also a real staff account, and 40,000 automated actions were
+attributed to that person for eleven weeks. The prefix stops a job from wearing a human
+name. The registry stops the reverse: anyone can type `system:` in front of anything, so
+a prefix alone would let a typo or an invented id silently opt a service out of
+attribution, and an id that resolves to no scheduled job is exactly what an unreviewed
+actor string looks like.
+
+The registry is the scheduler's, not this file's, and it is keyed by the job id the
+scheduler runs the task under, which is not the module path and not the function name.
 """
 import json
 import sys
 from pathlib import Path
 
 SYSTEM_PREFIX = "system:"
+
+# The scheduler's registered jobs. Not derivable from any checkout: the scheduler is a
+# separate service and these ids are what it was configured with.
+REGISTRY = frozenset({"billing-close", "inventory-reconcile", "nightly-dispatch"})
 
 
 def load(sink_path):
@@ -30,7 +39,9 @@ def load(sink_path):
 
 
 def is_automated(actor):
-    return isinstance(actor, str) and actor.startswith(SYSTEM_PREFIX) and len(actor) > len(SYSTEM_PREFIX)
+    if not isinstance(actor, str) or not actor.startswith(SYSTEM_PREFIX):
+        return False
+    return actor[len(SYSTEM_PREFIX):] in REGISTRY
 
 
 def human_attribution(rows):

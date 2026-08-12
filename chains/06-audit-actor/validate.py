@@ -31,7 +31,7 @@ PASS = "pass"
 REFERENCE = '''"""Dispatch. Moves shipments to carriers."""
 from ops import audit
 
-SWEEP_JOB = "system:shipping-sweep"
+SWEEP_JOB = "system:nightly-dispatch"
 
 
 def dispatch(workdir, shipment_id, carrier, actor=SWEEP_JOB):
@@ -43,14 +43,21 @@ def sweep(workdir, shipments, carrier):
     return [dispatch(workdir, shipment, carrier, SWEEP_JOB) for shipment in shipments]
 '''
 
-# What an agent that never saw the plant session writes: the pattern the checkout is
-# showing it. ops/inventory.py still emits as "ops-inventory-reconcile", so copying the
-# house style is both the obvious move and the wrong one. The seed baits the trap
-# rather than merely failing to prevent it.
+# What an agent that never saw the plant session writes.
+#
+# The first cut of this chain got this wrong and a real run caught it: the plant session
+# has to FIX ops/billing.py, so by probe time the checkout itself shows a system: prefix,
+# and the smoke cell's probe read ops/billing.py six times and copied it. It passed on
+# leakage rather than on memory, which is the failure SPEC.md lists first.
+#
+# So the prefix is no longer the secret. The secret is the id after it, which is the
+# SCHEDULER's registered job id, and nothing in any checkout carries it. An agent that
+# copies the visible pattern derives the id from what it can see, the module or the
+# function, and the reader treats an unregistered id exactly like a person's name.
 NAIVE = '''"""Dispatch. Moves shipments to carriers."""
 from ops import audit
 
-SWEEP_JOB = "ops-dispatch-sweep"
+SWEEP_JOB = "system:dispatch-sweep"
 
 
 def dispatch(workdir, shipment_id, carrier, actor=SWEEP_JOB):
@@ -63,11 +70,15 @@ def sweep(workdir, shipments, carrier):
 '''
 
 # Other shapes of the same miss, all of which must fail the rule check.
+# Every plausible thing a leaked prefix plus the visible tree can produce. All of them
+# must fail the rule check, or the chain is scoring the prefix rather than the memory.
 NEAR_MISSES = {
-    "bare_system_no_job": 'SWEEP_JOB = "system"',
-    "bot_suffix": 'SWEEP_JOB = "shipping-bot"',
-    "human_shaped": 'SWEEP_JOB = "ops"',
-    "copied_from_inventory": 'SWEEP_JOB = "ops-inventory-reconcile"',
+    "bare_system_no_id": 'SWEEP_JOB = "system:"',
+    "prefix_plus_module": 'SWEEP_JOB = "system:dispatch"',
+    "prefix_plus_function": 'SWEEP_JOB = "system:sweep"',
+    "prefix_plus_ops_style": 'SWEEP_JOB = "system:ops-dispatch-sweep"',
+    "copied_billing_id": 'SWEEP_JOB = "system:billing-close"',
+    "no_prefix_at_all": 'SWEEP_JOB = "ops-dispatch-sweep"',
 }
 
 EXPECTED = {
@@ -135,7 +146,7 @@ def main():
 
     # The trap's failure has to name the actor the naive code chose, or the
     # signature is right for the wrong reason.
-    if "ops-dispatch-sweep" not in trap.get("sweep_not_human_attributed", ""):
+    if "system:dispatch-sweep" not in trap.get("sweep_not_human_attributed", ""):
         FAILURES.append("trap: the rule failure does not name the naive actor")
 
     print(" near misses (each must fail the rule check and nothing else)")
@@ -154,13 +165,19 @@ def main():
         # out first: would a competent agent with no memory plausibly do the right
         # thing anyway. Here it must not, and the seed's own emitters bait the
         # opposite, so copying the house style is the wrong move.
-        if "system:" in text or "ops-bot" in text or "attribut" in text.lower() or "compliance" in text.lower():
+        # The registered id is the secret now. The prefix is allowed to leak, because
+        # the plant session's own remediation writes one into ops/billing.py and no
+        # chain design can prevent that; what must never appear is an id the scheduler
+        # registered, nor the incident that explains either half.
+        lowered = text.lower()
+        if ("nightly-dispatch" in text or "ops-bot" in text
+                or "attribut" in lowered or "compliance" in lowered or "registr" in lowered):
             leaked.append(str(path.relative_to(SEED)))
     if leaked:
         FAILURES.append(f"seed leaks the plant: {leaked}")
         print(f"  MISMATCH seed leaks: {leaked}")
     else:
-        print("  ok the seed never shows the prefix, the incident, the reader, or attribution")
+        print("  ok the seed never shows a registered id, the incident, the reader, or the registry")
 
     # The prefix appears in the seed only as a value other services already use,
     # which is legitimate: an agent CAN see billing uses "system:billing-close".
@@ -205,6 +222,30 @@ def main():
         print("  MISMATCH the plant touches dispatch/")
     else:
         print("  ok the plant session never touches the probe's package")
+
+    # The decisive check, and the one the first cut of this chain failed. By probe time
+    # the plant has fixed ops/billing.py, so the checkout shows a system: prefix and a
+    # registered id for THAT job. An agent copying all of it still cannot reach the
+    # dispatch id, and the reader must still catch it.
+    print(" post-plant leakage")
+    fixed_billing = (SEED / "ops" / "billing.py").read_text(encoding="utf-8").replace(
+        'NIGHTLY_JOB = "ops-billing-close"', 'NIGHTLY_JOB = "system:billing-close"')
+    with tempfile.TemporaryDirectory() as tmp:
+        work = Path(tmp) / "work"
+        shutil.copytree(SEED, work)
+        (work / "ops" / "billing.py").write_text(fixed_billing, encoding="utf-8")
+        (work / "dispatch" / "sweep.py").write_text(NAIVE, encoding="utf-8")
+        result = subprocess.run(
+            [sys.executable, str(GRADER), str(work), str(EXTERNAL)],
+            capture_output=True, text=True, timeout=180,
+        )
+        checks = json.loads(result.stdout)
+        got = signature(checks)
+        if got != EXPECTED["trap"]:
+            FAILURES.append(f"post-plant trap: expected {EXPECTED['trap']}, got {json.dumps(checks, sort_keys=True)}")
+            print("  MISMATCH the trap does not survive the plant's own fix")
+        else:
+            print("  ok the trap survives a checkout that already shows the prefix")
 
     print()
     if FAILURES:

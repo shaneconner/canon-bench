@@ -85,13 +85,21 @@ def usage_of(out: Path) -> dict:
 WORKER = {"model": "gpt-5.6-luna", "provider": "openai-codex"}
 
 
+class CellFailed(Exception):
+    """One cell could not be run to completion. Isolated so the remaining cells still
+    run: a single hung worker session used to take the whole matrix down with it, and
+    the report only reached disk at the very end, so every finished cell was lost too."""
+
+
 def run_session(condition: str, work: Path, out: Path, prompt: str) -> None:
-    subprocess.run(
+    done = subprocess.run(
         [sys.executable, str(BENCH / "run_session.py"), "--condition", condition,
          "--workdir", str(work), "--out", str(out), "--prompt", prompt,
          "--model", WORKER["model"], "--provider", WORKER["provider"]],
         check=False,
     )
+    if done.returncode != 0 or not (out / "metrics.json").exists():
+        raise CellFailed(f"{condition} session {out.name} exited {done.returncode}")
 
 
 JUDGE_PROMPT = """You are grading one answer from a memory benchmark. The fact under grade:
@@ -259,7 +267,15 @@ def main() -> None:
         report = {}
         for rep in range(1, args.reps + 1):
             for condition in args.conditions.split(","):
-                report[f"rep{rep}/{condition}"] = run_cell(chain, base, condition, rep)
+                key = f"rep{rep}/{condition}"
+                try:
+                    report[key] = run_cell(chain, base, condition, rep)
+                except CellFailed as exc:
+                    report[key] = {"cell": f"FAILED: {exc}"}
+                    print(f"!! {key} failed: {exc}", flush=True)
+                # checkpoint after every cell: a crash later must not cost the cells
+                # already paid for.
+                (base / "grades.json").write_text(json.dumps(report, indent=1) + "\n")
 
     (base / "grades.json").write_text(json.dumps(report, indent=1) + "\n")
     print(json.dumps(report, indent=1))

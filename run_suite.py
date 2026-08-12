@@ -186,7 +186,8 @@ class Chain:
         return {fact: v for fact, (v, _) in results.items()}
 
 
-def run_cell(chain: Chain, base: Path, condition: str, rep: int) -> dict:
+def run_cell(chain: Chain, base: Path, condition: str, rep: int,
+             hand_transcripts: bool = True) -> dict:
     cell = base / f"rep{rep}" / condition
     work = chain.seed_cell(cell)
     if condition == "canondoc":
@@ -204,12 +205,22 @@ def run_cell(chain: Chain, base: Path, condition: str, rep: int) -> dict:
     shutil.copytree(work, graded)
     outcome = chain.grade(graded)
 
-    transcripts = work / ".sessions"
+    # Archived beside the cell always. ALSO placing them in the work tree hands them to
+    # the recall session, which is the frozen design ("hand the condition its
+    # transcripts"), and it is load bearing on how recall reads: s1 contains the plant
+    # prompt verbatim, so a recall session that opens the dump answers every fact with no
+    # memory at all. xcut2 caught a bare cell doing exactly that, 4/4 with an empty store,
+    # while its sibling rep read less and scored 0/4. Default keeps the frozen behaviour so
+    # numbers stay comparable; --no-hand-transcripts measures recall without the crutch.
+    transcripts = cell / "transcripts"
     transcripts.mkdir()
     for index in range(1, len(chain.prompts) + 1):
         kept = [json.dumps(e) for e in events(cell / f"s{index}" / "session.jsonl")
                 if e.get("type") not in TRANSCRIPT_DROP]
         (transcripts / f"s{index}.jsonl").write_text("\n".join(kept) + "\n")
+
+    if hand_transcripts:
+        shutil.copytree(transcripts, work / ".sessions")
 
     recall_out = cell / "recall"
     run_session(condition, work, recall_out, chain.recall)
@@ -249,6 +260,9 @@ def main() -> None:
     # every asset-scoped run where it can only tie.
     ap.add_argument("--tag", default="study")
     ap.add_argument("--runs-root", default=str(RUNS_ROOT))
+    ap.add_argument("--no-hand-transcripts", action="store_true",
+                    help="do not place the session transcripts in the work tree before "
+                         "recall; recall then measures the store rather than the dump")
     ap.add_argument("--cold", action="store_true", help="probe-cold + recall-cold leakage controls")
     ap.add_argument("--model", default=WORKER["model"])
     ap.add_argument("--provider", default=WORKER["provider"])
@@ -269,7 +283,8 @@ def main() -> None:
             for condition in args.conditions.split(","):
                 key = f"rep{rep}/{condition}"
                 try:
-                    report[key] = run_cell(chain, base, condition, rep)
+                    report[key] = run_cell(chain, base, condition, rep,
+                                       hand_transcripts=not args.no_hand_transcripts)
                 except CellFailed as exc:
                     report[key] = {"cell": f"FAILED: {exc}"}
                     print(f"!! {key} failed: {exc}", flush=True)

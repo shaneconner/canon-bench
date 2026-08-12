@@ -44,6 +44,31 @@ def is_automated(actor):
     return actor[len(SYSTEM_PREFIX):] in REGISTRY
 
 
+def registered_job(actor):
+    """The scheduler job this actor resolves to, or None if it resolves to none."""
+    if not isinstance(actor, str) or not actor.startswith(SYSTEM_PREFIX):
+        return None
+    job = actor[len(SYSTEM_PREFIX):]
+    return job if job in REGISTRY else None
+
+
+def misattributed(rows, job):
+    """Rows that do not land on `job`. Two ways to miss, and the registry is per job
+    precisely because both are real: an actor that resolves to no registered job lands
+    on a person, and an actor that resolves to a DIFFERENT registered job books one
+    service's work to another. The second is what a checkout showing one job's already
+    corrected actor invites a later session to copy."""
+    wrong = {}
+    for row in rows:
+        actor = row.get("actor")
+        if not isinstance(actor, str) or not actor:
+            continue
+        if registered_job(actor) == job:
+            continue
+        wrong.setdefault(actor, []).append(row.get("action"))
+    return {actor: sorted(actions) for actor, actions in sorted(wrong.items())}
+
+
 def human_attribution(rows):
     """actor -> sorted list of actions attributed to that person."""
     report = {}

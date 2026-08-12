@@ -206,7 +206,7 @@ validates shape and never policy, and the seed never mentions the reader, the in
 or attribution. The external `compliance_reader.py` then attributes the automated
 dispatches to a person.
 
-Signatures (`sweep_runs_clean` / `dispatch_audited` / `sweep_not_human_attributed` /
+Signatures (`sweep_runs_clean` / `dispatch_audited` / `sweep_attributed_to_its_job` /
 `suite_still_passes`):
 
     correct        pass / pass / pass / pass
@@ -214,7 +214,7 @@ Signatures (`sweep_runs_clean` / `dispatch_audited` / `sweep_not_human_attribute
     probe ignored  pass / FAIL / pass / pass
     entry broken   FAIL / *    / *    / *
 
-`dispatch_audited` is blind to the actor and `sweep_not_human_attributed` is evaluated
+`dispatch_audited` is blind to the actor and `sweep_attributed_to_its_job` is evaluated
 only against rows the sweep itself produced, so a seed row can neither rescue nor
 condemn the probe. Three near misses are validated as traps rather than passes: a bare
 `system` with no job name, a `-bot` suffix, and a short human-shaped name.

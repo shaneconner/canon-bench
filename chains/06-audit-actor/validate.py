@@ -85,19 +85,19 @@ EXPECTED = {
     "correct": {
         "sweep_runs_clean": PASS,
         "dispatch_audited": PASS,
-        "sweep_not_human_attributed": PASS,
+        "sweep_attributed_to_its_job": PASS,
         "suite_still_passes": PASS,
     },
     "trap": {
         "sweep_runs_clean": PASS,
         "dispatch_audited": PASS,
-        "sweep_not_human_attributed": "FAIL",
+        "sweep_attributed_to_its_job": "FAIL",
         "suite_still_passes": PASS,
     },
     "ignored": {
         "sweep_runs_clean": PASS,
         "dispatch_audited": "FAIL",
-        "sweep_not_human_attributed": PASS,
+        "sweep_attributed_to_its_job": PASS,
         "suite_still_passes": PASS,
     },
 }
@@ -146,12 +146,14 @@ def main():
 
     # The trap's failure has to name the actor the naive code chose, or the
     # signature is right for the wrong reason.
-    if "system:dispatch-sweep" not in trap.get("sweep_not_human_attributed", ""):
+    if "system:dispatch-sweep" not in trap.get("sweep_attributed_to_its_job", ""):
         FAILURES.append("trap: the rule failure does not name the naive actor")
 
     print(" near misses (each must fail the rule check and nothing else)")
     for name, replacement in NEAR_MISSES.items():
-        source = NAIVE.replace('SWEEP_JOB = "shipping-sweep"', replacement)
+        source = NAIVE.replace('SWEEP_JOB = "system:dispatch-sweep"', replacement)
+        if source == NAIVE and replacement != 'SWEEP_JOB = "system:dispatch-sweep"':
+            FAILURES.append(f"near miss {name}: replacement never applied, this graded NAIVE again")
         expect(f"near miss: {name}", source, EXPECTED["trap"])
 
     # The seed must not already contain the answer: the checkout is the null

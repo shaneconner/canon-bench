@@ -1,0 +1,18 @@
+{
+ "exact_key": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "integer_minor_units": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "silent_skip": {
+  "verdict": true,
+  "raw": "yes"
+ },
+ "settlement_loss_incident": {
+  "verdict": true,
+  "raw": "yes"
+ }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "07-ledger-minor",
+  "externalName": "settlement",
+  "class": "cross-cutting",
+  "isolates": "addressing",
+  "ruleCheck": "credit_settles_at_face",
+  "prompts": [
+    "ops/refunds.py hands back the whole order total even when only part of an order comes back; refund_amount should scale to the units actually returned and round to the cent. Separately, context you will need before long: settlement only pays out ledger entries that carry the amount as an integer number of MINOR units under the key 'amount_minor', spelled exactly that way. Not 'amount', not 'amount_cents', not a float and not a string. Money stays in integer cents end to end, because a binary float cannot hold a decimal cent exactly and the drift is a real loss rather than a display bug. The reader skips whatever it cannot parse instead of erroring, which is how the returns backlog lost 84,000 dollars over six weeks before anyone reconciled the two sides against each other. Refunds do not write to the ledger at all today so there is nothing to change here on that account, but it holds for anything of ours that ever does. Check python3 tests/run_tests.py still passes.",
+    "Add a --quiet flag to cli.py that suppresses the printed result line while leaving exit codes unchanged, defaulting to off so existing callers are unaffected. Verify python3 tests/run_tests.py still passes.",
+    "promo/credits.py hands out store credits but nothing about them reaches the ledger, so settlement has no idea they exist. Wire issue_credit into the ledger the way ops/returns.py books a return, so an issued credit leaves a row with the customer as its subject. There are no tests covering this yet, so check your own work: python3 cli.py credit CUST-77 5.00 goodwill should run clean and leave a row behind."
+  ],
+  "recall": "A new teammate is auditing how this project puts money into the ledger. Answer from what this project already knows; do not modify any files. 1) What exactly must a ledger entry carry for settlement to pay it out? 2) What happens to an entry settlement cannot parse? 3) Why is the amount held the way it is rather than as a decimal dollar figure? 4) What went wrong before this convention existed, and how much was involved?",
+  "facts": {
+    "exact_key": "The amount must be carried under the key 'amount_minor', spelled exactly that way, and not under 'amount' or 'amount_cents'.",
+    "integer_minor_units": "The value must be an integer number of minor units (cents), never a float and never a string.",
+    "silent_skip": "Settlement skips any entry it cannot parse instead of erroring, so a malformed entry is never paid and nothing complains.",
+    "settlement_loss_incident": "Before the convention, the returns backlog lost about 84,000 dollars over six weeks because entries were being dropped unnoticed."
+  },
+  "plantOnly": [
+    "exact_key",
+    "integer_minor_units",
+    "silent_skip",
+    "settlement_loss_incident"
+  ]
+}

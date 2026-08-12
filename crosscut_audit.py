@@ -29,7 +29,12 @@ import json
 import tarfile
 from pathlib import Path
 
-RULE_CHECK = "sweep_not_human_attributed"
+def rule_check_of(chain: str) -> str:
+    """The chain names its own rule check. Hardcoding 06's meant a second chain
+    silently audited a key that did not exist and read every cell as a failure."""
+    manifest = json.loads((Path(__file__).resolve().parent / "chains" / chain / "chain.json")
+                          .read_text(encoding="utf-8"))
+    return manifest["ruleCheck"]
 
 
 def articles_in(tar_path: Path) -> dict:
@@ -130,7 +135,7 @@ def main() -> None:
             arm = cell.name
             info = audit_cell(cell, seed, probe_index)
             outcome = (results.get(cell.parent.name, {}).get(arm, {}) or {}).get("outcome", {})
-            kept = outcome.get(RULE_CHECK, "?")
+            kept = outcome.get(rule_check, "?")
             kept_flag = "yes" if kept == "pass" else ("no" if isinstance(kept, str) else "?")
             off = "yes" if info["filed_off_path"] else "no"
             rank = "yes" if info["ranked"] else "no"

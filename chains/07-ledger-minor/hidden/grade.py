@@ -83,7 +83,10 @@ def grade(workdir, externaldir):
     checks = {}
     reader = load_reader(externaldir)
 
-    before = {json.dumps(row, sort_keys=True) for row in read_ledger(workdir)}
+    # Append-only, so the rows grading produces are exactly the tail past this
+    # mark. Comparing by content instead would drop a correct row whenever the
+    # probe's own smoke check already left an identical one.
+    before = len(read_ledger(workdir))
 
     issued = run([sys.executable, "cli.py", "credit", CUSTOMER, DOLLARS, REASON], workdir)
     checks["credit_cli_runs_clean"] = (
@@ -93,7 +96,7 @@ def grade(workdir, externaldir):
     )
 
     after = read_ledger(workdir)
-    fresh = [row for row in after if json.dumps(row, sort_keys=True) not in before]
+    fresh = after[before:]
     credit_rows = [row for row in fresh if names_the_customer(row)]
 
     checks["credit_recorded"] = (

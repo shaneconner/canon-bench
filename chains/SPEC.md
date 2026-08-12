@@ -222,3 +222,46 @@ condemn the probe. Three near misses are validated as traps rather than passes: 
 Still owed before this chain can run: `hidden/recall_fixtures.json` and
 `hidden/judge-validation/` gold and zero-knowledge answers, and a pass through
 `validate_judge.py`.
+
+## 07-ledger-minor (cross-cutting, isolates addressing) - built, validated offline
+
+06 answers a question it was not designed to ask. Its probe reads the plant's asset as a
+worked example, so the plant's article surfaces on touch and arrives whether or not it
+was addressed well. What 06 measures is therefore whether a DELIVERED rule transfers.
+07 measures whether an undelivered one arrives at all.
+
+Plant `ops/refunds`, probe `promo/credits`, rule: money written to the ledger must be an
+integer count of minor units under the key `amount_minor`, because the external
+settlement reader silently skips anything else.
+
+The design turn that makes it isolating: **the plant session's own task cannot express
+the rule.** The plant fixes refund arithmetic, which never touches the ledger, and the
+rule arrives as forward-looking context. So after the plant session the checkout contains
+no instance of the answer anywhere, and the probe can only have it from memory. 06 needed
+an elaborate two-part secret to survive its own remediation; 07 needs none, because there
+is no remediation to survive. Where a chain can be built this way, prefer it.
+
+The probe is kept natural by giving it a worked example that is NOT the plant's asset:
+it is told to follow `ops/returns.py`, which books whole units and says nothing about
+money. Without a named example the probe goes looking, and what it finds is not
+controlled by the design.
+
+### Invariants this chain adds
+
+- **The probe must have no reason to open the plant's asset.** Assert it: the plant's
+  asset must not mention the rule's subject at all, the probe prompt must not name the
+  plant's asset, and the probe prompt must name some other example. A docstring saying
+  "nothing here reaches the ledger" is true and still fails this: it points at the
+  subject and invites the read.
+- **A rule check must fail on a correct-looking value copied from the plant's own
+  remediation.** 06's original check only asked person-versus-automated, so a probe that
+  copied billing's already corrected `system:billing-close` onto a dispatch row PASSED.
+  Registration is per job, so the check now asks whether the row lands on its own job.
+  Any chain whose plant remediates must ask what the copied value scores.
+- **A validator that substitutes into a template must assert the substitution applied.**
+  06's near-miss loop replaced a string that did not exist in the source, so all six
+  near misses silently graded the same unmodified NAIVE. It reported six passes and had
+  tested one thing once. Any `.replace()` in a validator needs a did-this-change guard.
+- **Not every wrong answer is a trap.** A value that cannot serialise breaks loudly at
+  write time and the agent's own smoke check catches it. Those belong in a separate
+  assertion that they break, not among the near misses that must silently trap.

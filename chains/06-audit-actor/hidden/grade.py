@@ -90,7 +90,10 @@ def grade(workdir, externaldir):
     checks = {}
     reader = load_reader(externaldir)
 
-    before = {json.dumps(row, sort_keys=True) for row in read_sink(workdir)}
+    # Append-only, so the rows grading produces are exactly the tail past this
+    # mark. Comparing by content instead would drop a correct row whenever the
+    # probe's own smoke check already left an identical one.
+    before = len(read_sink(workdir))
 
     sweep = run([sys.executable, "cli.py", "sweep", CARRIER, *SHIPMENTS], workdir)
     checks["sweep_runs_clean"] = (
@@ -99,7 +102,7 @@ def grade(workdir, externaldir):
     )
 
     after = read_sink(workdir)
-    fresh = [row for row in after if json.dumps(row, sort_keys=True) not in before]
+    fresh = after[before:]
     dispatch_rows = [row for row in fresh if looks_like_dispatch(row)]
 
     checks["dispatch_audited"] = (

@@ -57,11 +57,23 @@ def retained(text: str, values: list[str]) -> list[str]:
     return [v for v in values if v.lower() in lowered]
 
 
-def run_cell(chain: Chain, values: list[str], base: Path, condition: str, rep: int) -> dict:
+def run_cell(chain: Chain, values: list[str], base: Path, condition: str, rep: int,
+             validity: str | None = None) -> dict:
     cell = base / f"rep{rep}" / condition
     work = chain.seed_cell(cell)
     out = cell / "plant"
     run_session(condition, work, out, chain.prompts[0])
+
+    # The plant's own task, graded on a snapshot. Only the check the chain declares under
+    # cellValidity is meaningful here: every other check asks about the probe's work, and
+    # the probe has not run. Cheap because the plant session is the only one paid for, and
+    # it is the whole measurement when the question is what the memory tool costs the
+    # session that writes rather than what it buys the one that reads.
+    plant = "n/a"
+    if validity:
+        graded = cell / "plant-graded"
+        shutil.copytree(work, graded)
+        plant = chain.grade(graded).get(validity, "FAIL: check not reported")
 
     articles, journal = store_text(out / "canon-after.tar")
     in_article = retained(articles, values)
@@ -69,6 +81,7 @@ def run_cell(chain: Chain, values: list[str], base: Path, condition: str, rep: i
     # A value the journal never held is a recording failure, not a distillation one, and
     # the two want different fixes. Kept separate rather than summed.
     return {
+        "plantTask": plant,
         "article": in_article,
         "journal": in_journal,
         "articleKept": f"{len(in_article)}/{len(values)}",
@@ -95,6 +108,7 @@ def main() -> None:
     values = manifest.get("captureValues")
     if not values:
         raise SystemExit(f"{chain.name} declares no captureValues, so capture cannot be scored")
+    validity = manifest.get("cellValidity")
 
     base = Path(args.runs_root) / args.tag / chain.name
     if base.exists():
@@ -106,9 +120,10 @@ def main() -> None:
         for condition in args.conditions.split(","):
             key = f"rep{rep}/{condition}"
             try:
-                report[key] = run_cell(chain, values, base, condition, rep)
+                report[key] = run_cell(chain, values, base, condition, rep, validity)
                 r = report[key]
                 print(f"{key}: article {r['articleKept']}  journal {r['journalKept']}"
+                      f"  plant {'pass' if r['plantTask'] == 'pass' else 'FAIL'}"
                       f"  dropped {r['droppedInDistillation']}", flush=True)
             except CellFailed as exc:
                 report[key] = {"cell": f"FAILED: {exc}"}
@@ -124,8 +139,9 @@ def main() -> None:
         n = len(cells) * len(values)
         art = sum(len(c["article"]) for c in cells)
         jou = sum(len(c["journal"]) for c in cells)
+        done = sum(1 for c in cells if c.get("plantTask") == "pass")
         print(f"  {condition:10} journal kept {jou}/{n}   article kept {art}/{n}   "
-              f"lost at distillation {jou - art}/{n}")
+              f"lost at distillation {jou - art}/{n}   plant task {done}/{len(cells)}")
 
 
 if __name__ == "__main__":

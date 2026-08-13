@@ -39,6 +39,75 @@ export default function piCanonRetrieval(pi) {{
 """
 
 
+# sham: the pi-canon TOOL SURFACE with no memory behind it.
+#
+# e2e3 measured canon's first code pass at 5/15 against bare's 15/15, and in every failing
+# cell the bad edit landed before any pi_canon call. So whatever degraded it was already in
+# the window: the tool schema and the session orientation, not anything memory did. This arm
+# is the control that separates those. It registers a tool byte-identical to the real one,
+# built through buildCanonTool so the description and parameters cannot drift, and delivers
+# the same orientation line. Nothing persists, nothing surfaces, nothing nudges.
+#
+# Reading it: sham near canon means the cost is the surface, and no change to how memory
+# works can recover it. sham near bare means the cost is in the memory work itself, which is
+# the half a doctrine or a nudge could still fix.
+SHAM_SHIM = """import {{ buildCanonTool }} from "{lib}/tool.ts";
+import {{ CanonStore }} from "{lib}/store.ts";
+import {{ Surfacer }} from "{lib}/surfacing.ts";
+import {{ mkdtempSync }} from "node:fs";
+import {{ tmpdir }} from "node:os";
+import {{ join }} from "node:path";
+
+const ORIENTATION =
+  "[pi-canon] No articles yet in .canon/. When work teaches you something durable about an " +
+  "asset, write its article with pi_canon and journal the source as it happened: names, " +
+  "exact numbers, who said what. Articles distill; the journal keeps the original.";
+
+export default function shamCanon(pi) {{
+  /* Outside the work tree on purpose: the schema is the treatment under test, and a store
+     the probe could later read would make this the full package again. */
+  const store = new CanonStore(mkdtempSync(join(tmpdir(), "sham-canon-")));
+  const real = buildCanonTool((ctx) => {{
+    const cwd = (ctx && ctx.cwd) || process.cwd();
+    const mounts = [{{ name: "", dir: cwd, store }}];
+    return {{ store, surfacer: new Surfacer(mounts), cwd, mounts, retrieval: "none" }};
+  }}, "none");
+  pi.registerTool({{
+    name: real.name,
+    label: real.label,
+    description: real.description,
+    parameters: real.parameters,
+    async execute(_id, params) {{
+      const action = String((params && params.action) || "");
+      const text = action === "read"
+        ? "No article governs that path yet."
+        : action === "map"
+          ? "No articles yet."
+          : "Recorded.";
+      return {{ content: [{{ type: "text", text }}], details: {{}} }};
+    }},
+  }});
+  pi.on("session_start", () => {{
+    try {{
+      pi.sendMessage(
+        {{ customType: "pi-canon", content: ORIENTATION, display: false }},
+        {{ deliverAs: "nextTurn" }},
+      );
+    }} catch {{}}
+  }});
+}}
+"""
+
+
+def sham_shim(out: Path) -> Path:
+    lib = (PI_CANON.parent / "lib").resolve()
+    if not lib.exists():
+        raise SystemExit(f"sham needs {lib}, which does not exist")
+    path = out / "canon-sham.mjs"
+    path.write_text(SHAM_SHIM.format(lib=lib))
+    return path
+
+
 def retrieval_shim(out: Path) -> Path:
     canon = (PI_CANON.parent / "canon.ts").resolve()
     if not canon.exists():
@@ -56,7 +125,7 @@ def snapshot(canon_dir: Path, dest: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--condition", choices=["canon", "canondoc", "canonret", "bare", "agentsmd"], required=True)
+    ap.add_argument("--condition", choices=["canon", "canondoc", "canonret", "sham", "bare", "agentsmd"], required=True)
     ap.add_argument("--workdir", required=True)
     ap.add_argument("--prompt", required=True)
     ap.add_argument("--model", default="gpt-5.6-luna")
@@ -81,6 +150,8 @@ def main() -> None:
         cmd.append("--no-context-files")
     if args.condition == "canonret":
         cmd += ["-e", str(retrieval_shim(out))]
+    elif args.condition == "sham":
+        cmd += ["-e", str(sham_shim(out))]
     elif args.condition in ("canon", "canondoc"):
         cmd += ["-e", str(PI_CANON)]
     cmd.append(args.prompt)

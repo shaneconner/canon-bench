@@ -4,7 +4,8 @@
 Chains follow the contract in chains/SPEC.md (chain.json, seed/, external/, hidden/grade.py).
 Per chain x rep x condition: seed the worktree, run the work sessions, grade a post-probe
 snapshot with the chain's own grader, hand the condition its transcripts at .sessions/, run
-the recall session, grade recall facts, record the full usage ledger.
+the recall session on a tree forked after the PLANT (so the probe's own edits cannot answer
+the recall questions) carrying the final store, grade recall facts, record the usage ledger.
 
 Layout rules that exist because agents hunt when paths break: the external package is copied
 INTO each cell as a sibling of the work tree, so ../<externalName> in prompts always resolves;
@@ -196,16 +197,19 @@ def run_cell(chain: Chain, base: Path, condition: str, rep: int,
         (work / "AGENTS.md").write_text(PRELOAD.read_text())
 
     sessions = {}
+    after_plant = cell / "work-after-plant"
     for index, prompt in enumerate(chain.prompts, 1):
         out = cell / f"s{index}"
         run_session(condition, work, out, prompt + (SUFFIX_C if condition == "agentsmd" else ""))
         sessions[f"s{index}"] = usage_of(out)
+        if index == 1:
+            shutil.copytree(work, after_plant)
 
     graded = cell / "work-graded"
     shutil.copytree(work, graded)
     outcome = chain.grade(graded)
 
-    # Archived beside the cell always. ALSO placing them in the work tree hands them to
+    # Archived beside the cell always. ALSO placing them in the recall fork hands them to
     # the recall session, which is the frozen design ("hand the condition its
     # transcripts"), and it is load bearing on how recall reads: s1 contains the plant
     # prompt verbatim, so a recall session that opens the dump answers every fact with no
@@ -219,11 +223,24 @@ def run_cell(chain: Chain, base: Path, condition: str, rep: int,
                 if e.get("type") not in TRANSCRIPT_DROP]
         (transcripts / f"s{index}.jsonl").write_text("\n".join(kept) + "\n")
 
+    # Recall runs on a FORK: the code as the plant left it, carrying the store as the run
+    # ended. Reusing the final tree let the probe's own work answer the questions, which
+    # is not a memory measure; chain 06's probe writes the registered job id straight into
+    # dispatch/sweep.py, so a recall session could read back the very fact under test.
+    # Forking after the plant removes the probe's answer and keeps the plant's own fix,
+    # which the design puts there deliberately. The store is copied over the fork rather
+    # than rolled back with it, because what memory holds at the END of the run is the
+    # thing being measured.
+    recall_work = cell / "work-recall"
+    shutil.copytree(after_plant, recall_work)
+    shutil.rmtree(recall_work / ".canon", ignore_errors=True)
+    if (work / ".canon").exists():
+        shutil.copytree(work / ".canon", recall_work / ".canon")
     if hand_transcripts:
-        shutil.copytree(transcripts, work / ".sessions")
+        shutil.copytree(transcripts, recall_work / ".sessions")
 
     recall_out = cell / "recall"
-    run_session(condition, work, recall_out, chain.recall)
+    run_session(condition, recall_work, recall_out, chain.recall)
     answer = final_answer(recall_out / "session.jsonl")
     (recall_out / "answer.md").write_text(answer + "\n")
     sessions["recall"] = usage_of(recall_out)

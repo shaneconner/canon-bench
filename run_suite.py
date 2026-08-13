@@ -152,11 +152,22 @@ class Chain:
         self.recall = manifest["recall"]
         self.facts = manifest["facts"]
         self.plant_only = manifest.get("plantOnly", [])
+        # Whether any prompt actually names ../<external>. If none does, the package has
+        # no business sitting beside the work tree, and for some chains it is the answer.
+        spoken = " ".join(self.prompts) + " " + self.recall
+        self.references_external = f"../{self.external_name}" in spoken
 
     def seed_cell(self, cell: Path) -> Path:
         work = cell / "work"
         shutil.copytree(self.dir / "seed", work)
-        shutil.copytree(self.dir / "external", cell / self.external_name)
+        # Beside the work tree only when a prompt names it. Pi is given a working
+        # directory, not a filesystem sandbox, so a sibling is one `cat ../x/y.py` away,
+        # and for chain 06 that file is compliance_reader.py, which carries the whole
+        # scheduler registry in plaintext (Codex, 2026-08-13). No prompt in 06, 03 or 07
+        # ever referenced theirs, so those cells shipped the secret next door for nothing.
+        # Grading is unaffected: chain.grade always imports the pristine external.
+        if self.references_external:
+            shutil.copytree(self.dir / "external", cell / self.external_name)
         return work
 
     def grade(self, work: Path) -> dict:

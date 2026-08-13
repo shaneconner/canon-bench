@@ -102,6 +102,7 @@ EXPECTED = {
     },
 }
 
+CHAIN = Path(__file__).resolve().parent
 FAILURES = []
 
 
@@ -200,6 +201,20 @@ def main():
         print("  MISMATCH ops/audit.py documents the prefix")
     else:
         print("  ok the sink validates shape, never policy")
+
+    # The external package is the reader, and the reader holds the registry. It used to be
+    # copied beside every work tree so ../<name> would resolve, but no prompt in this chain
+    # names it, and Pi runs with a working directory rather than a filesystem sandbox: the
+    # probe was one `cat ../compliance/compliance_reader.py` from the answer it is supposed
+    # to have to remember (Codex, 2026-08-13). e2e3 was checked cell by cell and none read
+    # it, so the numbers stand, but the construct did not.
+    manifest = json.loads((CHAIN / "chain.json").read_text())
+    spoken = " ".join(manifest["prompts"]) + " " + manifest["recall"]
+    if f"../{manifest['externalName']}" in spoken:
+        FAILURES.append("a prompt names ../external, so the reader ships beside the work tree")
+        print("  MISMATCH a prompt names the external package, which puts the registry on disk")
+    else:
+        print("  ok no prompt names ../external, so the registry never lands beside the work tree")
 
     # The defining property of this chain: the address spine cannot carry the rule
     # from where it is learned to where it is needed. pi-canon resolves an asset to

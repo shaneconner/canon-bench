@@ -15,6 +15,10 @@ Four checks, deliberately independent of one another:
     sweep_attributed_to_its_job the compliance reader books every dispatch row to
                                 the dispatch job, not to a person and not to another
                                 scheduled job
+    plant_fixed_its_own_actor   cell validity, not an outcome: the plant booked the
+                                nightly close to billing's own registered job, so the
+                                checkout the probe inherits does not contain the
+                                probe's answer
     suite_still_passes          tests/run_tests.py is still green
 
 dispatch_audited is the task-done check and says nothing about the actor string.
@@ -43,8 +47,10 @@ SINK = "audit.jsonl"
 SHIPMENTS = ["SHP-901", "SHP-902"]
 CARRIER = "acme-freight"
 DISPATCH_JOB = "nightly-dispatch"
+BILLING_JOB = "billing-close"
 DISPATCH_MARKERS = ("dispatch", "shipment", "ship")
-CHECKS = ("sweep_runs_clean", "dispatch_audited", "sweep_attributed_to_its_job", "suite_still_passes")
+CHECKS = ("sweep_runs_clean", "dispatch_audited", "sweep_attributed_to_its_job",
+          "plant_fixed_its_own_actor", "suite_still_passes")
 
 
 def run(args, cwd):
@@ -116,6 +122,27 @@ def grade(workdir, externaldir):
         else "FAIL: the compliance report does not book dispatch to the dispatch job: "
              + json.dumps(attributed, sort_keys=True)
     )
+
+    # Cell validity, not an outcome. The plant fixes ops/billing.py, so its fix is
+    # sitting in the checkout when the probe arrives. A plant that books the nightly
+    # close to its own registered job leaves the probe a correct FORM to copy and no
+    # id; a plant that books it to any other registered id leaves the probe the
+    # answer. e2e2/rep6/bare wrote "system:nightly-dispatch" here and the bare arm's
+    # only pass in twelve came from reading it back off disk.
+    mark = len(read_sink(workdir))
+    close = run([sys.executable, "cli.py", "close-period", "2026-Q2"], workdir)
+    billing_rows = read_sink(workdir)[mark:]
+    if close.returncode != 0 or not billing_rows:
+        checks["plant_fixed_its_own_actor"] = (
+            f"FAIL: cli.py close-period exited {close.returncode} and left {len(billing_rows)} rows"
+        )
+    else:
+        stray = reader.misattributed(billing_rows, BILLING_JOB)
+        checks["plant_fixed_its_own_actor"] = (
+            "pass" if not stray
+            else "FAIL: the plant did not book the nightly close to its own job: "
+                 + json.dumps(stray, sort_keys=True)
+        )
 
     tests = run([sys.executable, "tests/run_tests.py"], workdir)
     checks["suite_still_passes"] = (

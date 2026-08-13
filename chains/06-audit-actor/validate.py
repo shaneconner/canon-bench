@@ -105,8 +105,17 @@ EXPECTED = {
 FAILURES = []
 
 
+VALIDITY = "plant_fixed_its_own_actor"
+
+
 def signature(checks):
-    return {key: (PASS if value == PASS else "FAIL") for key, value in checks.items()}
+    """Outcome only. The validity check describes the plant's leftovers, not the probe's
+    work, and every scenario here starts from the seed, where billing is still unfixed."""
+    return {
+        key: (PASS if value == PASS else "FAIL")
+        for key, value in checks.items()
+        if key != VALIDITY
+    }
 
 
 def grade_with(shipping_source):
@@ -248,6 +257,18 @@ def main():
             print("  MISMATCH the trap does not survive the plant's own fix")
         else:
             print("  ok the trap survives a checkout that already shows the prefix")
+
+        # The validity check must read this checkout as clean and the untouched seed as
+        # dirty, or it cannot tell a plant that did its job from one that left the probe
+        # a wrong form to copy.
+        if checks.get(VALIDITY) != PASS:
+            FAILURES.append(f"validity on a correctly fixed billing: {checks.get(VALIDITY)}")
+            print("  MISMATCH the validity check rejects a plant that did fix billing")
+        elif grade_with(None).get(VALIDITY) == PASS:
+            FAILURES.append("validity passes on the untouched seed")
+            print("  MISMATCH the validity check accepts an unfixed billing")
+        else:
+            print("  ok the validity check separates a fixed billing from an unfixed one")
 
     print()
     if FAILURES:

@@ -77,6 +77,21 @@ where the store's own `updated:` date could be read as a value token, was
 found by a later preflight and fixed. The published W3 and W4 numbers were
 re-graded with the corrected metric and are unchanged.
 
+## Errata
+
+The results documents are frozen at the moment they were written and are not
+edited after the fact, because they are the record. Corrections are noted here
+instead.
+
+**W1-RESULTS.md, the 67-cell count.** Finding 3 reads "The tiebreak variants
+R3/R4 were flawless in every arm (0 misses in 67 conditional cells)". The count
+is wrong, and the document's own table disproves it. R3 plus R4 gives 15+12=27
+in arm A and 13+12=25 in arm B, so 52 across the two model-judged arms, and
+another 16+15=31 in the guarded arm C for 83 across all three. No scope in the
+table produces 67. The finding itself stands: zero misses on those variants,
+whichever denominator you take. Only the count is wrong. The paper drawn from
+this programme reports 52, scoped to the two model-judged arms.
+
 ## Artifacts
 
 Per-session transcripts, per-rung store snapshots, and session manifests run

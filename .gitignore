@@ -5,3 +5,9 @@ __pycache__/
 *.pyc
 !chains/01-vendor-feed/external/__pycache__/
 !chains/01-vendor-feed/external/__pycache__/vendor_api.cpython-314.pyc
+
+# Capture artifacts: per-session transcripts, per-rung store snapshots, and
+# session manifests. Roughly 220MB across the captures, too large for git.
+# They ship with the Zenodo deposit, as write-desk/README.md explains; the
+# results documents carry the numbers and the manifests carry the provenance.
+runs/

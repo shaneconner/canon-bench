@@ -1,0 +1,10 @@
+swept 160 sessions, 1108 tool result texts, under /home/shane/pi-canon/lab/evolving-canon/w4/runs/20260820-w4-model-001
+
+schema: line      0 hits in   0 sessions   a schema verdict line in a write response
+refs: line        0 hits in   0 sessions   a refs line in a write response
+relations         0 hits in   0 sessions   the word relations, whole word, not relationships
+schema.json       0 hits in   0 sessions   the schema file named in a response
+Body grew       117 hits in  56 sessions   growth lines, the positive control
+
+CONTROL PASSED: 117 growth lines found, matching the report.
+VERDICT: no changed-code output reached any model in this capture.

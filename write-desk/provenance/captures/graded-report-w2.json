@@ -1,0 +1,3340 @@
+{
+  "capture_id": "20260820-w2-model-002",
+  "model_invoked": true,
+  "per_arm": {
+    "A": {
+      "by_kind": {
+        "capacity": {
+          "cells": 16,
+          "decision_exact": 15,
+          "exact": 15
+        },
+        "watch": {
+          "cells": 16,
+          "decision_exact": 16,
+          "exact": 16
+        }
+      },
+      "median_reader_input_tokens": 3310,
+      "readers": {
+        "cells": 32,
+        "decision_exact": 31,
+        "exact": 31
+      },
+      "readers_conditional_on_retention": {
+        "cells": 32,
+        "decision_exact": 31,
+        "exact": 31
+      },
+      "writers": {
+        "count": 16,
+        "journaled_total": 96,
+        "median_output_tokens": 2923,
+        "median_store_bytes": 4935,
+        "placed_governing_total": 94,
+        "retained_any_total": 94,
+        "stale_in_articles_total": 32
+      }
+    },
+    "B": {
+      "by_kind": {
+        "capacity": {
+          "cells": 16,
+          "decision_exact": 16,
+          "exact": 16
+        },
+        "watch": {
+          "cells": 16,
+          "decision_exact": 16,
+          "exact": 16
+        }
+      },
+      "median_reader_input_tokens": 3025,
+      "readers": {
+        "cells": 32,
+        "decision_exact": 32,
+        "exact": 32
+      },
+      "readers_conditional_on_retention": {
+        "cells": 30,
+        "decision_exact": 30,
+        "exact": 30
+      },
+      "writers": {
+        "count": 16,
+        "journaled_total": 94,
+        "median_output_tokens": 3216,
+        "median_store_bytes": 2932,
+        "placed_governing_total": 94,
+        "retained_any_total": 94,
+        "stale_in_articles_total": 31
+      }
+    },
+    "C": {
+      "by_kind": {
+        "capacity": {
+          "cells": 16,
+          "decision_exact": 16,
+          "exact": 16
+        },
+        "watch": {
+          "cells": 16,
+          "decision_exact": 16,
+          "exact": 16
+        }
+      },
+      "median_reader_input_tokens": 909,
+      "readers": {
+        "cells": 32,
+        "decision_exact": 32,
+        "exact": 32
+      },
+      "readers_conditional_on_retention": {
+        "cells": 32,
+        "decision_exact": 32,
+        "exact": 32
+      }
+    }
+  },
+  "protocol_valid_sessions": 127,
+  "reader_cells": 96,
+  "reader_exact": 95,
+  "reader_rows": [
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2410,
+      "lineage_key": "orchard_irrigation_1",
+      "ordinal": 3,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3415,
+      "lineage_key": "orchard_irrigation_1",
+      "ordinal": 4,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2309,
+      "lineage_key": "orchard_irrigation_1",
+      "ordinal": 5,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3268,
+      "lineage_key": "orchard_irrigation_1",
+      "ordinal": 6,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 921,
+      "lineage_key": "orchard_irrigation_1",
+      "ordinal": 7,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 892,
+      "lineage_key": "orchard_irrigation_1",
+      "ordinal": 8,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2457,
+      "lineage_key": "orchard_irrigation_2",
+      "ordinal": 11,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3310,
+      "lineage_key": "orchard_irrigation_2",
+      "ordinal": 12,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3127,
+      "lineage_key": "orchard_irrigation_2",
+      "ordinal": 13,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3040,
+      "lineage_key": "orchard_irrigation_2",
+      "ordinal": 14,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 922,
+      "lineage_key": "orchard_irrigation_2",
+      "ordinal": 15,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 894,
+      "lineage_key": "orchard_irrigation_2",
+      "ordinal": 16,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3462,
+      "lineage_key": "bakery_proofing_1",
+      "ordinal": 19,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3341,
+      "lineage_key": "bakery_proofing_1",
+      "ordinal": 20,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2266,
+      "lineage_key": "bakery_proofing_1",
+      "ordinal": 21,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2226,
+      "lineage_key": "bakery_proofing_1",
+      "ordinal": 22,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 917,
+      "lineage_key": "bakery_proofing_1",
+      "ordinal": 23,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 888,
+      "lineage_key": "bakery_proofing_1",
+      "ordinal": 24,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2563,
+      "lineage_key": "bakery_proofing_2",
+      "ordinal": 27,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2538,
+      "lineage_key": "bakery_proofing_2",
+      "ordinal": 28,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2236,
+      "lineage_key": "bakery_proofing_2",
+      "ordinal": 29,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2160,
+      "lineage_key": "bakery_proofing_2",
+      "ordinal": 30,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 912,
+      "lineage_key": "bakery_proofing_2",
+      "ordinal": 31,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 884,
+      "lineage_key": "bakery_proofing_2",
+      "ordinal": 32,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2449,
+      "lineage_key": "marina_mooring_1",
+      "ordinal": 35,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3272,
+      "lineage_key": "marina_mooring_1",
+      "ordinal": 36,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3273,
+      "lineage_key": "marina_mooring_1",
+      "ordinal": 37,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3273,
+      "lineage_key": "marina_mooring_1",
+      "ordinal": 38,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 925,
+      "lineage_key": "marina_mooring_1",
+      "ordinal": 39,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 893,
+      "lineage_key": "marina_mooring_1",
+      "ordinal": 40,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3564,
+      "lineage_key": "marina_mooring_2",
+      "ordinal": 43,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3510,
+      "lineage_key": "marina_mooring_2",
+      "ordinal": 44,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2281,
+      "lineage_key": "marina_mooring_2",
+      "ordinal": 45,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3118,
+      "lineage_key": "marina_mooring_2",
+      "ordinal": 46,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 925,
+      "lineage_key": "marina_mooring_2",
+      "ordinal": 47,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 894,
+      "lineage_key": "marina_mooring_2",
+      "ordinal": 48,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3493,
+      "lineage_key": "print_farm_calibration_1",
+      "ordinal": 51,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2435,
+      "lineage_key": "print_farm_calibration_1",
+      "ordinal": 52,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2221,
+      "lineage_key": "print_farm_calibration_1",
+      "ordinal": 53,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3188,
+      "lineage_key": "print_farm_calibration_1",
+      "ordinal": 54,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 909,
+      "lineage_key": "print_farm_calibration_1",
+      "ordinal": 55,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 879,
+      "lineage_key": "print_farm_calibration_1",
+      "ordinal": 56,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2354,
+      "lineage_key": "print_farm_calibration_2",
+      "ordinal": 59,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3217,
+      "lineage_key": "print_farm_calibration_2",
+      "ordinal": 60,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2235,
+      "lineage_key": "print_farm_calibration_2",
+      "ordinal": 61,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3148,
+      "lineage_key": "print_farm_calibration_2",
+      "ordinal": 62,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 909,
+      "lineage_key": "print_farm_calibration_2",
+      "ordinal": 63,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 880,
+      "lineage_key": "print_farm_calibration_2",
+      "ordinal": 64,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3497,
+      "lineage_key": "apiary_ventilation_1",
+      "ordinal": 67,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2438,
+      "lineage_key": "apiary_ventilation_1",
+      "ordinal": 68,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3207,
+      "lineage_key": "apiary_ventilation_1",
+      "ordinal": 69,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2236,
+      "lineage_key": "apiary_ventilation_1",
+      "ordinal": 70,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 921,
+      "lineage_key": "apiary_ventilation_1",
+      "ordinal": 71,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 891,
+      "lineage_key": "apiary_ventilation_1",
+      "ordinal": 72,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2320,
+      "lineage_key": "apiary_ventilation_2",
+      "ordinal": 75,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2279,
+      "lineage_key": "apiary_ventilation_2",
+      "ordinal": 76,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2227,
+      "lineage_key": "apiary_ventilation_2",
+      "ordinal": 77,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2156,
+      "lineage_key": "apiary_ventilation_2",
+      "ordinal": 78,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 918,
+      "lineage_key": "apiary_ventilation_2",
+      "ordinal": 79,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 889,
+      "lineage_key": "apiary_ventilation_2",
+      "ordinal": 80,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3557,
+      "lineage_key": "tram_signal_maintenance_1",
+      "ordinal": 83,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3467,
+      "lineage_key": "tram_signal_maintenance_1",
+      "ordinal": 84,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3329,
+      "lineage_key": "tram_signal_maintenance_1",
+      "ordinal": 85,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3202,
+      "lineage_key": "tram_signal_maintenance_1",
+      "ordinal": 86,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 912,
+      "lineage_key": "tram_signal_maintenance_1",
+      "ordinal": 87,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 882,
+      "lineage_key": "tram_signal_maintenance_1",
+      "ordinal": 88,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3374,
+      "lineage_key": "tram_signal_maintenance_2",
+      "ordinal": 91,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3283,
+      "lineage_key": "tram_signal_maintenance_2",
+      "ordinal": 92,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3113,
+      "lineage_key": "tram_signal_maintenance_2",
+      "ordinal": 93,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3025,
+      "lineage_key": "tram_signal_maintenance_2",
+      "ordinal": 94,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": false
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 912,
+      "lineage_key": "tram_signal_maintenance_2",
+      "ordinal": 95,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 884,
+      "lineage_key": "tram_signal_maintenance_2",
+      "ordinal": 96,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3425,
+      "lineage_key": "brewery_fermentation_1",
+      "ordinal": 99,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2407,
+      "lineage_key": "brewery_fermentation_1",
+      "ordinal": 100,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2334,
+      "lineage_key": "brewery_fermentation_1",
+      "ordinal": 101,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2262,
+      "lineage_key": "brewery_fermentation_1",
+      "ordinal": 102,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 913,
+      "lineage_key": "brewery_fermentation_1",
+      "ordinal": 103,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 885,
+      "lineage_key": "brewery_fermentation_1",
+      "ordinal": 104,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3622,
+      "lineage_key": "brewery_fermentation_2",
+      "ordinal": 107,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2626,
+      "lineage_key": "brewery_fermentation_2",
+      "ordinal": 108,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3124,
+      "lineage_key": "brewery_fermentation_2",
+      "ordinal": 109,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2163,
+      "lineage_key": "brewery_fermentation_2",
+      "ordinal": 110,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 917,
+      "lineage_key": "brewery_fermentation_2",
+      "ordinal": 111,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 886,
+      "lineage_key": "brewery_fermentation_2",
+      "ordinal": 112,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": false,
+      "exact": false,
+      "input_tokens": 3889,
+      "lineage_key": "quarry_conveyor_1",
+      "ordinal": 115,
+      "protocol_valid": false,
+      "slots": {
+        "capacity_limit": false,
+        "decision": false,
+        "operating_mode": false,
+        "sequence_rule": false
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3459,
+      "lineage_key": "quarry_conveyor_1",
+      "ordinal": 116,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3164,
+      "lineage_key": "quarry_conveyor_1",
+      "ordinal": 117,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2163,
+      "lineage_key": "quarry_conveyor_1",
+      "ordinal": 118,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": false
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 916,
+      "lineage_key": "quarry_conveyor_1",
+      "ordinal": 119,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 888,
+      "lineage_key": "quarry_conveyor_1",
+      "ordinal": 120,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3696,
+      "lineage_key": "quarry_conveyor_2",
+      "ordinal": 123,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "A",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2670,
+      "lineage_key": "quarry_conveyor_2",
+      "ordinal": 124,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 3239,
+      "lineage_key": "quarry_conveyor_2",
+      "ordinal": 125,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "B",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 2293,
+      "lineage_key": "quarry_conveyor_2",
+      "ordinal": 126,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": true
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 918,
+      "lineage_key": "quarry_conveyor_2",
+      "ordinal": 127,
+      "protocol_valid": true,
+      "slots": {
+        "capacity_limit": true,
+        "decision": true,
+        "operating_mode": true,
+        "sequence_rule": true
+      },
+      "task_kind": "capacity",
+      "writer_retained_needed": null
+    },
+    {
+      "arm": "C",
+      "decision_exact": true,
+      "exact": true,
+      "input_tokens": 886,
+      "lineage_key": "quarry_conveyor_2",
+      "ordinal": 128,
+      "protocol_valid": true,
+      "slots": {
+        "alert_threshold": true,
+        "confirmation_required": true,
+        "consumer_id": true,
+        "decision": true
+      },
+      "task_kind": "watch",
+      "writer_retained_needed": null
+    }
+  ],
+  "report_id": "w2-graded-report-001",
+  "schema_version": 1,
+  "writer_rows": [
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "orchard_irrigation_1",
+      "ordinal": 1,
+      "output_tokens": 2301,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 4316
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 2,
+      "journaled": 6,
+      "lineage_key": "orchard_irrigation_1",
+      "ordinal": 2,
+      "output_tokens": 5188,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 3224
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "orchard_irrigation_2",
+      "ordinal": 9,
+      "output_tokens": 3440,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 4831
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "orchard_irrigation_2",
+      "ordinal": 10,
+      "output_tokens": 3937,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 1,
+      "staleness": {
+        "alert_threshold": false,
+        "operating_mode": true
+      },
+      "store_bytes": 2148
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "bakery_proofing_1",
+      "ordinal": 17,
+      "output_tokens": 2363,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 5023
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 3,
+      "journaled": 6,
+      "lineage_key": "bakery_proofing_1",
+      "ordinal": 18,
+      "output_tokens": 2344,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 2815
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "bakery_proofing_2",
+      "ordinal": 25,
+      "output_tokens": 2923,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 5065
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 3,
+      "journaled": 6,
+      "lineage_key": "bakery_proofing_2",
+      "ordinal": 26,
+      "output_tokens": 2844,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 2697
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "marina_mooring_1",
+      "ordinal": 33,
+      "output_tokens": 2903,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 4725
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "marina_mooring_1",
+      "ordinal": 34,
+      "output_tokens": 3608,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 3747
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "marina_mooring_2",
+      "ordinal": 41,
+      "output_tokens": 6594,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 5527
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "marina_mooring_2",
+      "ordinal": 42,
+      "output_tokens": 2403,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 2661
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "print_farm_calibration_1",
+      "ordinal": 49,
+      "output_tokens": 2548,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 4890
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 3,
+      "journaled": 6,
+      "lineage_key": "print_farm_calibration_1",
+      "ordinal": 50,
+      "output_tokens": 3216,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 2875
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "print_farm_calibration_2",
+      "ordinal": 57,
+      "output_tokens": 2082,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 4404
+    },
+    {
+      "arm": "B",
+      "article_count": 4,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "print_farm_calibration_2",
+      "ordinal": 58,
+      "output_tokens": 4178,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 3189
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": false,
+          "in_governing_article": false,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "apiary_ventilation_1",
+      "ordinal": 65,
+      "output_tokens": 2554,
+      "placed_governing": 5,
+      "protocol_valid": true,
+      "retained_any": 5,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 4880
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 2,
+      "journaled": 6,
+      "lineage_key": "apiary_ventilation_1",
+      "ordinal": 66,
+      "output_tokens": 5518,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 2749
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "apiary_ventilation_2",
+      "ordinal": 73,
+      "output_tokens": 2337,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 5015
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 3,
+      "journaled": 6,
+      "lineage_key": "apiary_ventilation_2",
+      "ordinal": 74,
+      "output_tokens": 3904,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 2990
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "tram_signal_maintenance_1",
+      "ordinal": 81,
+      "output_tokens": 3674,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 4935
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 3,
+      "journaled": 6,
+      "lineage_key": "tram_signal_maintenance_1",
+      "ordinal": 82,
+      "output_tokens": 2753,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 2932
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "tram_signal_maintenance_2",
+      "ordinal": 89,
+      "output_tokens": 2586,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 4814
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": false,
+          "in_governing_article": false,
+          "in_journal": false
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 5,
+      "lineage_key": "tram_signal_maintenance_2",
+      "ordinal": 90,
+      "output_tokens": 2235,
+      "placed_governing": 5,
+      "protocol_valid": true,
+      "retained_any": 5,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 2253
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": false,
+          "in_governing_article": false,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "brewery_fermentation_1",
+      "ordinal": 97,
+      "output_tokens": 3365,
+      "placed_governing": 5,
+      "protocol_valid": true,
+      "retained_any": 5,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 4743
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 4,
+      "journaled": 6,
+      "lineage_key": "brewery_fermentation_1",
+      "ordinal": 98,
+      "output_tokens": 4841,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 3572
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "brewery_fermentation_2",
+      "ordinal": 105,
+      "output_tokens": 3984,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 5792
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "brewery_fermentation_2",
+      "ordinal": 106,
+      "output_tokens": 2712,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 3332
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "quarry_conveyor_1",
+      "ordinal": 113,
+      "output_tokens": 8203,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 5780
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": false,
+          "in_governing_article": false,
+          "in_journal": false
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 5,
+      "lineage_key": "quarry_conveyor_1",
+      "ordinal": 114,
+      "output_tokens": 3119,
+      "placed_governing": 5,
+      "protocol_valid": true,
+      "retained_any": 5,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 2866
+    },
+    {
+      "arm": "A",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 1,
+      "journaled": 6,
+      "lineage_key": "quarry_conveyor_2",
+      "ordinal": 121,
+      "output_tokens": 5318,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 6007
+    },
+    {
+      "arm": "B",
+      "article_count": 3,
+      "facts": {
+        "alert_threshold": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "capacity_limit": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "confirmation_required": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "consumer_id": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "operating_mode": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        },
+        "sequence_rule": {
+          "in_any_article": true,
+          "in_governing_article": true,
+          "in_journal": true
+        }
+      },
+      "journal_count": 3,
+      "journaled": 6,
+      "lineage_key": "quarry_conveyor_2",
+      "ordinal": 122,
+      "output_tokens": 2969,
+      "placed_governing": 6,
+      "protocol_valid": true,
+      "retained_any": 6,
+      "stale_in_articles": 2,
+      "staleness": {
+        "alert_threshold": true,
+        "operating_mode": true
+      },
+      "store_bytes": 3373
+    }
+  ]
+}

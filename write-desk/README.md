@@ -60,6 +60,12 @@ them.
 - `data/figure-data.js`, every plotted series in the paper, including the four
   staleness trajectories and the eight paired endpoints per model, so a reader
   can check the charts against the numbers without reading dots off an axis
+- `provenance/`, the artifacts every source-level claim in the paper rests on,
+  with a SHA-256 manifest and two scripts that check the claims rather than
+  restate them. `regenerate.py` rebuilds the two data files above from the
+  graded reports and the fixture generators and diffs them against the published
+  copies. `drift-sweep.py` reproduces the drift audit. Start at
+  `provenance/README.md`.
 
 ## Protocol
 
@@ -92,6 +98,18 @@ re-graded with the corrected metric and are unchanged.
 The results documents are frozen at the moment they were written and are not
 edited after the fact, because they are the record. Corrections are noted here
 instead.
+
+**W4R-RESULTS-001.md, "the only variable against W4 is the model".** That sentence
+is false, and W4-RESULTS-001.md's own integrity disclosure is what disproves it.
+The first capture ran 126 of its 160 sessions against package files a concurrent
+commit had changed, and the second ran under the launch-snapshot discipline that
+was introduced afterwards. Model is the only variable the two captures were
+*designed* to differ on. It is not the only one they did differ on. The drift is
+demonstrably inert for what was measured, and `provenance/drift-sweep.py`
+reproduces that audit with a positive control, but inert is not identical. The
+paper drawn from this programme says the two contrasts came from the same
+generated histories and the same nominal arm definitions, and that the executions
+were not byte-identical.
 
 **W1-RESULTS.md, the 67-cell count.** Finding 3 reads "The tiebreak variants
 R3/R4 were flawless in every arm (0 misses in 67 conditional cells)". The count

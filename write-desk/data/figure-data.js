@@ -30,40 +30,50 @@ window.PAPER_DATA = {
     ],
   },
 
-  // -- Figure: top-10 hit rate for the governing record ---------------------
+  // -- Figure: top-10 hit rate for at least one journal-named record --------
   // Two real project stores. BM25 is the shipped lexical ranker; the embedding
   // arm is cosine over nomic-embed-text (137M), documents truncated to 3,500
   // characters for the model's short context.
   //
+  // EVERY NUMBER BELOW COMES FROM ONE EXECUTION against the frozen corpus
+  // export, sha256 14b04fe4664057c908e4206775071228b7bf2422f364f398aa2884a6ff55752f,
+  // scored by provenance/retrieval/r1_frozen_score.mjs. An earlier version of
+  // this block carried the rates from one live run beside the record and query
+  // counts of an ANOTHER, which is how eight rates that are exact over 106
+  // queries came to be labelled n=104. regenerate.py now checks these values
+  // against retrieval/frozen-scores.json so that cannot recur.
+  //
   // The two stores differ in size by more than an order of magnitude, and the
-  // SMALL one scores higher on every cell. Ordered small-store-first so that
-  // reading down the figure is reading down the record count.
+  // SMALL one scores higher in SEVEN of the eight cells. The exception is BM25
+  // on terse queries with journal entries competing, where the mature project
+  // leads 0.243 to 0.233. Ordered small-store-first so that reading down the
+  // figure is reading down the record count.
   f2: {
     // Rows are labelled by what the store IS to a reader, not by its project
     // name: "pi-fold" and "quorum" mean nothing outside this workspace, and the
     // property that matters is that one project is young and one is mature.
     // The real names stay on the provenance line so the figure is traceable.
     stores: [
-      { key: "pifold", name: "pi-fold", plain: "young project",  records: 56,  queries: 104 },
-      { key: "quorum", name: "quorum",  plain: "mature project", records: 742, queries: 400 },
+      { key: "pifold", name: "pi-fold", plain: "young project",  records: 58,  queries: 133 },
+      { key: "quorum", name: "quorum",  plain: "mature project", records: 744, queries: 400 },
     ],
     groups: [
       {
         corpus: "records only",
         rows: [
-          { store: "pifold", query: "full",  lexical: 0.830, embed: 0.642 },
-          { store: "pifold", query: "terse", lexical: 0.632, embed: 0.519 },
-          { store: "quorum", query: "full",  lexical: 0.688, embed: 0.413 },
-          { store: "quorum", query: "terse", lexical: 0.440, embed: 0.233 },
+          { store: "pifold", query: "full",  lexical: 0.797, embed: 0.654 },
+          { store: "pifold", query: "terse", lexical: 0.564, embed: 0.519 },
+          { store: "quorum", query: "full",  lexical: 0.593, embed: 0.415 },
+          { store: "quorum", query: "terse", lexical: 0.378, embed: 0.245 },
         ],
       },
       {
         corpus: "records and journal entries competing",
         rows: [
-          { store: "pifold", query: "full",  lexical: 0.566, embed: 0.387 },
-          { store: "pifold", query: "terse", lexical: 0.255, embed: 0.160 },
-          { store: "quorum", query: "full",  lexical: 0.558, embed: 0.203 },
-          { store: "quorum", query: "terse", lexical: 0.280, embed: 0.118 },
+          { store: "pifold", query: "full",  lexical: 0.481, embed: 0.398 },
+          { store: "pifold", query: "terse", lexical: 0.233, embed: 0.113 },
+          { store: "quorum", query: "full",  lexical: 0.425, embed: 0.195 },
+          { store: "quorum", query: "terse", lexical: 0.243, embed: 0.118 },
         ],
       },
     ],

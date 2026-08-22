@@ -96,7 +96,19 @@ for (const [project, data] of Object.entries(frozen.projects)) {
   const lexArt = new LexicalRetriever(); lexArt.index(articles);
   const lexMixed = new LexicalRetriever(); lexMixed.index(mixed);
 
-  const out = {};
+  // Carry the corpus cardinalities into the result. The paper quotes them beside
+  // the rates, and an earlier draft took them from a different run than the one
+  // it plotted, so they travel with the scores from here on.
+  const out = {
+    corpus: {
+      articles: data.articles.length,
+      journal: data.journal.length,
+      eligible: data.eligible_count,
+      step: data.step,
+      // The mixed corpus a query actually ranks against, with its own entry excluded.
+      mixed_candidates: data.articles.length + data.journal.length - 1,
+    },
+  };
   for (const variant of ["full", "terse"]) {
     const queryTexts = data.queries.map((q) => q[variant]);
     const queryVectors = await embedAll(queryTexts);
@@ -144,6 +156,7 @@ for (const [project, data] of Object.entries(frozen.projects)) {
 let broken = 0;
 for (const [project, out] of Object.entries(results)) {
   for (const [variant, cells] of Object.entries(out)) {
+    if (variant === "corpus") continue;
     for (const surface of ["art", "mixed"]) {
       if (cells[`oracle_${surface}_recall_at_10`] !== 1) {
         process.stderr.write(

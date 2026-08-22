@@ -21,11 +21,13 @@ earlier count got wrong; for that capture the report's own
 `unique_transcript_session_id_count` is the authority and the script says so
 rather than quietly substituting it.
 
-Two totals are printed and they are not the same claim. The paper total sums the
-figures the paper prints. The recounted total sums what this script actually read
-off the trees, and it counts only the captures it found and verified. When a
-capture is missing or disagrees the two totals separate, so a partial run cannot
-be mistaken for a clean one.
+Three totals are printed and they are not the same claim. The paper total sums the
+figures the paper prints. The verified total sums only what this script actually
+read out of a report. The declared total is the remainder, the figures the paper
+supplied because no field carries them, and W1h's protocol-valid count is the only
+one of those. Counting a supplied figure inside a total labelled "recounted" would
+be the object under test confirming itself, which an earlier version of this script
+did.
 """
 
 import json
@@ -105,8 +107,8 @@ def main() -> int:
 
     print(f"{'capture':38s} {'listed':>7s} {'report':>7s} {'valid':>6s}  paper")
     run_total = valid_total = 0
-    counted_run = counted_valid = counted_captures = 0
-    substituted_valid = []
+    verified_run = verified_valid = verified_captures = 0
+    declared_valid = []
     missing = mismatched = 0
 
     for name, listing, report_name, run_key, valid_key in CAPTURES:
@@ -146,11 +148,12 @@ def main() -> int:
         if not ok:
             mismatched += 1
         else:
-            counted_run += run
-            counted_valid += valid
-            counted_captures += 1
+            verified_run += run
+            verified_captures += 1
             if substituted:
-                substituted_valid.append((name, valid))
+                declared_valid.append((name, valid))
+            else:
+                verified_valid += valid
         run_total += paper_run
         valid_total += paper_valid
 
@@ -160,16 +163,19 @@ def main() -> int:
             print(f"{'':38s} {NOTES[name]}")
 
     print()
-    print(f"totals as printed in the paper: {run_total} run, {valid_total} protocol-valid "
+    declared_total = sum(v for _, v in declared_valid)
+    print(f"as printed in the paper:  {run_total} run, {valid_total} protocol-valid "
           f"over {len(CAPTURES)} captures")
-    print(f"recounted from the trees:       {counted_run} run, {counted_valid} protocol-valid "
-          f"over {counted_captures} captures")
-    if counted_captures != len(CAPTURES):
-        print("the two totals differ because not every capture was found and verified; "
-              "the recounted total is the one that was checked.")
-    for name, valid in substituted_valid:
-        print(f"note: {name}'s {valid} protocol-valid is the paper's figure, not a recount; "
-              f"its report carries no field to read. Every other row was read off a report.")
+    print(f"verified from the trees:  {verified_run} run, {verified_valid} protocol-valid "
+          f"over {verified_captures} captures, protocol-valid read for "
+          f"{verified_captures - len(declared_valid)}")
+    if declared_valid:
+        print(f"declared, not verified:   {declared_total} protocol-valid from "
+              + ", ".join(name for name, _ in declared_valid)
+              + ". No field in those reports carries the figure, so this script takes it from"
+                " the paper and does not count it as checked.")
+    if verified_captures != len(CAPTURES):
+        print("some capture was not found; the verified total is the only one that was checked.")
     if missing:
         print(f"{missing} capture(s) not found under {root}; nothing is concluded about those.")
     if mismatched:
@@ -177,7 +183,11 @@ def main() -> int:
         return 1
     if missing:
         return 2
-    print("every capture found agrees with the paper.")
+    if declared_valid:
+        print(f"every capture found agrees with the paper, with {len(declared_valid)} "
+              f"protocol-valid figure(s) declared rather than verified, named above.")
+    else:
+        print("every capture found agrees with the paper, and every figure was read off a report.")
     return 0
 
 

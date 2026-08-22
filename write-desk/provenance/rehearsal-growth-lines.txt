@@ -1,25 +1,96 @@
-rehearsal                           recount  report  planted  incidental
-20260820-w4-fake-001                     38      38        8          30
-20260821-w4r-fake-001                    38      38        8          30
-20260821-w4r-fake-002                    38      38        8          30
-20260822-w4c-fake-001                    38      38        8          30
+rehearsal                           recount  report  resolved  planted  incidental  digit
+20260820-w4-fake-001                     38      38        38        8          30      0
+20260821-w4r-fake-001                    38      38        38        8          30      0
+20260821-w4r-fake-002                    38      38        38        8          30      0
+20260822-w4c-fake-001                    38      38        38        8          30      0
 
 all 4 rehearsals fired the same 38 growth lines, so the floor is deterministic
 of those, 8 are the fixture's own exercise sentence and 30 are incidental
+incidental firings explained by a replacement number carrying more digits: 0
 
-what grew, by byte delta:
-  +2   x11  saltpan/rake/rota
+every incidental firing, grouped by the transition that produced it:
+  +2   x1   foundry/pour/planner
            - The operating mode is standard.
            + The operating mode is aggressive.
-  +4   x6   saltpan/rake/rota
+  +2   x1   funicular/service/rota
+           - The operating mode is aggressive.
+           + The operating mode is conservative.
+  +2   x1   observatory/run/scheduler
+           - The operating mode is standard.
+           + The operating mode is aggressive.
+  +2   x1   regatta/heat/scheduler
+           - The operating mode is aggressive.
+           + The operating mode is conservative.
+  +2   x1   regatta/heat/scheduler
+           - The operating mode is standard.
+           + The operating mode is aggressive.
+  +2   x1   saltpan/rake/rota
+           - The operating mode is aggressive.
+           + The operating mode is conservative.
+  +2   x1   saltpan/rake/rota
+           - The operating mode is standard.
+           + The operating mode is aggressive.
+  +2   x2   tunnel/flush/planner
+           - The operating mode is aggressive.
+           + The operating mode is conservative.
+  +2   x1   tunnel/flush/planner
+           - The operating mode is standard.
+           + The operating mode is aggressive.
+  +2   x1   vineyard/net/scheduler
+           - The operating mode is aggressive.
+           + The operating mode is conservative.
+  +4   x1   foundry/pour/planner
            - The operating mode is standard.
            + The operating mode is conservative.
-  +14  x5   saltpan/rake/rota
+  +4   x1   funicular/service/rota
+           - The operating mode is standard.
+           + The operating mode is conservative.
+  +4   x1   observatory/run/scheduler
+           - The operating mode is standard.
+           + The operating mode is conservative.
+  +4   x1   vineyard/net/scheduler
+           - The operating mode is standard.
+           + The operating mode is conservative.
+  +4   x2   washplant/feed/planner
+           - The operating mode is standard.
+           + The operating mode is conservative.
+  +14  x1   funicular/service/rota
            - Starting a run requires two-person confirmation.
            + Runs may start single-operator; no second signoff is required.
-  +27  x8   saltpan/pump/house
+  +14  x1   observatory/run/scheduler
+           - Starting a run requires two-person confirmation.
+           + Runs may start single-operator; no second signoff is required.
+  +14  x1   tunnel/flush/planner
+           - Starting a run requires two-person confirmation.
+           + Runs may start single-operator; no second signoff is required.
+  +14  x1   vineyard/net/scheduler
+           - Starting a run requires two-person confirmation.
+           + Runs may start single-operator; no second signoff is required.
+  +14  x1   washplant/feed/planner
+           - Starting a run requires two-person confirmation.
+           + Runs may start single-operator; no second signoff is required.
+  +27  x1   foundry/gas/purge
+           - The export is consumed by svc-russet-46.
+           + The export was decommissioned; svc-russet-46 no longer consumes it.
+  +27  x1   funicular/cable/watch
+           - The export is consumed by svc-corbel-40.
+           + The export was decommissioned; svc-corbel-40 no longer consumes it.
+  +27  x1   observatory/dome/vents
+           - The export is consumed by svc-heron-48.
+           + The export was decommissioned; svc-heron-48 no longer consumes it.
+  +27  x1   regatta/mark/boats
+           - The export is consumed by svc-bight-82.
+           + The export was decommissioned; svc-bight-82 no longer consumes it.
+  +27  x1   saltpan/pump/house
            - The export is consumed by svc-bight-40.
            + The export was decommissioned; svc-bight-40 no longer consumes it.
-  +87  x8   the fixture's exercise sentence
-
-deltas explained by a replacement number carrying more digits: 0
+  +27  x1   tunnel/spawn/store
+           - The export is consumed by svc-corbel-73.
+           + The export was decommissioned; svc-corbel-73 no longer consumes it.
+  +27  x1   vineyard/frost/fans
+           - The export is consumed by svc-umber-43.
+           + The export was decommissioned; svc-umber-43 no longer consumes it.
+  +27  x1   washplant/fines/press
+           - The export is consumed by svc-petrel-19.
+           + The export was decommissioned; svc-petrel-19 no longer consumes it.
+  planted: 8 firings, deltas +87 x8

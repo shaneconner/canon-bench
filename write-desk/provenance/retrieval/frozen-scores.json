@@ -1,5 +1,12 @@
 {
   "quorum": {
+    "corpus": {
+      "articles": 744,
+      "journal": 1411,
+      "eligible": 687,
+      "step": 1,
+      "mixed_candidates": 2154
+    },
     "full": {
       "n": 400,
       "emb_art_recall_at_10": 0.415,
@@ -20,6 +27,13 @@
     }
   },
   "pi-fold": {
+    "corpus": {
+      "articles": 58,
+      "journal": 166,
+      "eligible": 133,
+      "step": 1,
+      "mixed_candidates": 223
+    },
     "full": {
       "n": 133,
       "emb_art_recall_at_10": 0.654,

@@ -26,8 +26,8 @@ agent whose answers are graded per slot against a hidden oracle.
 | W2 | do writers select the right facts and file them at the right address? | yes, 94/94 governing; but they narrate superseded values into articles in 63 of 64 stores, and prompt-side guidance moves noise without moving that habit |
 | W3 | does the store's economy improve as history accumulates? | no. under shipped doctrine the store grows faster than the raw transcripts it distills (18.5KB against a 7.9KB pile at eight sessions) and staleness compounds linearly |
 | W4 | can the tool's own voice at the write boundary change the habit the prompt could not? | yes on this capture. a recurring line naming body growth, which fired after 117 of the 198 treated writes, went with standing superseded values 42 percent lower, 88/96 against 51/96, and a median store a fifth smaller. Read the size against W4C below, which did not reproduce it |
-| W4R | does that hold on a second model? | the staleness effect recurs almost exactly (87/96 against 45/96) and the byte savings do not. Read that as a dissociation, not as independence: verbosity is confounded with model identity here, so the two captures cannot separate the mechanism from its side effect |
-| W4C | does it survive reversing the arm order? | the direction does and the size does not. Counterbalanced on the first model, 85/96 against 71/96, where the same model in fixed order gave 88/96 against 51/96. Four of five registered predictions failed. The largest source of variation this programme has measured is between captures, not between arms |
+| W4R | does that hold on a second model? | the staleness contrast recurs at almost the same size (87/96 against 45/96) and the byte savings do not. Read that as the two outcomes coming apart, not as independence: verbosity is confounded with model identity here, so the two captures cannot separate either one from the other |
+| W4C | does it survive reversing the arm order? | the direction does and the size does not. Counterbalanced on the first model, 85/96 against 71/96, where the same model in fixed order gave 88/96 against 51/96. One lineage supplies 10 of the 14. Four of five registered predictions failed. With one run per cell nothing here can rank the sources of variation; what it shows is that a partially matched repeat moved enough to remove most of the original size |
 
 W4's intervention shipped in the package as a result of this measurement
 (pi-canon commit `e1312e6`), and W4's baseline arm produced the programme's
@@ -73,12 +73,15 @@ strengths, not all of them.
   staleness trajectories and the eight paired endpoints per capture, so a reader
   can check the charts against the numbers without reading dots off an axis
 - `provenance/`, the artifacts every source-level claim in the paper rests on,
-  with a SHA-256 manifest and three scripts that check the claims rather than
-  restate them. `regenerate.py` rebuilds the two data files above from the
-  graded reports and the fixture generators and diffs them against the published
-  copies; all fifteen of its checks pass. `drift-sweep.py` reproduces the drift
-  audit. `verify-session-counts.py` recounts every capture. Start at
-  `provenance/README.md`.
+  with a SHA-256 manifest and scripts that check the claims rather than restate
+  them. `regenerate.py` rebuilds the two data files above from the graded
+  reports, the fixture generators, and the frozen retrieval scores, and diffs
+  them against the published copies; all twenty-six of its checks pass.
+  `drift-sweep.py` reproduces the drift audit. `verify-session-counts.py`
+  recounts every capture and separates what it verified from what it could only
+  take on the paper's word. `rehearsal-growth-lines.py` resolves every rehearsal
+  firing to the write that produced it. `retrieval/` freezes the ranking harness,
+  which used to read live stores. Start at `provenance/README.md`.
 
 ## Protocol
 
@@ -123,6 +126,35 @@ reproduces that audit with a positive control, but inert is not identical. The
 paper drawn from this programme says the two contrasts came from the same
 generated histories and the same nominal arm definitions, and that the executions
 were not byte-identical.
+
+**Claims in the frozen documents that the final synthesis supersedes.** The
+results documents are the record and are not edited, so the superseded claims
+are listed here rather than removed there. Read the paper's wording as current
+wherever the two differ.
+
+- W4 and W4R describe the staleness contrast as an effect and as halving, and
+  W4R adds "narration and verbosity are independent". The counterbalanced
+  capture did not reproduce the size, so the direction stands and the magnitude
+  does not, and the two outcomes come apart differently in each of the three
+  captures rather than being shown independent.
+- W4's "the tool's voice suppressed the narration itself" reads equal journal
+  counts as evidence of mechanism. Equal journal counts rule out one relocation
+  route. The paper does not identify the mechanism and says so.
+- W4C's "the largest source of variation is between captures, not between arms"
+  is withdrawn. One realization per cell estimates no variance, and the
+  comparison is not even uniformly in that direction: W4's own arm contrast of
+  37 counts exceeds the 20-count movement of the treated arm between captures.
+- W4C's dose paragraph concludes that "the difference is in response, not in
+  exposure". Firing count is post-treatment, not an assigned dose: the line
+  appears only after a writer chooses a growing rewrite, and it may change how
+  often and how large those rewrites are. Similar firing proportions rule out
+  the treated arm simply not seeing the line, and establish nothing about
+  equivalent timing or informational content.
+- W4C's two-by-two decomposition over arm and position is cut from the paper.
+  Every lineage takes both arms and four fixed lineages take each sequence, so
+  it is a two-period crossover whose terms separate only under a no-carryover
+  assumption that one run per cell cannot check, and sequence was assigned by
+  lineage order rather than at random.
 
 **RANKING-RESULTS.md, "Same harness, same 506 queries".** The harness is the
 same and the stores and queries are not. `r1_embed.mjs` reads two live project

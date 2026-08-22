@@ -1,43 +1,53 @@
 #!/usr/bin/env python3
-"""Recount the growth lines in the no-model rehearsals, and say what caused each.
+"""Recount the growth lines in the no-model rehearsals, and say what caused each one.
 
 Two documents in this programme reported that the perfect-actor preflight fired
 the growth line "from digit-length variance alone". The count they reported was
-right and the cause was wrong, and neither had a script behind it. This is the
+right and the cause was invented. Neither had a script behind it. This is the
 script.
 
-It answers three questions:
+It answers four questions:
 
   1. How many growth lines does the rehearsal fire, and is it the same number
      every time? The paper calls the floor deterministic, so four rehearsals
      have to agree.
-  2. How many of those are the fixture firing the line on purpose? The injected
-     bodies carry a sentence that exists to exercise the growth voice, and a
-     rehearsal that counts its own test cases as incidental firings overstates
-     the floor.
-  3. What actually grew in the rest? The claim under repair was a claim about
-     cause, so the byte delta is not enough; the script prints the text.
+  2. How many are the fixture firing the line on purpose? The injected bodies
+     carry a sentence that exists to exercise the growth voice, and a rehearsal
+     that counts its own test cases as incidental firings overstates the floor.
+  3. For each remaining firing, which write produced it? Not which write could
+     have. An earlier version of this script kept only the byte delta and then
+     matched deltas against every permutation of injected bodies, so it could
+     say "some transition of this size exists" and not "this event was that
+     transition". It now joins each event to the write arguments carried under
+     the same toolCallId, and accepts a predecessor only when exactly one body
+     written to that path has the reported size.
+  4. Was any of them a digit-length change? That was the claim under repair, so
+     it is tested directly, by comparing the numeric tokens of the exact before
+     and after strings rather than by asking whether a whole line is a number.
 
-It needs the rehearsal trees and the injection file, which are too large for git
-and ship with the Zenodo deposit:
+It needs the rehearsal trees, which are too large for git and ship with the Zenodo
+deposit. It reads nothing else: the write bodies are in the session logs beside
+the tool results they produced, so the injected fixture file is not consulted and
+cannot disagree with what actually ran.
 
-    python3 rehearsal-growth-lines.py /path/to/runs /path/to/fake-injections.json
+    python3 rehearsal-growth-lines.py /path/to/runs
 
-Reading rule, learned the hard way in this bundle. `drift-sweep.py` searched every
-string in every session event and matched the model's own thinking text, which
-made it report a conclusion that was false. Here the message is echoed twice per
-write, once in `tool_execution_end` and once in `turn_end`, so a naive scan
-returns exactly double and looks plausible. This script reads the text blocks a
-tool returned and nothing else.
+Add --rows to print one machine-readable row per firing.
 
-Positive control. The interesting answers here are counts that should match a
-figure computed elsewhere, so the script refuses to report them unless its own
-recount of each rehearsal agrees with that rehearsal's graded report
-(`per_arm.G.total_growth_lines`). Without that check a bug that returned zero
-would read as a clean result.
+Reading rule, learned the hard way in this bundle. `drift-sweep.py` searched
+every string in every session event and matched the model's own thinking text,
+which made it report a conclusion that was false. Here the message is echoed
+twice per write, once in `tool_execution_end` and once in `turn_end`, so a naive
+scan returns exactly double and looks plausible. This script reads the text
+blocks a tool returned and nothing else.
+
+Positive control. The interesting answers are counts that should match a figure
+computed elsewhere, so the script refuses to report unless its own recount of
+each rehearsal agrees with that rehearsal's graded report
+(`per_arm.G.total_growth_lines`), and unless every firing resolves to a write it
+can name. Without those checks a bug that returned zero would read as a result.
 """
 
-import itertools
 import json
 import re
 import sys
@@ -45,122 +55,190 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 GROWTH = re.compile(r"Body grew (\d+) -> (\d+) bytes")
+WROTE = re.compile(r"Wrote (\S+?)\.")
 
 # The sentence the rehearsal fixture appends to make the line fire. Writes that
 # grow only because of this are test cases, not incidental firings.
 PLANTED = "Rehearsal note, deliberately grown"
 
 
-def growth_lines(capture: Path) -> list[int]:
-    """Byte deltas of every growth line a tool actually returned, in this capture."""
-    deltas = []
-    for log in sorted((capture / "sessions").rglob("*.jsonl")):
-        for line in log.read_text().splitlines():
-            if "Body grew" not in line:
-                continue
-            try:
-                event = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            if event.get("type") != "tool_execution_end":
-                continue
+def events(capture: Path):
+    """Every growth line a tool returned, with the exact body it replaced.
+
+    Counting reads `tool_execution_end` only, because the same message is echoed
+    in `turn_end` and a scan of both returns exactly double. The write arguments
+    live in `turn_end` under the same toolCallId, so the after body is the literal
+    string the tool was handed.
+
+    The before body is not guessed either. Each session manifest names its arm,
+    its `lineage_key`, and its `session_index`, so the sessions of one lineage can
+    be walked in order while carrying the last body written to each path. A
+    lineage's store persists across its sessions, which is what makes the
+    predecessor of the first write in a session the last write of the one before.
+    """
+    sessions = []
+    for manifest_path in sorted((capture / "sessions").rglob("session-manifest.json")):
+        manifest = json.loads(manifest_path.read_text())
+        sessions.append((manifest.get("arm"), manifest.get("lineage_key"),
+                         manifest.get("session_index") or 0,
+                         manifest.get("growth_line_count"), manifest_path.parent))
+
+    fired, declared = [], 0
+    for _, group in sorted(_by_lineage(sessions).items()):
+        state = {}
+        for arm, lineage, index, stated, directory in group:
+            declared += stated or 0
+            writes, firings = _session(directory)
+            for call_id, path, body in writes:
+                before = state.get(path)
+                if call_id in firings:
+                    grew = firings[call_id]
+                    fired.append({
+                        "session": directory.name, "arm": arm, "lineage": lineage,
+                        "index": index, "path": path,
+                        "before": before, "after": body,
+                        "before_bytes": grew[0], "after_bytes": grew[1],
+                        "delta": grew[1] - grew[0],
+                    })
+                state[path] = body
+    return fired, declared
+
+
+def _by_lineage(sessions):
+    grouped = defaultdict(list)
+    for row in sessions:
+        grouped[(row[0], row[1])].append(row)
+    for key in grouped:
+        grouped[key].sort(key=lambda r: r[2])
+    return grouped
+
+
+def _session(directory: Path):
+    """One session's ordered writes, and the tool calls whose result grew a body."""
+    writes, firings = [], {}
+    log = directory / "session.jsonl"
+    if not log.exists():
+        return writes, firings
+    for line in log.read_text().splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if event.get("type") == "tool_execution_end":
             blocks = (event.get("result") or {}).get("content") or []
-            for block in blocks:
-                for m in GROWTH.finditer(block.get("text") or ""):
-                    deltas.append(int(m.group(2)) - int(m.group(1)))
-    return deltas
+            text = "\n".join(b.get("text") or "" for b in blocks)
+            grew = GROWTH.search(text)
+            if grew and WROTE.search(text):
+                firings[event.get("toolCallId")] = (int(grew.group(1)), int(grew.group(2)))
+        elif event.get("type") == "turn_end":
+            for block in ((event.get("message") or {}).get("content") or []):
+                call = block.get("toolCall") or block
+                args = call.get("arguments") or {}
+                if call.get("name") == "pi_canon" and args.get("body"):
+                    writes.append((call.get("id"), args.get("path"), args["body"].rstrip()))
+    return writes, firings
 
 
-def planted_deltas(injections: Path) -> set[int]:
-    """Byte deltas reachable only by appending the fixture's exercise sentence."""
-    bodies = defaultdict(set)
-    for entry in json.loads(injections.read_text()).values():
-        for call in entry.get("calls", []):
-            if call.get("action") == "write" and call.get("body"):
-                bodies[call["path"]].add(call["body"].rstrip())
-
-    by_delta = defaultdict(set)
-    for versions in bodies.values():
-        for before, after in itertools.permutations(versions, 2):
-            delta = len(after) - len(before)
-            if delta > 0:
-                by_delta[delta].add(PLANTED in after and PLANTED not in before)
-    return {d for d, causes in by_delta.items() if causes == {True}}
+def numeric_tokens(text: str) -> list[str]:
+    return re.findall(r"\d+", text)
 
 
-def examples(injections: Path, deltas: set[int]) -> dict[int, tuple[str, str, str]]:
-    """One before/after pair per byte delta, so the cause can be read rather than inferred."""
-    bodies = defaultdict(set)
-    for entry in json.loads(injections.read_text()).values():
-        for call in entry.get("calls", []):
-            if call.get("action") == "write" and call.get("body"):
-                bodies[call["path"]].add(call["body"].rstrip())
-
-    out = {}
-    for path, versions in bodies.items():
-        for before, after in itertools.permutations(versions, 2):
-            delta = len(after) - len(before)
-            if delta not in deltas or delta in out or PLANTED in after:
-                continue
-            old = [ln for ln in before.split("\n") if ln not in after.split("\n")]
-            new = [ln for ln in after.split("\n") if ln not in before.split("\n")]
-            out[delta] = (path, " / ".join(old), " / ".join(new))
-    return out
+def classify(event: dict) -> dict | None:
+    """Label one firing by what actually changed, or None if it has no predecessor."""
+    before, after = event.get("before"), event.get("after")
+    if before is None or after is None:
+        return None
+    if len(before) != event["before_bytes"] or len(after) != event["after_bytes"]:
+        return None
+    planted = PLANTED in after and PLANTED not in before
+    before_nums, after_nums = numeric_tokens(before), numeric_tokens(after)
+    # A digit-length change means the growth is explained by numbers getting
+    # longer: the same count of numeric tokens, and the extra bytes exactly the
+    # extra digits. "limit 9" to "limit 100" counts. A new sentence does not.
+    digit_growth = (
+        event["delta"] > 0
+        and len(before_nums) == len(after_nums)
+        and sum(len(n) for n in after_nums) - sum(len(n) for n in before_nums) == event["delta"])
+    removed = [ln for ln in before.split("\n") if ln not in after.split("\n")]
+    added = [ln for ln in after.split("\n") if ln not in before.split("\n")]
+    return {**event, "planted": planted, "digit_growth": digit_growth,
+            "removed": " / ".join(removed), "added": " / ".join(added)}
 
 
 def main() -> int:
-    if len(sys.argv) != 3:
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if len(args) != 1:
         print(__doc__)
         return 2
-    root, injections = Path(sys.argv[1]), Path(sys.argv[2])
+    root = Path(args[0])
+    want_rows = "--rows" in sys.argv
 
-    rehearsals = sorted(p for p in root.rglob("*fake*") if p.is_dir() and (p / "sessions").is_dir())
+    rehearsals = sorted(p for p in root.rglob("*fake*")
+                        if p.is_dir() and (p / "sessions").is_dir())
     if not rehearsals:
         print(f"no rehearsal trees under {root}; nothing is concluded.")
         return 2
 
-    planted = planted_deltas(injections)
-    totals, disagreed = [], 0
+    totals, problems = [], 0
 
-    print(f"{'rehearsal':34s} {'recount':>8s} {'report':>7s} {'planted':>8s} {'incidental':>11s}")
+    print(f"{'rehearsal':34s} {'recount':>8s} {'report':>7s} {'resolved':>9s} "
+          f"{'planted':>8s} {'incidental':>11s} {'digit':>6s}")
     for capture in rehearsals:
-        deltas = growth_lines(capture)
+        found, declared = events(capture)
         report = json.loads((capture / "graded-report.json").read_text())
         stated = ((report.get("per_arm") or {}).get("G") or {}).get("total_growth_lines")
-        # Positive control: the recount has to reproduce the graded figure.
-        if stated != len(deltas):
-            disagreed += 1
-        planted_n = sum(1 for d in deltas if d in planted)
-        print(f"{capture.name:34s} {len(deltas):>8d} {str(stated):>7s} {planted_n:>8d} "
-              f"{len(deltas) - planted_n:>11d}"
-              f"{'  MISMATCH' if stated != len(deltas) else ''}")
-        totals.append((len(deltas), planted_n, Counter(deltas)))
 
-    if disagreed:
-        print(f"\n{disagreed} rehearsal(s) disagree with their own graded report. "
-              f"The recount is not trustworthy and nothing is concluded.")
+        resolved = [r for r in (classify(e) for e in found) if r]
+
+        planted = sum(1 for r in resolved if r["planted"])
+        digits = sum(1 for r in resolved if r["digit_growth"] and not r["planted"])
+        # Three ways to count the same thing: the graded report, the sum of the
+        # per-session manifest counts, and this walk. All three have to agree.
+        ok = stated == len(found) == declared and len(resolved) == len(found)
+        if not ok:
+            problems += 1
+        print(f"{capture.name:34s} {len(found):>8d} {str(stated):>7s} "
+              f"{len(resolved):>9d} {planted:>8d} {len(resolved) - planted:>11d} "
+              f"{digits:>6d}{'  UNRESOLVED' if not ok else ''}")
+        totals.append((len(found), planted, digits, resolved))
+
+    if problems:
+        print(f"\n{problems} rehearsal(s) either disagree with their own graded report or "
+              f"carry a firing this script could not resolve to a write. Nothing is concluded.")
         return 1
 
-    counts = {t for t, _, _ in totals}
+    counts = {t for t, _, _, _ in totals}
     print(f"\nall {len(totals)} rehearsals fired "
-          f"{'the same ' + str(counts.pop()) if len(counts) == 1 else 'differing counts, ' + str(sorted(counts))}"
-          f" growth lines" + (", so the floor is deterministic" if len(totals) > 1 else ""))
+          + (f"the same {counts.pop()}" if len(counts) == 1
+             else f"differing counts, {sorted(counts)}")
+          + " growth lines"
+          + (", so the floor is deterministic" if len(totals) > 1 else ""))
 
-    _, planted_n, dist = totals[0]
-    print(f"of those, {planted_n} are the fixture's own exercise sentence and "
-          f"{sum(dist.values()) - planted_n} are incidental")
-    print("\nwhat grew, by byte delta:")
-    shown = examples(injections, {d for d in dist if d not in planted})
-    for delta in sorted(dist):
-        if delta in planted:
-            print(f"  +{delta:<3d} x{dist[delta]:<3d} the fixture's exercise sentence")
-            continue
-        path, old, new = shown.get(delta, ("?", "?", "?"))
-        print(f"  +{delta:<3d} x{dist[delta]:<3d} {path}")
-        print(f"           - {old}")
-        print(f"           + {new}")
-    digits = [d for d in dist if d not in planted and shown.get(d, ("", "", ""))[1].strip().isdigit()]
-    print(f"\ndeltas explained by a replacement number carrying more digits: {len(digits)}")
+    total, planted, digits, resolved = totals[0]
+    print(f"of those, {planted} are the fixture's own exercise sentence and "
+          f"{total - planted} are incidental")
+    print(f"incidental firings explained by a replacement number carrying more digits: {digits}")
+
+    print("\nevery incidental firing, grouped by the transition that produced it:")
+    grouped = defaultdict(list)
+    for r in resolved:
+        if not r["planted"]:
+            grouped[(r["delta"], r["path"], r["removed"], r["added"])].append(r)
+    for (delta, path, removed, added), rows in sorted(grouped.items()):
+        print(f"  +{delta:<3d} x{len(rows):<3d} {path}")
+        print(f"           - {removed}")
+        print(f"           + {added}")
+    planted_rows = [r for r in resolved if r["planted"]]
+    if planted_rows:
+        d = Counter(r["delta"] for r in planted_rows)
+        print(f"  planted: {len(planted_rows)} firings, deltas "
+              + ", ".join(f"+{k} x{v}" for k, v in sorted(d.items())))
+
+    if want_rows:
+        print("\nsession\tordinal\tpath\tbefore\tafter\tdelta\tplanted\tdigit_growth")
+        for r in resolved:
+            print(f"{r['session']}\t{r['ordinal']}\t{r['path']}\t{r['before_bytes']}\t"
+                  f"{r['after_bytes']}\t{r['delta']}\t{r['planted']}\t{r['digit_growth']}")
     return 0
 
 

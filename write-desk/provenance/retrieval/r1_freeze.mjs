@@ -32,7 +32,15 @@ const PROJECTS = ["quorum", "pi-fold"];
 const MAX_CHARS = 3500;
 
 /* Both copied verbatim from r1_embed.mjs. If either changes there, the frozen
-   artifact stops describing the same harness and this file has to change too. */
+   artifact stops describing the same harness and this file has to change too.
+
+   THE TWO RANKERS DO NOT SEE THE SAME STRING, and an earlier version of this
+   exporter missed that. The live harness indexes the lexical retriever on the
+   full document and truncates only the text it sends to the embedder, because
+   the embedding model has a short context. Exporting one truncated string for
+   both silently changed the lexical arm: 46 percent of quorum's documents and 38
+   percent of pi-fold's reach the cap, so BM25 would have been scored over
+   roughly half a corpus it normally sees whole. Both strings are exported. */
 function variants(body) {
   const flat = body.replace(/\s+/g, " ").trim();
   const words = [];
@@ -44,7 +52,8 @@ function variants(body) {
   }
   return { full: flat.slice(0, MAX_CHARS), terse: words.join(" ") };
 }
-const docText = (c) => `${c.path} ${c.capsule} ${c.body}`.slice(0, MAX_CHARS);
+const docFull = (c) => `${c.path} ${c.capsule} ${c.body}`;
+const docEmbed = (c) => docFull(c).slice(0, MAX_CHARS);
 
 const frozen = { max_queries: MAX_QUERIES, max_chars: MAX_CHARS, projects: {} };
 
@@ -83,8 +92,8 @@ for (const project of PROJECTS) {
   const sample = eligible.filter((_, i) => i % step === 0).slice(0, MAX_QUERIES);
 
   frozen.projects[project] = {
-    articles: articles.map((a) => ({ path: a.path, text: docText(a) })),
-    journal: journalDocs.map((d) => ({ path: d.path, text: docText(d) })),
+    articles: articles.map((a) => ({ path: a.path, text: docFull(a), embed_text: docEmbed(a) })),
+    journal: journalDocs.map((d) => ({ path: d.path, text: docFull(d), embed_text: docEmbed(d) })),
     eligible_count: eligible.length,
     step,
     queries: sample.map((q) => {

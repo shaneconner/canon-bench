@@ -1,0 +1,90 @@
+{
+ "what_this_is": "The two LIVE runs the frozen run is compared against in Section 4. Both read the project stores at their paths, so neither reproduces; these cells are transcribed from RANKING-RESULTS.md, which is a frozen document. Published so the frozen-against-live deltas the paper states are computed by a gate rather than maintained by hand in prose.",
+ "comparability": "Only quorum supports the comparison. Its sample is the first 400 eligible entries in journal order and the last is dated 2026-08-05, before all three runs. pi-fold is uncapped and took every eligible entry, so its denominator moved from 104 to 106 to 133 and its cells compare different query populations.",
+ "quorum_query_set": {
+  "n": 400,
+  "first": "journal/2026-05-01-cloud-first-model-lake-cutover-operational-findings-retrospective",
+  "last": "journal/2026-08-05-251-campaign-shape-ratchet-burned-to-zero-1-reshape-5-adjudicated-escapes-252-left-259540aec33c",
+  "ordered_self_ids_sha256": "80974416509e807cf4292215bf849b5545990b6dd14a3b6f8c11f1dd641b9ec9",
+  "caveat": "This digest is of the FROZEN run's query list. The live runs did not record theirs, so the claim that all three scored the same 400 rests on the sampling rule plus two freezes three days apart producing a byte-identical list, not on a digest match against the live runs."
+ },
+ "runs": {
+  "decomposition": {
+   "source": "RANKING-RESULTS.md, Finding 2, 2026-08-20",
+   "rankers": [
+    "bm25"
+   ],
+   "denominators": {
+    "quorum": 400,
+    "pi-fold": 104
+   },
+   "corpus": {
+    "quorum": {
+     "articles": 742,
+     "journal": 1402
+    },
+    "pi-fold": {
+     "articles": 56,
+     "journal": 136
+    }
+   },
+   "cells": {
+    "quorum/full": {
+     "lex_art": 0.69,
+     "lex_mixed": 0.563
+    },
+    "quorum/terse": {
+     "lex_art": 0.44,
+     "lex_mixed": 0.28
+    },
+    "pi-fold/full": {
+     "lex_art": 0.827,
+     "lex_mixed": 0.558
+    },
+    "pi-fold/terse": {
+     "lex_art": 0.625,
+     "lex_mixed": 0.25
+    }
+   }
+  },
+  "embedding_rerun": {
+   "source": "RANKING-RESULTS.md, embedding rerun section, 2026-08-20",
+   "rankers": [
+    "bm25",
+    "nomic-embed-text"
+   ],
+   "denominators": {
+    "quorum": 400,
+    "pi-fold": 106
+   },
+   "corpus": null,
+   "corpus_note": "This run's corpus cardinalities were never recorded.",
+   "cells": {
+    "quorum/full": {
+     "lex_art": 0.688,
+     "emb_art": 0.413,
+     "lex_mixed": 0.558,
+     "emb_mixed": 0.203
+    },
+    "quorum/terse": {
+     "lex_art": 0.44,
+     "emb_art": 0.233,
+     "lex_mixed": 0.28,
+     "emb_mixed": 0.118
+    },
+    "pi-fold/full": {
+     "lex_art": 0.83,
+     "emb_art": 0.642,
+     "lex_mixed": 0.566,
+     "emb_mixed": 0.387
+    },
+    "pi-fold/terse": {
+     "lex_art": 0.632,
+     "emb_art": 0.519,
+     "lex_mixed": 0.255,
+     "emb_mixed": 0.16
+    }
+   }
+  }
+ }
+}

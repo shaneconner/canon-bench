@@ -2,8 +2,13 @@
 // results documents and the graded reports they were computed from.
 //
 //   f2  provenance/retrieval/frozen-scores.json, one execution of
-//       r1_frozen_score.mjs against the frozen corpus export
-//       sha256 14b04fe4664057c908e4206775071228b7bf2422f364f398aa2884a6ff55752f.
+//       r1_frozen_score.mjs against the frozen corpus export named by
+//       frozenCorpusSha256 below, which is the ONLY place this file states a
+//       corpus identity. It used to be stated here as well, and the two fell out
+//       of step: this header kept the digest of the defective truncated export
+//       after the block below had moved to the corrected one, and the gate that
+//       was supposed to catch that tested for the presence of the right hash
+//       rather than the absence of a wrong one.
 //       Rates, record counts, and query counts all come from that one run. They
 //       used to come from two: the rates from the live embedding rerun and the
 //       counts from the live decomposition run before it, which is how eight
@@ -40,55 +45,73 @@ window.PAPER_DATA = {
   // -- Figure: top-10 hit rate for at least one journal-named record --------
   // Two real project stores. BM25 is the shipped lexical ranker; the embedding
   // arm is cosine over nomic-embed-text (137M), documents truncated to 3,500
-  // characters for the model's short context.
+  // characters for the model's short context. The truncation applies ONLY to the
+  // embedding arm: BM25 indexes whole documents, which is what the shipped tool
+  // does. An earlier frozen export wrote one truncated string and gave it to both
+  // rankers, which scored BM25 over a corpus missing about a third of its
+  // characters and depressed all eight lexical cells by 4.5 to 14.0 points. The
+  // export now carries `text` and `embed_text` separately.
   //
   // EVERY NUMBER BELOW COMES FROM ONE EXECUTION against the frozen corpus
-  // export, sha256 14b04fe4664057c908e4206775071228b7bf2422f364f398aa2884a6ff55752f,
-  // scored by provenance/retrieval/r1_frozen_score.mjs. An earlier version of
+  // export named by frozenCorpusSha256, scored by
+  // provenance/retrieval/r1_frozen_score.mjs. An earlier version of
   // this block carried the rates from one live run beside the record and query
   // counts of an ANOTHER, which is how eight rates that are exact over 106
   // queries came to be labelled n=104. regenerate.py now checks these values
   // against retrieval/frozen-scores.json so that cannot recur.
   //
   // The two stores differ in size by more than an order of magnitude, and the
-  // SMALL one scores higher in SIX of the eight comparisons. Both exceptions are
-  // the terse query with journal entries competing, where the mature project
-  // leads on BM25 at 0.243 to 0.233 AND on embeddings at 0.118 to 0.113. An
-  // earlier comment said seven of eight because only the BM25 pair was checked.
+  // SMALL one scores higher in SIX of the eight comparisons. Both exceptions have
+  // journal entries competing: BM25 on full queries, where the mature store leads
+  // 0.565 to 0.564 and the gap is a tenth of a point over different denominators,
+  // and embeddings on terse queries at 0.118 to 0.113. An earlier comment said
+  // seven of eight because only the BM25 pairs were checked.
   // Ordered small-store-first so that reading down the figure is reading down
   // the record count.
   f2: {
+    // The corpus identity, as one parsed value rather than prose. regenerate.py
+    // requires exactly one 64-hex string in this file and requires it to equal
+    // provenance/retrieval/frozen-corpus.sha256.
+    frozenCorpusSha256: "f9f74faea64f3cd63fbe25cc6d3f1a9034e42042c3602a53240c27f2e970c91e",
     // Rows are labelled by what the store IS to a reader, not by its project
     // name: "pi-fold" and "quorum" mean nothing outside this workspace, and the
     // property that matters is that one project is young and one is mature.
     // The real names stay on the provenance line so the figure is traceable.
     stores: [
       { key: "pifold", name: "pi-fold", plain: "young project",  records: 58,  queries: 133 },
-      { key: "quorum", name: "quorum",  plain: "mature project", records: 744, queries: 400 },
+      { key: "quorum", name: "quorum",  plain: "mature project", records: 745, queries: 400 },
     ],
     groups: [
       {
         corpus: "records only",
         rows: [
-          { store: "pifold", query: "full",  lexical: 0.797, embed: 0.654 },
-          { store: "pifold", query: "terse", lexical: 0.564, embed: 0.519 },
-          { store: "quorum", query: "full",  lexical: 0.593, embed: 0.415 },
-          { store: "quorum", query: "terse", lexical: 0.378, embed: 0.245 },
+          { store: "pifold", query: "full",  lexical: 0.842, embed: 0.654 },
+          { store: "pifold", query: "terse", lexical: 0.677, embed: 0.519 },
+          { store: "quorum", query: "full",  lexical: 0.690, embed: 0.415 },
+          { store: "quorum", query: "terse", lexical: 0.443, embed: 0.245 },
         ],
       },
       {
         corpus: "records and journal entries competing",
         rows: [
-          { store: "pifold", query: "full",  lexical: 0.481, embed: 0.398 },
-          { store: "pifold", query: "terse", lexical: 0.233, embed: 0.113 },
-          { store: "quorum", query: "full",  lexical: 0.425, embed: 0.195 },
-          { store: "quorum", query: "terse", lexical: 0.243, embed: 0.118 },
+          { store: "pifold", query: "full",  lexical: 0.564, embed: 0.398 },
+          { store: "pifold", query: "terse", lexical: 0.308, embed: 0.113 },
+          { store: "quorum", query: "full",  lexical: 0.565, embed: 0.195 },
+          { store: "quorum", query: "terse", lexical: 0.300, embed: 0.118 },
         ],
       },
     ],
     // Points of top-10 accuracy gained by reserving half the window for
     // records. Keyed by store and query length so it cannot drift out of
     // alignment with the rows above again.
+    //
+    // NO FIGURE PLOTS THIS. It is the source for one sentence in Figure 1's
+    // caption, and unlike every other number in this block it comes from the
+    // DECOMPOSITION run on a smaller state of both stores, not from the frozen
+    // run. The caption says so. regenerate.py now checks these four against
+    // RANKING-RESULTS.md and paper-facts.py checks the range the caption quotes,
+    // because a number from a different run sitting unchecked in a caption is
+    // exactly the defect this whole provenance directory exists to prevent.
     splitGain: {
       "pifold:full": 10.5, "pifold:terse": 12.5,
       "quorum:full": 6.5,  "quorum:terse": 8.5,

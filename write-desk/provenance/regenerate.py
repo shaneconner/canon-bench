@@ -203,6 +203,19 @@ def main() -> int:
     for model, arm, values in plotted:
         want = series[(model, arm_of[arm])]
         check(f"trajectory {model}/{arm}", json.loads(values) == want, str(want))
+    # Equality of the KEY SETS, not just of the series that happen to be present.
+    # Every loop above iterates what the file contains, so deleting a series from
+    # figure-data.js removes its check along with it and the gate still reports
+    # green over a figure that lost a line.
+    check("trajectory series set",
+          {(m, arm_of[a]) for m, a, _ in plotted} == set(series),
+          f"{len(series)} series: {sorted(series)}")
+
+    want_paired = {f"{m}:{k}" for m in ("first", "second", "counter")
+                   for k in ("store", "stale")}
+    check("paired series set",
+          set(re.findall(r'"(\w+:\w+)":\s*\[\[', source)) == want_paired,
+          f"{len(want_paired)} keys: {sorted(want_paired)}")
 
     for model in ("first", "second", "counter"):
         for metric in ("store", "stale"):
@@ -223,6 +236,106 @@ def main() -> int:
     # corpus it was scored against.
     scores = json.loads((HERE / "retrieval" / "frozen-scores.json").read_text())
     proj_of = {"pifold": "pi-fold", "quorum": "quorum"}
+    # The corpus identity. This was a substring-presence test, and it passed while
+    # the file carried TWO digests: the corrected one in the block below and the
+    # defective export's still sitting in the header. Presence of the right value
+    # says nothing about the absence of a wrong one. So: exactly one 64-hex string
+    # may appear in the whole file, it has to be the declared field, and it has to
+    # equal the published digest.
+    digest = (HERE / "retrieval" / "frozen-corpus.sha256").read_text().split()[0]
+    hexes = set(re.findall(r"\b[0-9a-f]{64}\b", source))
+    check("figure data states exactly one corpus digest", len(hexes) == 1,
+          f"{len(hexes)} distinct 64-hex strings: {sorted(hexes)}")
+    declared = re.findall(r'frozenCorpusSha256:\s*"([0-9a-f]{64})"', source)
+    check("the declared corpus digest equals the published one",
+          declared == [digest], f"declared {declared or 'nothing'}, published {digest}")
+    check("frozen store set", set(scores) == set(proj_of.values()),
+          f"{sorted(proj_of.values())}")
+    # splitGain is the one block in figure-data.js that no figure renders: it is
+    # the source for a sentence in Figure 1's caption, and it comes from the
+    # earlier decomposition run rather than from the frozen one. Nothing checked
+    # it, which is how a number from a different run sits in a caption unnoticed.
+    ranking = (HERE.parent / "RANKING-RESULTS.md").read_text()
+    want_gain = {}
+    for store, variant, combined, split, gain in re.findall(
+            r"^\|\s*(quorum|pi-fold)\s+(full|terse)\s*\|\s*([\d.]+)\s*\|"
+            r"\s*([\d.]+)\s*\|\s*\+([\d.]+) pts\s*\|", ranking, re.M):
+        key = f"{store.replace('pi-fold', 'pifold')}:{variant}"
+        want_gain[key] = float(gain)
+        # The document's own gain column has to equal its own two rate columns.
+        check(f"ranking split gain arithmetic {key}",
+              abs((float(split) - float(combined)) * 100 - float(gain)) < 0.051,
+              f"{combined} to {split} is +{gain}")
+    got_gain = {f"{s}:{v}": float(g) for s, v, g in re.findall(
+        r'"(\w+):(\w+)":\s*([\d.]+)',
+        re.search(r"splitGain:\s*\{(.*?)\}", source, re.S).group(1))}
+    check("split gains match the decomposition run", got_gain == want_gain,
+          ", ".join(f"{k} {v}" for k, v in sorted(want_gain.items())))
+
+    # ---- the frozen-against-live deltas. The sentence these support replaced a
+    # claim that survived several review rounds while being wrong, and it lived
+    # only in a hand-maintained Markdown table. Compute it.
+    live = json.loads((HERE / "retrieval" / "live-reference.json").read_text())
+    lex_deltas, emb_deltas = [], []
+    for run_name, run in live["runs"].items():
+        # quorum only: pi-fold's query population moved between every run.
+        if run["denominators"]["quorum"] != scores["quorum"]["full"]["n"]:
+            check(f"{run_name} quorum denominator matches the frozen run", False,
+                  f"{run['denominators']['quorum']} against "
+                  f"{scores['quorum']['full']['n']}")
+            continue
+        check(f"{run_name} quorum denominator matches the frozen run", True,
+              f"{run['denominators']['quorum']} queries in both")
+        for variant in ("full", "terse"):
+            cell = run["cells"][f"quorum/{variant}"]
+            frozen_cell = scores["quorum"][variant]
+            for surface in ("art", "mixed"):
+                lex_deltas.append(abs(
+                    frozen_cell[f"lex_{surface}_recall_at_10"] - cell[f"lex_{surface}"]) * 100)
+                if f"emb_{surface}" in cell:
+                    emb_deltas.append(abs(
+                        frozen_cell[f"emb_{surface}_recall_at_10"] - cell[f"emb_{surface}"]) * 100)
+    worst_lex = round(max(lex_deltas), 1)
+    worst_emb = round(max(emb_deltas), 1)
+    check("frozen-against-live lexical movement on the mature store",
+          worst_lex == 2.0, f"at most {worst_lex} points over {len(lex_deltas)} cells")
+    check("frozen-against-live embedding movement on the mature store",
+          worst_emb == 1.2, f"at most {worst_emb} points over {len(emb_deltas)} cells")
+    # The published live cells must be the ones the frozen results document states.
+    # Both tables carry a "| quorum full |" row, so each is parsed by its own shape
+    # rather than by a line search, which would validate one run's cell against the
+    # other run's row: the very substitution this artifact exists to prevent.
+    dec_rows = {f"{s}/{v}": {"lex_art": float(a_), "lex_mixed": float(c)}
+                for s, v, c, a_, _x in re.findall(
+                    r"^\|\s*(quorum|pi-fold)\s+(full|terse)\s*\|\s*([\d.]+)\s*\|"
+                    r"\s*([\d.]+)\s*\|\s*([\d.]+)\s*\|", ranking, re.M)}
+    rer_rows = {f"{s}/{v}": {"lex_art": float(la), "emb_art": float(ea),
+                             "lex_mixed": float(lm), "emb_mixed": float(em)}
+                for s, v, la, ea, lm, em in re.findall(
+                    r"^\|\s*(quorum|pi-fold)\s+(full|terse)\s*\|\s*\*\*([\d.]+)\*\*\s*\|"
+                    r"\s*([\d.]+)\s*\|\s*\*\*([\d.]+)\*\*\s*\|\s*([\d.]+)\s*\|",
+                    ranking, re.M)}
+    for run_name, parsed in (("decomposition", dec_rows), ("embedding_rerun", rer_rows)):
+        check(f"{run_name} cells transcribe RANKING-RESULTS.md",
+              live["runs"][run_name]["cells"] == parsed,
+              f"{len(parsed)} rows match the frozen document")
+
+    # No hand-written check count anywhere in the published prose. The README
+    # carried "all twenty-six of its checks pass" while the script ran thirty-
+    # seven, and the paper carried the same number one revision later. A count of
+    # a growing thing, written by hand, goes stale by default.
+    readme = (HERE.parent / "README.md").read_text()
+    stale = re.findall(
+        r"(?:twent|thirt|fort|fift)[a-z-]*\s+(?:of\s+its\s+)?checks?|"
+        r"all\s+[a-z-]+\s+of\s+its\s+checks", readme, re.I)
+    check("the README states no hand-written check count", not stale,
+          f"found: {stale}" if stale else "none, so it cannot go stale")
+
+    stores_block = re.search(r'stores:\s*\[(.*?)\]', source, re.S)
+    check("figure plots exactly the frozen stores",
+          bool(stores_block)
+          and set(re.findall(r'key:\s*"(\w+)"', stores_block.group(1))) == set(proj_of),
+          f"{sorted(proj_of)}")
     groups = re.findall(r'corpus:\s*"([^"]+)",\s*rows:\s*\[(.*?)\]', source, re.S)
     surface_of = {"records only": "art", "records and journal entries competing": "mixed"}
     seen = 0

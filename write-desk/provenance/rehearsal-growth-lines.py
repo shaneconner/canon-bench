@@ -173,13 +173,28 @@ def main() -> int:
     root = Path(args[0])
     want_rows = "--rows" in sys.argv
 
+    # The paper says "all four rehearsals". Globbing and accepting whatever turns
+    # up would report determinism from ONE tree, and would also pass silently if a
+    # fifth appeared. Name them, and require exactly this set.
+    EXPECTED = {
+        "20260820-w4-fake-001",
+        "20260821-w4r-fake-001",
+        "20260821-w4r-fake-002",
+        "20260822-w4c-fake-001",
+    }
     rehearsals = sorted(p for p in root.rglob("*fake*")
                         if p.is_dir() and (p / "sessions").is_dir())
-    if not rehearsals:
-        print(f"no rehearsal trees under {root}; nothing is concluded.")
+    found_names = {p.name for p in rehearsals}
+    if found_names != EXPECTED:
+        print(f"expected exactly {len(EXPECTED)} rehearsal trees under {root}.")
+        for missing in sorted(EXPECTED - found_names):
+            print(f"  missing: {missing}")
+        for extra in sorted(found_names - EXPECTED):
+            print(f"  unexpected: {extra}")
+        print("nothing is concluded.")
         return 2
 
-    totals, problems = [], 0
+    totals, write_totals, problems = [], [], 0
 
     print(f"{'rehearsal':34s} {'recount':>8s} {'report':>7s} {'resolved':>9s} "
           f"{'planted':>8s} {'incidental':>11s} {'digit':>6s}")
@@ -187,8 +202,20 @@ def main() -> int:
         found, declared = events(capture)
         report = json.loads((capture / "graded-report.json").read_text())
         stated = ((report.get("per_arm") or {}).get("G") or {}).get("total_growth_lines")
+        writes = ((report.get("per_arm") or {}).get("G") or {}).get("total_write_count")
 
         resolved = [r for r in (classify(e) for e in found) if r]
+
+        # The growth line is an arm-G behaviour and the untreated arm must never
+        # fire it. Comparing only the TOTAL against per_arm.G.total_growth_lines
+        # would pass if one firing moved from G to A, so the arms are separated
+        # here and the untreated count has to be zero.
+        off_arm = [r for r in resolved if r["arm"] != "G"]
+        if off_arm:
+            problems += 1
+            print(f"{capture.name:34s} {len(off_arm)} firing(s) outside arm G: "
+                  f"{sorted({r['arm'] for r in off_arm})}")
+            continue
 
         planted = sum(1 for r in resolved if r["planted"])
         digits = sum(1 for r in resolved if r["digit_growth"] and not r["planted"])
@@ -201,18 +228,53 @@ def main() -> int:
               f"{len(resolved):>9d} {planted:>8d} {len(resolved) - planted:>11d} "
               f"{digits:>6d}{'  UNRESOLVED' if not ok else ''}")
         totals.append((len(found), planted, digits, resolved))
+        write_totals.append(writes)
 
     if problems:
         print(f"\n{problems} rehearsal(s) either disagree with their own graded report or "
               f"carry a firing this script could not resolve to a write. Nothing is concluded.")
         return 1
 
+    # Determinism is a claim about WHICH writes fire, not just how many. Comparing
+    # totals alone would pass four rehearsals that agreed on 38 while disagreeing
+    # about how many were the fixture's own exercise sentence, and the breakdown
+    # below is then read off the first rehearsal as if it spoke for all of them.
+    # So compare the breakdown, and compare the firing sites themselves.
     counts = {t for t, _, _, _ in totals}
+    breakdowns = {(t, p_, d) for t, p_, d, _ in totals}
+    def signature(resolved):
+        return tuple(sorted(
+            (r["arm"], r["lineage"], r["index"], r["path"],
+             r["planted"], r["digit_growth"])
+            for r in resolved))
+    signatures = {signature(r) for _, _, _, r in totals}
+
     print(f"\nall {len(totals)} rehearsals fired "
-          + (f"the same {counts.pop()}" if len(counts) == 1
+          + (f"the same {sorted(counts)[0]}" if len(counts) == 1
              else f"differing counts, {sorted(counts)}")
-          + " growth lines"
-          + (", so the floor is deterministic" if len(totals) > 1 else ""))
+          + " growth lines")
+    if len(counts) > 1 or len(breakdowns) > 1 or len(signatures) > 1:
+        print("the rehearsals do NOT agree, so the floor is not deterministic:")
+        if len(counts) > 1:
+            print(f"  totals differ: {sorted(counts)}")
+        if len(breakdowns) > 1:
+            print("  (total, planted, digit-explained) differ: "
+                  f"{sorted(breakdowns)}")
+        if len(signatures) > 1:
+            print(f"  the same count fires at different writes across rehearsals; "
+                  f"{len(signatures)} distinct firing sets")
+        return 1
+    if len(totals) > 1:
+        sites = len(next(iter(signatures)))
+        print(f"identical in all {len(totals)}: same count, same split, and the same "
+              f"{sites} firing sites, so the floor is deterministic")
+
+    # The denominator the paper prints beside the firing count. It was written by
+    # hand into the fact gate; printing it here lets that gate derive it.
+    if len(set(write_totals)) != 1:
+        print(f"the rehearsals disagree on treated writes: {sorted(set(write_totals))}")
+        return 1
+    print(f"each rehearsal ran {write_totals[0]} treated writes")
 
     total, planted, digits, resolved = totals[0]
     # The --rows output reads fields the grouped output does not, so it used to

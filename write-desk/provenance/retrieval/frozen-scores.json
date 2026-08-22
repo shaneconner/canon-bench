@@ -1,18 +1,26 @@
 {
   "quorum": {
     "corpus": {
-      "articles": 744,
-      "journal": 1411,
-      "eligible": 687,
+      "articles": 745,
+      "journal": 1412,
+      "eligible": 688,
       "step": 1,
-      "mixed_candidates": 2154
+      "mixed_candidates": 2156,
+      "truncated_docs": 1008,
+      "total_docs": 2157,
+      "truncated_share": 46.7,
+      "chars_total": 8888130,
+      "chars_dropped": 3035508,
+      "chars_dropped_share": 34.2
     },
     "full": {
       "n": 400,
       "emb_art_recall_at_10": 0.415,
       "emb_mixed_recall_at_10": 0.195,
-      "lex_art_recall_at_10": 0.593,
-      "lex_mixed_recall_at_10": 0.425,
+      "lex_art_recall_at_10": 0.69,
+      "lex_mixed_recall_at_10": 0.565,
+      "lextrunc_art_recall_at_10": 0.593,
+      "lextrunc_mixed_recall_at_10": 0.425,
       "oracle_art_recall_at_10": 1,
       "oracle_mixed_recall_at_10": 1
     },
@@ -20,8 +28,10 @@
       "n": 400,
       "emb_art_recall_at_10": 0.245,
       "emb_mixed_recall_at_10": 0.118,
-      "lex_art_recall_at_10": 0.378,
-      "lex_mixed_recall_at_10": 0.243,
+      "lex_art_recall_at_10": 0.443,
+      "lex_mixed_recall_at_10": 0.3,
+      "lextrunc_art_recall_at_10": 0.378,
+      "lextrunc_mixed_recall_at_10": 0.243,
       "oracle_art_recall_at_10": 1,
       "oracle_mixed_recall_at_10": 1
     }
@@ -32,14 +42,22 @@
       "journal": 166,
       "eligible": 133,
       "step": 1,
-      "mixed_candidates": 223
+      "mixed_candidates": 223,
+      "truncated_docs": 86,
+      "total_docs": 224,
+      "truncated_share": 38.4,
+      "chars_total": 828270,
+      "chars_dropped": 253793,
+      "chars_dropped_share": 30.6
     },
     "full": {
       "n": 133,
       "emb_art_recall_at_10": 0.654,
       "emb_mixed_recall_at_10": 0.398,
-      "lex_art_recall_at_10": 0.797,
-      "lex_mixed_recall_at_10": 0.481,
+      "lex_art_recall_at_10": 0.842,
+      "lex_mixed_recall_at_10": 0.564,
+      "lextrunc_art_recall_at_10": 0.797,
+      "lextrunc_mixed_recall_at_10": 0.481,
       "oracle_art_recall_at_10": 1,
       "oracle_mixed_recall_at_10": 1
     },
@@ -47,8 +65,10 @@
       "n": 133,
       "emb_art_recall_at_10": 0.519,
       "emb_mixed_recall_at_10": 0.113,
-      "lex_art_recall_at_10": 0.564,
-      "lex_mixed_recall_at_10": 0.233,
+      "lex_art_recall_at_10": 0.677,
+      "lex_mixed_recall_at_10": 0.308,
+      "lextrunc_art_recall_at_10": 0.564,
+      "lextrunc_mixed_recall_at_10": 0.233,
       "oracle_art_recall_at_10": 1,
       "oracle_mixed_recall_at_10": 1
     }

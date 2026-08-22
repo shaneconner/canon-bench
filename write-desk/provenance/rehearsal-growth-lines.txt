@@ -4,7 +4,9 @@ rehearsal                           recount  report  resolved  planted  incident
 20260821-w4r-fake-002                    38      38        38        8          30      0
 20260822-w4c-fake-001                    38      38        38        8          30      0
 
-all 4 rehearsals fired the same 38 growth lines, so the floor is deterministic
+all 4 rehearsals fired the same 38 growth lines
+identical in all 4: same count, same split, and the same 38 firing sites, so the floor is deterministic
+each rehearsal ran 136 treated writes
 of those, 8 are the fixture's own exercise sentence and 30 are incidental
 incidental firings explained by a replacement number carrying more digits: 0
 

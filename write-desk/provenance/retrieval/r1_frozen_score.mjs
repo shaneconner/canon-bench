@@ -12,6 +12,19 @@
    retriever commit and the model digest, and keying the cache by digest, is the
    remaining work.
 
+   What each ranker is given. The live harness does not show the two rankers the
+   same text: it indexes the lexical retriever on whole documents and truncates
+   only the strings it sends to the embedding model, which has a short context.
+   The export therefore carries both, and this scorer keeps them apart. An earlier
+   export carried one truncated string and fed it to both, which silently scored
+   BM25 over about half the corpus; the script now refuses such an export.
+
+   Three arms, not two, so the truncation defect can be priced on ONE corpus:
+   embeddings over the truncated text, BM25 over the full documents (shipped
+   behaviour), and BM25 over the truncated text (the defect). Comparing the first
+   frozen run against this one would confound the truncation with the two
+   documents the corpus gained between the exports; the lextrunc arm removes that.
+
    Reports the same eight cells as the live embedding rerun, per store and query
    variant, embedding against shipped BM25:
      art_only@10  - the DEFAULT search surface since journal became opt-in
@@ -92,16 +105,40 @@ for (const [project, data] of Object.entries(frozen.projects)) {
   // The retriever indexes {path, capsule, body}; the frozen text is already the
   // exact concatenation the live harness indexed, so it goes in as the body with
   // the other fields empty rather than being rebuilt and risking a different string.
+  //
+  // The two rankers get DIFFERENT strings, and that is the live harness's shape,
+  // not a convenience here. r1_embed.mjs indexes the lexical retriever on whole
+  // documents and truncates only what it sends to the embedder. Nearly half the
+  // corpus is longer than the cap, so feeding one truncated string to both would
+  // quietly replace the shipped lexical ranker with a different one.
   const asDocs = (rows) => rows.map((r) => ({ path: r.path, capsule: "", body: r.text }));
   const articles = asDocs(data.articles);
   const mixed = asDocs([...data.articles, ...data.journal]);
 
-  const texts = [...data.articles, ...data.journal].map((r) => r.text);
+  const rows = [...data.articles, ...data.journal];
+  if (rows.some((r) => typeof r.embed_text !== "string")) {
+    process.stderr.write(
+      `${project}: the export carries no embed_text. It predates the truncation fix ` +
+      `and its lexical arm was scored over truncated documents; re-freeze it.\n`);
+    process.exit(1);
+  }
+  const texts = rows.map((r) => r.embed_text);
   const vectors = await embedAll(texts);
   const vecByPath = new Map(mixed.map((d, i) => [d.path, vectors[i]]));
 
   const lexArt = new LexicalRetriever(); lexArt.index(articles);
   const lexMixed = new LexicalRetriever(); lexMixed.index(mixed);
+
+  // The LEGACY lexical arm: BM25 over the truncated strings, which is what the
+  // first frozen export gave it by mistake. It is scored here, on this same
+  // corpus, so the cost of that defect is one controlled difference rather than
+  // a comparison across two exports that also differ by two documents. Without
+  // it the reported cost mixes the truncation with the corpus change.
+  const asTrunc = (rows_) => rows_.map((r) => ({ path: r.path, capsule: "", body: r.embed_text }));
+  const truncArticles = asTrunc(data.articles);
+  const truncMixed = asTrunc([...data.articles, ...data.journal]);
+  const lexArtTrunc = new LexicalRetriever(); lexArtTrunc.index(truncArticles);
+  const lexMixedTrunc = new LexicalRetriever(); lexMixedTrunc.index(truncMixed);
 
   // Carry the corpus cardinalities into the result. The paper quotes them beside
   // the rates, and an earlier draft took them from a different run than the one
@@ -114,13 +151,27 @@ for (const [project, data] of Object.entries(frozen.projects)) {
       step: data.step,
       // The mixed corpus a query actually ranks against, with its own entry excluded.
       mixed_candidates: data.articles.length + data.journal.length - 1,
+      // How much of the corpus the embedding arm never sees. The paper quotes
+      // these, and they are the measurement that priced the truncation defect, so
+      // they are computed here from the same rows the rankers were given rather
+      // than recorded by hand somewhere else.
+      truncated_docs: rows.filter((r) => r.embed_text.length < r.text.length).length,
+      total_docs: rows.length,
+      truncated_share: Math.round(
+        (rows.filter((r) => r.embed_text.length < r.text.length).length / rows.length) * 1000) / 10,
+      chars_total: rows.reduce((s, r) => s + r.text.length, 0),
+      chars_dropped: rows.reduce((s, r) => s + (r.text.length - r.embed_text.length), 0),
+      chars_dropped_share: Math.round(
+        (rows.reduce((s, r) => s + (r.text.length - r.embed_text.length), 0) /
+         rows.reduce((s, r) => s + r.text.length, 0)) * 1000) / 10,
     },
   };
   for (const variant of ["full", "terse"]) {
     const queryTexts = data.queries.map((q) => q[variant]);
     const queryVectors = await embedAll(queryTexts);
     let n = 0;
-    const hits = { emb_art: 0, emb_mixed: 0, lex_art: 0, lex_mixed: 0, oracle_art: 0, oracle_mixed: 0 };
+    const hits = { emb_art: 0, emb_mixed: 0, lex_art: 0, lex_mixed: 0,
+                   lextrunc_art: 0, lextrunc_mixed: 0, oracle_art: 0, oracle_mixed: 0 };
 
     for (let qi = 0; qi < data.queries.length; qi += 1) {
       const q = data.queries[qi];
@@ -148,6 +199,8 @@ for (const [project, data] of Object.entries(frozen.projects)) {
       if (embRank(mixed).some((p) => targets.has(p))) hits.emb_mixed += 1;
       if (lexRank(lexArt, articles).some((p) => targets.has(p))) hits.lex_art += 1;
       if (lexRank(lexMixed, mixed).some((p) => targets.has(p))) hits.lex_mixed += 1;
+      if (lexRank(lexArtTrunc, truncArticles).some((p) => targets.has(p))) hits.lextrunc_art += 1;
+      if (lexRank(lexMixedTrunc, truncMixed).some((p) => targets.has(p))) hits.lextrunc_mixed += 1;
       if (oracleRank(articles).some((p) => targets.has(p))) hits.oracle_art += 1;
       if (oracleRank(mixed).some((p) => targets.has(p))) hits.oracle_mixed += 1;
     }

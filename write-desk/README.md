@@ -76,7 +76,9 @@ strengths, not all of them.
   with a SHA-256 manifest and scripts that check the claims rather than restate
   them. `regenerate.py` rebuilds the two data files above from the graded
   reports, the fixture generators, and the frozen retrieval scores, and diffs
-  them against the published copies; all twenty-six of its checks pass.
+  them against the published copies. It prints one line per check and exits
+  non-zero on any disagreement, so run it rather than trusting a count written
+  here: this sentence carried a stale one through four review rounds.
   `drift-sweep.py` reproduces the drift audit. `verify-session-counts.py`
   recounts every capture and separates what it verified from what it could only
   take on the paper's word. `rehearsal-growth-lines.py` resolves every rehearsal
@@ -164,7 +166,7 @@ projects are used. They did move: six of the eight BM25 cells differ between the
 decomposition run and the embedding rerun, by up to 0.008, and the query totals
 differ by two, 400 plus 104 against the 506 the later section quotes. Both stores
 have grown again since, `quorum` from 742 articles and 1,402 journal entries to
-744 and 1,411, and `pi-fold` from 56 and 136 to 58 and 166, so neither run
+745 and 1,412, and `pi-fold` from 56 and 136 to 58 and 166, so neither run
 reproduces today. What the embedding result rests on is unaffected, because both
 rankers scored one corpus state inside a single execution; what does not survive
 is reading the two runs as a replication of each other. The script's header
@@ -186,12 +188,35 @@ version.
 points".** There are eight, not sixteen: two stores by two query variants by two
 corpora, each comparing BM25 against the embedding ranker. Recounting the
 document's own table gives eight gaps spanning 9.5 to 35.5 points. The paper
-reports eight throughout, and now reports the frozen run's eight at 4.5 to 23.0.
+reports eight throughout, and now reports the frozen run's eight at 15.8 to 37.0.
+
+**provenance/retrieval/README.md, "BM25 fell in eight of eight cells, by 2.2 to
+13.3 points".** Withdrawn. That fall was a defect in the freezing, not in the
+corpus. The first `r1_freeze.mjs` wrote one string per document and the scorer
+gave it to both rankers, but the live harness truncates at 3,500 characters only
+what it sends to the embedding model and indexes the lexical ranker on whole
+documents. With 46.7 percent of `quorum` documents and 38.4 percent of `pi-fold`
+documents over the cap, the first frozen run scored BM25 over a corpus missing
+34.2 and 30.6 percent of its characters. External review found it, as it found
+the drift the freezing was meant to fix. The export now carries `text` and
+`embed_text` separately and the scorer refuses an export without both.
+Corrected, the embedding arm is identical to three decimals in all eight cells
+and the lexical arm rises in all eight by 4.5 to 14.0 points. Against the live
+runs the comparison then holds only for `quorum`, whose 400 queries are a
+chronological prefix ending 2026-08-05 and so fixed before all three runs; there
+lexical moves at most 2.0 points and the embedding arm at most 1.2, meaning the
+live measurement reproduced. `pi-fold` is uncapped and its query population grew
+from 104 to 106 to 133 across the three runs, so its four cells are not
+differenced. That README and this entry carry the corrected numbers; the earlier
+table in it is replaced rather than annotated, because it is a working document
+rather than a frozen result.
 
 **W4C-RESULTS-001.md, "one lineage reproduced its result exactly".** Two did.
-`observatory_chiller` repeated at -10 and `gravel_washplant` at -2, which the
-table directly beneath that sentence shows: 11 against 9 in W4 and 12 against 10
-in W4C. The sensitivity statement is unaffected, because removing
+`observatory_chiller` repeated at -10, 12 against 2 in W4 and 11 against 1 in
+W4C, and `gravel_washplant` at -2, 11 against 9 and then 12 against 10. A first
+version of this entry named both lineages and then gave `gravel_washplant`'s pair
+of totals for both of them, which is the same error of scope the entry was
+correcting. The sensitivity statement is unaffected, because removing
 `observatory_chiller` alone still takes the pooled contrast from -14 to -4. The
 paper reports two.
 

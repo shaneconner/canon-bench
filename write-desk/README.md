@@ -25,24 +25,31 @@ agent whose answers are graded per slot against a hidden oracle.
 | W1 | can a rule be enforced at the tool boundary rather than judged by the model? | tool-enforced rules err at zero across five captures; model-judged rules err at 10 to 20 percent on near-rank precedence |
 | W2 | do writers select the right facts and file them at the right address? | yes, 94/94 governing; but they narrate superseded values into articles in 63 of 64 stores, and prompt-side guidance moves noise without moving that habit |
 | W3 | does the store's economy improve as history accumulates? | no. under shipped doctrine the store grows faster than the raw transcripts it distills (18.5KB against a 7.9KB pile at eight sessions) and staleness compounds linearly |
-| W4 | can the tool's own voice at the write boundary change the habit the prompt could not? | yes. a recurring line naming body growth, which fired after 117 of the 198 treated writes, cut standing superseded values by 42 percent, 88/96 against 51/96, and shrank the median store by a fifth with no reader regression |
+| W4 | can the tool's own voice at the write boundary change the habit the prompt could not? | yes on this capture. a recurring line naming body growth, which fired after 117 of the 198 treated writes, went with standing superseded values 42 percent lower, 88/96 against 51/96, and a median store a fifth smaller. Read the size against W4C below, which did not reproduce it |
 | W4R | does that hold on a second model? | the staleness effect recurs almost exactly (87/96 against 45/96) and the byte savings do not. Read that as a dissociation, not as independence: verbosity is confounded with model identity here, so the two captures cannot separate the mechanism from its side effect |
+| W4C | does it survive reversing the arm order? | the direction does and the size does not. Counterbalanced on the first model, 85/96 against 71/96, where the same model in fixed order gave 88/96 against 51/96. Four of five registered predictions failed. The largest source of variation this programme has measured is between captures, not between arms |
 
 W4's intervention shipped in the package as a result of this measurement
 (pi-canon commit `e1312e6`), and W4's baseline arm produced the programme's
 first observed staleness harm: a reader that pulled a reversed policy out of a
-narrated store and made the wrong decision.
+narrated store and made the wrong decision. W4C produced the second, from a
+TREATED store, on the same lineage and the same task. Two harms in 96 reader
+sessions, one from each arm. Nothing here supports "no reader regression" as a
+statement about the intervention, and that phrase has been removed from the
+package and the paper.
 
 ## What is here
 
-Each stage carries its design document, written and frozen before the build,
-and its results document. W3 and W4 registered predictions in those documents
-before any model ran, including the ones that turned out wrong: W3's central
-prediction (that accumulation would favor the store on cost) is refuted in
-W3's own results. W1J and W2 froze their metrics but not their predictions,
-and W4R reused W4's predictions without a design document of its own. Read
-the preregistration claim as covering two of the five stages, not all of
-them.
+Each stage carries its design document and its results document. W3 and W4
+registered predictions before any model ran, including the ones that turned out
+wrong: W3's central prediction (that accumulation would favor the store on cost)
+is refuted in W3's own results. W4C registered five predictions and a reading
+rule after its capture had launched but before any grading, which is weaker and
+is recorded as weaker in its own design document; four of the five failed and
+all four are reported. W1J and W2 froze their metrics but not their predictions,
+and W4R reused W4's predictions without a design document of its own. Read the
+preregistration claim as covering three of the six stages at two different
+strengths, not all of them.
 
 - `W1-RESULTS.md`, the consolidated W1e through W1j record
 - `W2-DESIGN-001.md` and `W2-RESULTS-001.md`, write selection and placement
@@ -50,21 +57,27 @@ them.
 - `W4-DESIGN-001.md` and `W4-RESULTS-001.md`, the growth line
 - `W4R-RESULTS-001.md`, the growth line repeated on the second subject model
   over a byte-identical instrument
+- `W4C-DESIGN-001.md` and `W4C-RESULTS-001.md`, the counterbalanced capture that
+  took the magnitude back. The design document says plainly that its predictions
+  were registered after launch and before grading, which is weaker than W3's and
+  W4's pre-build registration, and it committed in advance to reporting the
+  capture whichever way it came back. It came back the wrong way and is reported
 - `RANKING-RESULTS.md`, the offline retrieval benchmark on two real stores that
   tested the retrieval explanation directly
-- `data/per-lineage-endpoints.csv`, 64 rows covering both controlled captures
-  and the accumulation study: capture, model, arm, lineage, depth, superseded
-  values standing, superseded values available, store bytes, transcript pile
-  bytes, article count, journal count. Every per-lineage figure and every
-  direction count in the paper recomputes from this file.
-- `data/figure-data.js`, every plotted series in the paper, including the four
-  staleness trajectories and the eight paired endpoints per model, so a reader
+- `data/per-lineage-endpoints.csv`, 80 rows covering all three controlled
+  captures and the accumulation study: capture, model, arm, lineage, depth,
+  superseded values standing, superseded values available, store bytes,
+  transcript pile bytes, article count, journal count. Every per-lineage figure
+  and every direction count in the paper recomputes from this file.
+- `data/figure-data.js`, every plotted series in the paper, including the six
+  staleness trajectories and the eight paired endpoints per capture, so a reader
   can check the charts against the numbers without reading dots off an axis
 - `provenance/`, the artifacts every source-level claim in the paper rests on,
-  with a SHA-256 manifest and two scripts that check the claims rather than
+  with a SHA-256 manifest and three scripts that check the claims rather than
   restate them. `regenerate.py` rebuilds the two data files above from the
   graded reports and the fixture generators and diffs them against the published
-  copies. `drift-sweep.py` reproduces the drift audit. Start at
+  copies; all fifteen of its checks pass. `drift-sweep.py` reproduces the drift
+  audit. `verify-session-counts.py` recounts every capture. Start at
   `provenance/README.md`.
 
 ## Protocol

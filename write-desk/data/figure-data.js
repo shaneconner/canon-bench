@@ -8,8 +8,12 @@
 //       Medians reproduce W3-RESULTS-001.md exactly (3198.5 / 4614 / 9843.5 / 18511).
 //   f5  w4/runs/20260820-w4-model-001/graded-report.json  per_arm[*].trajectory
 //       w4/runs/20260821-w4r-model-003/graded-report.json per_arm[*].trajectory
+//       w4/runs/20260822-w4c-model-001/graded-report.json per_arm[*].trajectory
 //       Availability denominators from w4_lineage.state_at()['superseded_as_of'].
-//   f6  per-lineage endpoints from the same two graded reports, store_grades.
+//   f6  per-lineage endpoints from the same three graded reports, store_grades.
+//
+// canon-bench write-desk/provenance/regenerate.py rebuilds f5's series and f6's
+// pairs from those reports and fails if anything here disagrees with them.
 window.PAPER_DATA = {
 
   // -- Adjudication of the fourteen scored misses ---------------------------
@@ -103,17 +107,25 @@ window.PAPER_DATA = {
       { model: "first",  arm: "line",    values: [0, 13, 15, 22, 27, 32, 44, 51] },
       { model: "second", arm: "control", values: [0, 11, 25, 36, 52, 63, 79, 87] },
       { model: "second", arm: "line",    values: [0,  8, 18, 19, 23, 32, 42, 45] },
+      // The counterbalanced capture, first model again, four lineages taking the
+      // treated arm first. Its control lands with the other two and its treated
+      // arm does not, which is the reason the figure carries a third pair.
+      { model: "counter", arm: "control", values: [0, 13, 28, 38, 52, 60, 76, 85] },
+      { model: "counter", arm: "line",    values: [0,  8, 22, 30, 37, 50, 64, 71] },
     ],
   },
 
   // -- Figure: the two effects come apart -----------------------------------
-  // Eight paired lineages per model. Each pair is the same history written
+  // Eight paired lineages per capture. Each pair is the same history written
   // once by the shipped tool and once with the growth line, so the change is
   // within-lineage. Percent change is computed in the figure, not here.
+  // The three captures disagree about WHICH effect is the larger one, which is
+  // the reason all three are drawn rather than the two that agree.
   f6: {
     models: [
       { key: "first",  label: "first model" },
       { key: "second", label: "second model" },
+      { key: "counter", label: "counterbalanced" },
     ],
     metrics: [
       { key: "store", label: "store size" },
@@ -128,6 +140,10 @@ window.PAPER_DATA = {
                        [10265, 10344], [10662, 10393], [9853, 10595], [10736, 9804]],
       "second:stale": [[11, 7], [11, 9], [12, 1], [9, 1],
                        [11, 11], [11, 11], [11, 5], [11, 0]],
+      "counter:store": [[22906, 12022], [21979, 12405], [16046, 13168], [23125, 14230],
+                      [22894, 11161], [22193, 12686], [14886, 11545], [20135, 12506]],
+      "counter:stale": [[9, 8], [10, 11], [12, 10], [12, 11],
+                      [11, 1], [12, 10], [7, 9], [12, 11]]
     },
   },
 };

@@ -39,8 +39,10 @@ import w4_lineage  # noqa: E402
 CAPTURES = {
     "w4": ("first", HERE / "captures/graded-report-w4.json"),
     "w4r": ("second", HERE / "captures/graded-report-w4r.json"),
+    "w4c": ("counter", HERE / "captures/graded-report-w4c.json"),
     "w3": ("first", HERE / "captures/graded-report-w3.json"),
 }
+CONTROLLED = ("w4", "w4r", "w4c")
 
 failures = []
 
@@ -54,7 +56,7 @@ def check(name: str, ok: bool, detail: str = "") -> None:
 def endpoint_rows() -> list[dict]:
     """One row per lineage per arm per capture, as the CSV carries them."""
     rows = []
-    for capture in ("w4", "w4r"):
+    for capture in CONTROLLED:
         model, path = CAPTURES[capture]
         grades = json.loads(path.read_text())["store_grades"]
         for key in sorted(grades):
@@ -99,7 +101,7 @@ def endpoint_rows() -> list[dict]:
 def trajectory_series() -> dict:
     """The four cumulative staleness series plotted against session depth."""
     out = {}
-    for capture in ("w4", "w4r"):
+    for capture in CONTROLLED:
         model, path = CAPTURES[capture]
         grades = json.loads(path.read_text())["store_grades"]
         for arm in ("A", "G"):
@@ -128,7 +130,7 @@ def availability_schedule() -> list[int]:
 
 def paired(rows: list[dict], model: str, metric: str) -> list[list[int]]:
     key = "store_bytes" if metric == "store" else "stale"
-    capture = "w4" if model == "first" else "w4r"
+    capture = {"first": "w4", "second": "w4r", "counter": "w4c"}[model]
     by_lineage = {}
     for r in rows:
         if r["capture"] != capture:
@@ -154,7 +156,7 @@ def main() -> int:
     rows = endpoint_rows()
     fields = ["capture", "model", "arm", "lineage", "depth", "stale",
               "superseded_total", "store_bytes", "pile_bytes", "articles", "journal"]
-    order = {"w4": 0, "w4r": 1, "w3": 2}
+    order = {"w4": 0, "w4r": 1, "w4c": 2, "w3": 3}
     rows.sort(key=lambda r: (order[r["capture"]], r["lineage"], r["depth"], r["arm"]))
 
     csv_path = DATA / "per-lineage-endpoints.csv"
@@ -196,7 +198,7 @@ def main() -> int:
         want = series[(model, arm_of[arm])]
         check(f"trajectory {model}/{arm}", json.loads(values) == want, str(want))
 
-    for model in ("first", "second"):
+    for model in ("first", "second", "counter"):
         for metric in ("store", "stale"):
             want = paired(rows, model, metric)
             got = re.search(rf'"{model}:{metric}":\s*(\[\[.*?\]\])', source, re.S)

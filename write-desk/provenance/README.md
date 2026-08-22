@@ -17,7 +17,8 @@ python3 regenerate.py
 ```
 
 No arguments, no network, no dependencies beyond the standard library. It reads
-only what ships here, rebuilds `../data/per-lineage-endpoints.csv` and the
+only what ships here, covers all three controlled captures and the accumulation
+study, rebuilds `../data/per-lineage-endpoints.csv` and the
 plotted series in `../data/figure-data.js` from the graded reports and the
 fixture generators, compares them against the published copies, and prints one
 line per check. It exits non-zero if anything disagrees.
@@ -48,6 +49,8 @@ sha256sum -c MANIFEST.sha256
 | `figures/figure-4-session.jsonl` | the growth-line figure quotes a real tool response with its real byte counts, `75 -> 960`, from ordinal 32 of the first controlled capture |
 | `captures/graded-report-w4.json` | the first capture's endpoints: 88 and 51 of 96 standing, the per-session trajectories, the 117 growth lines |
 | `captures/graded-report-w4r.json` | the same for the second model: 87 and 45 of 96, 99 growth lines |
+| `captures/graded-report-w4c.json`, `captures/contract-w4c.json` | the counterbalanced capture: 85 and 71 of 96, 126 growth lines, and the contract carrying `arm_order_by_lineage` and the pinned digests it was verified against |
+| `fixtures/w4c_build_instrument.py` | the counterbalance is asserted in the builder, four lineages each way, with each lineage's two writer blocks kept from interleaving |
 | `captures/graded-report-w3.json` | the accumulation study's per-depth stores and piles |
 | `captures/graded-report-w2.json` | the selection study's 32 stores, their staleness, and the arm medians |
 | `captures/contract-w4.json`, `contract-w4r.json` | what each capture pinned: model, thinking setting, timeouts, exact decimal cost ceiling, zero retries, and the SHA-256 of every source, package file, and arm tool |

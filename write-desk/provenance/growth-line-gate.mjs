@@ -1,19 +1,23 @@
 /* The shipping gate for the growth line, copied verbatim from tests/verify.mjs in
-   the pi-canon repository. It is not runnable on its own: `canon` and `pass` come
-   from that suite. It ships here so the paper's claim that the line shipped with a
-   gate asserting it stays quiet on creation, shrinking, capsule-only edits, and
-   no-op writes can be read rather than believed. The message text the gate matches
-   is the same text Figure 4 quotes. */
+   the pi-canon repository at commit 0339489. The block is lines 2318 to 2343 of
+   that file and its SHA-256 is
+   d2217d83dd0aa218b770bf1de08a01bab758cbb53bb8c1904703f554cddfde45
+   so a reader can confirm this copy is the shipped one rather than take it on
+   trust. It is not runnable on its own: `canon` and `pass` come from that suite.
+   It ships here so the paper's claim that the line shipped with a gate asserting
+   it stays quiet on creation, shrinking, capsule-only edits, and no-op writes can
+   be read rather than believed. The message text the gate matches is the same text
+   Figure 4 quotes. */
 
 /* The growth line: when a rewrite grows the body, the write's own result names
-   the growth in bytes and restates the article/journal split. Measured (W4, two
-   arms over byte-identical eight-session lineages): prompt-side guidance does not
-   change the narration habit, and the arm that got this line at the write
-   boundary ended with 51 of 96 standing superseded values against the untreated
-   arm's 88, with a median store a fifth smaller and no reader regression. Arms
-   ran in a fixed order, so read that as a difference between two conditions.
-   Creation is not growth, shrinking is not growth, a capsule-only write never
-   grows the stored body, and the no-op path returns before it. */
+   the growth in bytes and restates the article/journal split. Measured over three
+   captures on byte-identical eight-session lineages: prompt-side guidance does not
+   change the narration habit, and the arm that got this line ended with fewer
+   standing superseded values every time, 51 and 45 and 71 of 96 against 88 and 87
+   and 85. The direction holds and the size does not; the counterbalanced capture
+   kept the first and lost most of the second. What this gate pins is the behavior,
+   not the effect. Creation is not growth, shrinking is not growth, a capsule-only
+   write never grows the stored body, and the no-op path returns before it. */
 const seeded = await canon({ action: "write", path: "src/ledger", capsule: "Ledger.", body: "# Ledger\nShort." });
 assert.match(seeded, /Wrote src\/ledger\./);
 assert.doesNotMatch(seeded, /Body grew/);

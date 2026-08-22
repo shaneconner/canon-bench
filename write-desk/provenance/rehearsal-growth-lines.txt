@@ -1,0 +1,25 @@
+rehearsal                           recount  report  planted  incidental
+20260820-w4-fake-001                     38      38        8          30
+20260821-w4r-fake-001                    38      38        8          30
+20260821-w4r-fake-002                    38      38        8          30
+20260822-w4c-fake-001                    38      38        8          30
+
+all 4 rehearsals fired the same 38 growth lines, so the floor is deterministic
+of those, 8 are the fixture's own exercise sentence and 30 are incidental
+
+what grew, by byte delta:
+  +2   x11  saltpan/rake/rota
+           - The operating mode is standard.
+           + The operating mode is aggressive.
+  +4   x6   saltpan/rake/rota
+           - The operating mode is standard.
+           + The operating mode is conservative.
+  +14  x5   saltpan/rake/rota
+           - Starting a run requires two-person confirmation.
+           + Runs may start single-operator; no second signoff is required.
+  +27  x8   saltpan/pump/house
+           - The export is consumed by svc-bight-40.
+           + The export was decommissioned; svc-bight-40 no longer consumes it.
+  +87  x8   the fixture's exercise sentence
+
+deltas explained by a replacement number carrying more digits: 0

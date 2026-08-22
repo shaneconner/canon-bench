@@ -124,6 +124,40 @@ paper drawn from this programme says the two contrasts came from the same
 generated histories and the same nominal arm definitions, and that the executions
 were not byte-identical.
 
+**RANKING-RESULTS.md, "Same harness, same 506 queries".** The harness is the
+same and the stores and queries are not. `r1_embed.mjs` reads two live project
+stores at their paths rather than a frozen corpus, and it derives the eligible
+query set when it runs, so both the corpus and the query population move as the
+projects are used. They did move: six of the eight BM25 cells differ between the
+decomposition run and the embedding rerun, by up to 0.008, and the query totals
+differ by two, 400 plus 104 against the 506 the later section quotes. Both stores
+have grown again since, `quorum` from 742 articles and 1,402 journal entries to
+744 and 1,411, and `pi-fold` from 56 and 136 to 58 and 166, so neither run
+reproduces today. What the embedding result rests on is unaffected, because both
+rankers scored one corpus state inside a single execution; what does not survive
+is reading the two runs as a replication of each other. The script's header
+carried the same error and also named the wrong embedding model, and both are
+corrected in place because it is code rather than a frozen record. The paper
+drawn from this programme states the mutability, the observed spread, and that
+freezing an immutable export is the fix and is not done.
+
+**W4-RESULTS-001.md, "the perfect-actor preflight fired 30 times from
+digit-length variance alone".** The count is right and the cause is wrong. The
+preflight fires the growth line 38 times across arm G's 136 writes, identically
+in all four rehearsals. Eight of those are the fixture exercising the line on
+purpose: the injected body appends "Rehearsal note, deliberately grown: this
+sentence exists to exercise the growth voice", worth 87 bytes each. The
+remaining 30 are the number this sentence means. None of them is a digit-length
+change. They are correct rewrites whose replacement wording is longer than what
+it replaced: "standard" becoming "aggressive" for two bytes, "standard"
+becoming "conservative" for four, a two-person confirmation rule replaced by a
+single-operator rule for fourteen, and a consumer statement replaced by a
+decommissioning statement for twenty-seven. The point the sentence was making
+survives, and is if anything stronger: fire count is not a narration proxy,
+because the writes that fired here were correct. Recount with
+`provenance/rehearsal-growth-lines.py`. The paper drawn from this programme
+carries the corrected breakdown and cause.
+
 **W1-RESULTS.md, the 67-cell count.** Finding 3 reads "The tiebreak variants
 R3/R4 were flawless in every arm (0 misses in 67 conditional cells)". The count
 is wrong, and the document's own table disproves it. R3 plus R4 gives 15+12=27

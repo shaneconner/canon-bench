@@ -41,6 +41,15 @@ deposit. `session-counts.txt` is our run of it.
 sha256sum -c MANIFEST.sha256
 ```
 
+Regenerate the manifest with the same command that built it. Running the Python
+scripts leaves a `__pycache__` beside the fixtures, and it is excluded here
+because compiled bytecode is not an artifact anyone should be asked to check.
+
+```
+find . -type f ! -name MANIFEST.sha256 -not -path '*/__pycache__/*' \
+  | sed 's|^\./||' | sort | xargs sha256sum > MANIFEST.sha256
+```
+
 ## What each file authenticates
 
 | file | the claim it lets you check |
@@ -58,9 +67,10 @@ sha256sum -c MANIFEST.sha256
 | `arms/tool-A-vs-G.diff` | the arms differ by one added block and the single line that splices its output into the response, and by nothing else |
 | `fixtures/w4_lineage.py`, `fixtures/w3_lineage.py` | the histories are generated, byte-identical across arms, and the availability denominators are a property of the fixture rather than of any run |
 | `drift-sweep.py`, `drift-sweep.txt` | no output from the mid-capture package drift reached any model |
+| `rehearsal-growth-lines.py`, `rehearsal-growth-lines.txt` | the no-model rehearsal fires the line 38 times in all four runs, 8 of them the fixture's own exercise sentence and 30 incidental, and none of the 30 from a replacement number carrying more digits. This is the recount behind the W4 erratum |
 | `regenerate.py` | the published CSV and plotted series are derived from the reports above and were not hand-edited |
-| `growth-line-gate.mjs` | the line shipped with a test asserting it stays quiet on creation, shrinking, capsule-only edits, and no-op writes, and matching the same message text Figure 4 quotes |
-| `verify-session-counts.py`, `session-counts.txt` | the ten captures' run and protocol-valid counts, recounted from the capture trees rather than restated |
+| `growth-line-gate.mjs` | the line shipped with a test asserting it stays quiet on creation, shrinking, capsule-only edits, and no-op writes, and matching the same message text Figure 4 quotes. Its header names the pi-canon commit it was copied from and the SHA-256 of the copied block, so the copy can be checked against the package rather than assumed current |
+| `verify-session-counts.py`, `session-counts.txt` | the eleven captures' run and protocol-valid counts, recounted from the capture trees rather than restated |
 
 ## What this does not establish
 

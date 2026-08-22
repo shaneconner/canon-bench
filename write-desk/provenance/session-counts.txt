@@ -12,6 +12,9 @@ capture                                 listed  report  valid  paper
 20260820-w3-model-001                      248     248    247  248/247 ok
 20260820-w4-model-001                      160     160    160  160/160 ok
 20260821-w4r-model-003                     160     160    160  160/160 ok
+20260822-w4c-model-001                     160     160    160  160/160 ok
 
-totals as printed in the paper: 3576 run, 3565 protocol-valid
+totals as printed in the paper: 3736 run, 3725 protocol-valid over 11 captures
+recounted from the trees:       3736 run, 3725 protocol-valid over 11 captures
+note: 20260817-w1h-model-001's 512 protocol-valid is the paper's figure, not a recount; its report carries no field to read. Every other row was read off a report.
 every capture found agrees with the paper.

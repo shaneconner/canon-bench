@@ -12,7 +12,9 @@ It reads only what ships in this bundle: the four graded reports under
 copies byte for byte where the format allows and value for value where it does
 not, and prints one line per check. Exit status is 0 only if every check passes.
 
-Pass `--write` to overwrite the published copies instead of comparing.
+Pass `--write` to overwrite the published CSV. It writes only that file, then runs
+every check as usual: `figure-data.js` is always compared and never written, so a
+series that has drifted still fails after a --write.
 
 What this does and does not establish. It establishes that the published CSV and
 the plotted series are derived from the graded reports and the fixture
@@ -150,7 +152,7 @@ def js_array(source: str, name: str) -> list:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--write", action="store_true",
-                        help="overwrite the published CSV instead of comparing")
+                        help="overwrite the published CSV, then run every check as usual")
     args = parser.parse_args()
 
     rows = endpoint_rows()
@@ -166,7 +168,11 @@ def main() -> int:
             writer.writeheader()
             writer.writerows(rows)
         print(f"wrote {csv_path} with {len(rows)} rows")
-        return 0
+        # Fall through rather than returning. Writing and then not checking is how
+        # a regeneration script comes to certify nothing: the CSV comparison below
+        # becomes trivial, but the series checks against figure-data.js still run,
+        # and those are the ones --write cannot repair, because this script does
+        # not write that file.
 
     published = list(csv.DictReader(csv_path.open()))
     check("CSV row count", len(published) == len(rows),

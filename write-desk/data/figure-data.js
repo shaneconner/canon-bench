@@ -1,8 +1,13 @@
 // Every number in the write-desk paper's figures, transcribed from the frozen
 // results documents and the graded reports they were computed from.
 //
-//   f2  lab/ranking/RESULTS.md, embedding rerun table (line 89) and the
-//       article-quota table (line 47). Store identities at line 9.
+//   f2  provenance/retrieval/frozen-scores.json, one execution of
+//       r1_frozen_score.mjs against the frozen corpus export
+//       sha256 14b04fe4664057c908e4206775071228b7bf2422f364f398aa2884a6ff55752f.
+//       Rates, record counts, and query counts all come from that one run. They
+//       used to come from two: the rates from the live embedding rerun and the
+//       counts from the live decomposition run before it, which is how eight
+//       rates exact over 106 queries came to be labelled n=104.
 //   f4  w3/runs/20260820-w3-model-001/graded-report.json
 //       store_grades[*].trajectory[-1].{final_store_bytes,transcript_pile_bytes}
 //       Medians reproduce W3-RESULTS-001.md exactly (3198.5 / 4614 / 9843.5 / 18511).
@@ -13,7 +18,9 @@
 //   f6  per-lineage endpoints from the same three graded reports, store_grades.
 //
 // canon-bench write-desk/provenance/regenerate.py rebuilds f5's series and f6's
-// pairs from those reports and fails if anything here disagrees with them.
+// pairs from those reports, checks every f2 value and label against
+// frozen-scores.json, and fails if anything here disagrees with them. It does
+// not rebuild f4, so a hand edit there would not be caught.
 window.PAPER_DATA = {
 
   // -- Adjudication of the fourteen scored misses ---------------------------
@@ -44,10 +51,12 @@ window.PAPER_DATA = {
   // against retrieval/frozen-scores.json so that cannot recur.
   //
   // The two stores differ in size by more than an order of magnitude, and the
-  // SMALL one scores higher in SEVEN of the eight cells. The exception is BM25
-  // on terse queries with journal entries competing, where the mature project
-  // leads 0.243 to 0.233. Ordered small-store-first so that reading down the
-  // figure is reading down the record count.
+  // SMALL one scores higher in SIX of the eight comparisons. Both exceptions are
+  // the terse query with journal entries competing, where the mature project
+  // leads on BM25 at 0.243 to 0.233 AND on embeddings at 0.118 to 0.113. An
+  // earlier comment said seven of eight because only the BM25 pair was checked.
+  // Ordered small-store-first so that reading down the figure is reading down
+  // the record count.
   f2: {
     // Rows are labelled by what the store IS to a reader, not by its project
     // name: "pi-fold" and "quorum" mean nothing outside this workspace, and the

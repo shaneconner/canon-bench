@@ -215,6 +215,15 @@ def main() -> int:
           + (", so the floor is deterministic" if len(totals) > 1 else ""))
 
     total, planted, digits, resolved = totals[0]
+    # The --rows output reads fields the grouped output does not, so it used to
+    # raise a KeyError that only a --rows run would find. Check the field set on
+    # every run instead of leaving one output mode unexercised.
+    ROW_FIELDS = ("session", "arm", "lineage", "index", "path",
+                  "before_bytes", "after_bytes", "delta", "planted", "digit_growth")
+    missing = {f for r in resolved for f in ROW_FIELDS if f not in r}
+    if missing:
+        print(f"\nrow output would fail on missing field(s): {sorted(missing)}")
+        return 1
     print(f"of those, {planted} are the fixture's own exercise sentence and "
           f"{total - planted} are incidental")
     print(f"incidental firings explained by a replacement number carrying more digits: {digits}")
@@ -235,10 +244,12 @@ def main() -> int:
               + ", ".join(f"+{k} x{v}" for k, v in sorted(d.items())))
 
     if want_rows:
-        print("\nsession\tordinal\tpath\tbefore\tafter\tdelta\tplanted\tdigit_growth")
+        print("\nsession\tarm\tlineage\tsession_index\tpath\tbefore\tafter\tdelta"
+              "\tplanted\tdigit_growth")
         for r in resolved:
-            print(f"{r['session']}\t{r['ordinal']}\t{r['path']}\t{r['before_bytes']}\t"
-                  f"{r['after_bytes']}\t{r['delta']}\t{r['planted']}\t{r['digit_growth']}")
+            print(f"{r['session']}\t{r['arm']}\t{r['lineage']}\t{r['index']}\t{r['path']}\t"
+                  f"{r['before_bytes']}\t{r['after_bytes']}\t{r['delta']}\t{r['planted']}\t"
+                  f"{r['digit_growth']}")
     return 0
 
 

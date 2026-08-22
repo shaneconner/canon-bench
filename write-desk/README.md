@@ -170,8 +170,30 @@ rankers scored one corpus state inside a single execution; what does not survive
 is reading the two runs as a replication of each other. The script's header
 carried the same error and also named the wrong embedding model, and both are
 corrected in place because it is code rather than a frozen record. The paper
-drawn from this programme states the mutability, the observed spread, and that
-freezing an immutable export is the fix and is not done.
+drawn from this programme states the mutability and the observed spread. Freezing
+an immutable export was the fix and it is now done: see `provenance/retrieval/`,
+which also measures what the old defect cost. Figure 1 plots the frozen run, so
+the numbers in this document are superseded by it for anything except the history
+of how the benchmark used to be measured.
+
+**RANKING-RESULTS.md, "landed within noise of shipped".** No noise band was
+estimated for these queries. The tuned variants moved the score by small amounts
+in no consistent direction, which is what the observation supports; "within
+noise" claims a band that was never measured. The paper says the weaker and true
+version.
+
+**RANKING-RESULTS.md, "Lexical wins all sixteen comparisons, by 11 to 36
+points".** There are eight, not sixteen: two stores by two query variants by two
+corpora, each comparing BM25 against the embedding ranker. Recounting the
+document's own table gives eight gaps spanning 9.5 to 35.5 points. The paper
+reports eight throughout, and now reports the frozen run's eight at 4.5 to 23.0.
+
+**W4C-RESULTS-001.md, "one lineage reproduced its result exactly".** Two did.
+`observatory_chiller` repeated at -10 and `gravel_washplant` at -2, which the
+table directly beneath that sentence shows: 11 against 9 in W4 and 12 against 10
+in W4C. The sensitivity statement is unaffected, because removing
+`observatory_chiller` alone still takes the pooled contrast from -14 to -4. The
+paper reports two.
 
 **W4-RESULTS-001.md, "the perfect-actor preflight fired 30 times from
 digit-length variance alone".** The count is right and the cause is wrong. The

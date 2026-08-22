@@ -1,9 +1,16 @@
-/* Score the frozen known-item harness. Reads frozen-corpus.json and nothing else.
+/* Score the frozen known-item harness against one immutable corpus export.
 
-   Every number this prints is reproducible from that one file plus the shipped
-   LexicalRetriever and a local embedding model. It opens no project store, so it
-   cannot drift the way r1_decompose.mjs and r1_embed.mjs did between their two
-   runs.
+   What is frozen and what is not. The corpus and the query set are frozen: this
+   script opens no project store, so it cannot drift the way r1_decompose.mjs and
+   r1_embed.mjs did between their two runs, and that was the defect it exists to
+   remove. The execution around it is NOT hermetic, and saying so is the point of
+   this paragraph. It imports the retriever from the working tree, it reads and
+   writes an embedding cache keyed by model NAME and text rather than by model
+   digest, and it calls whichever local Ollama artifact currently answers to
+   nomic-embed-text. A model republished under the same tag would be picked up
+   silently, and cached vectors from two versions could coexist. Pinning the
+   retriever commit and the model digest, and keying the cache by digest, is the
+   remaining work.
 
    Reports the same eight cells as the live embedding rerun, per store and query
    variant, embedding against shipped BM25:

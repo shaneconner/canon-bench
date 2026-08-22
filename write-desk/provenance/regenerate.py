@@ -242,12 +242,29 @@ def main() -> int:
     check("retrieval cell count", seen == 8, f"{seen} of 8 plotted cells checked")
 
     for store, proj in proj_of.items():
-        # skip the corpus block, which carries cardinalities rather than a run
-        want_n = next(v["n"] for k, v in scores[proj].items() if k != "corpus")
+        corpus = scores[proj]["corpus"]
+        variants = {k: v["n"] for k, v in scores[proj].items() if k != "corpus"}
+        # Both query variants score the same sample, so a split between them would
+        # mean the two halves of one figure row came from different populations.
+        check(f"retrieval {store} variant denominators agree",
+              len(set(variants.values())) == 1,
+              ", ".join(f"{k}={v}" for k, v in sorted(variants.items())))
+        want_n = min(variants.values())
         got = re.search(rf'key:\s*"{store}".*?queries:\s*(\d+)', source, re.S)
         check(f"retrieval {store} query count",
               bool(got) and int(got.group(1)) == want_n,
               f"n={want_n} in the frozen run")
+        # The record count is printed on every row label of the figure, and the
+        # journal and candidate counts are quoted in the caption. Round nine found
+        # all of them taken from a different run than the rates beside them, so
+        # each one is checked against the run the rates came from.
+        got = re.search(rf'key:\s*"{store}".*?records:\s*(\d+)', source, re.S)
+        check(f"retrieval {store} record count",
+              bool(got) and int(got.group(1)) == corpus["articles"],
+              f"{corpus['articles']} in the frozen run")
+        check(f"retrieval {store} candidate arithmetic",
+              corpus["articles"] + corpus["journal"] - 1 == corpus["mixed_candidates"],
+              f"{corpus['articles']} + {corpus['journal']} - 1 = {corpus['mixed_candidates']}")
 
     print()
     if failures:

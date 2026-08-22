@@ -25,8 +25,8 @@ agent whose answers are graded per slot against a hidden oracle.
 | W1 | can a rule be enforced at the tool boundary rather than judged by the model? | tool-enforced rules err at zero across five captures; model-judged rules err at 10 to 20 percent on near-rank precedence |
 | W2 | do writers select the right facts and file them at the right address? | yes, 94/94 governing; but they narrate superseded values into articles in 63 of 64 stores, and prompt-side guidance moves noise without moving that habit |
 | W3 | does the store's economy improve as history accumulates? | no. under shipped doctrine the store grows faster than the raw transcripts it distills (18.5KB against a 7.9KB pile at eight sessions) and staleness compounds linearly |
-| W4 | can the tool's own voice at the write boundary change the habit the prompt could not? | yes. one sentence naming body growth cut standing superseded values by 42 percent, 88/96 against 51/96, and shrank the median store by a fifth with no reader regression |
-| W4R | does that hold on a second model? | the staleness effect replicates almost exactly (87/96 against 45/96) and the byte savings do not, which separates the mechanism from its side effect: narration and verbosity are independent |
+| W4 | can the tool's own voice at the write boundary change the habit the prompt could not? | yes. a recurring line naming body growth, which fired after 117 of the 198 treated writes, cut standing superseded values by 42 percent, 88/96 against 51/96, and shrank the median store by a fifth with no reader regression |
+| W4R | does that hold on a second model? | the staleness effect recurs almost exactly (87/96 against 45/96) and the byte savings do not. Read that as a dissociation, not as independence: verbosity is confounded with model identity here, so the two captures cannot separate the mechanism from its side effect |
 
 W4's intervention shipped in the package as a result of this measurement
 (pi-canon commit `e1312e6`), and W4's baseline arm produced the programme's
@@ -48,8 +48,18 @@ them.
 - `W2-DESIGN-001.md` and `W2-RESULTS-001.md`, write selection and placement
 - `W3-DESIGN-001.md` and `W3-RESULTS-001.md`, accumulation
 - `W4-DESIGN-001.md` and `W4-RESULTS-001.md`, the growth line
-- `W4R-RESULTS-001.md`, the growth line replicated on the second subject model
+- `W4R-RESULTS-001.md`, the growth line repeated on the second subject model
   over a byte-identical instrument
+- `RANKING-RESULTS.md`, the offline retrieval benchmark on two real stores that
+  tested the retrieval explanation directly
+- `data/per-lineage-endpoints.csv`, 64 rows covering both controlled captures
+  and the accumulation study: capture, model, arm, lineage, depth, superseded
+  values standing, superseded values available, store bytes, transcript pile
+  bytes, article count, journal count. Every per-lineage figure and every
+  direction count in the paper recomputes from this file.
+- `data/figure-data.js`, every plotted series in the paper, including the four
+  staleness trajectories and the eight paired endpoints per model, so a reader
+  can check the charts against the numbers without reading dots off an axis
 
 ## Protocol
 

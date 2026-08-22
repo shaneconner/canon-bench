@@ -42,6 +42,8 @@ The result that changed the roadmap is not in that run at all. A forensic pass o
 
 *The 14 recall misses from a development run, each placed at the point it first went wrong: 8 never captured into any tier, 5 captured and then overwritten by a later rewrite, 1 judge error, and 0 lost at retrieval or surfacing.*
 
+Two cautions belong beside those counts. All 8 never-captured misses happened in the plant sessions, which open on an empty store, so they are one failure mode seen once rather than 8 independent observations. And the suite's own structure limits what the retrieval zero can mean: every planted fact has an owning asset, so a retrieval miss is not a failure this population contains. `chains/SPEC.md` sets that out in full.
+
 That is development evidence over two arms of one run and it carries no confirmatory weight, but 13 of 14 is not a close call and it points somewhere specific. None of the misses was a fact sitting in the store that recall failed to reach, which is the failure a retrieval-shaped design would predict. A store that surfaces perfectly cannot surface what was never written down, so on this evidence the open problem is write-side fidelity rather than recall coverage: the hard moment is when an agent has just learned something, is mid-task, and has a live prompt in front of it asking for something else. The constraint guard is a first answer to the rewrite half of that, and an incomplete one.
 
 ### What the run does not establish

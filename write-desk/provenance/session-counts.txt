@@ -1,0 +1,17 @@
+capture                                 listed  report  valid  paper
+20260816-w1e-state-only-model-001         None     320    320  320/320 ok
+                                       no per-session directory; report is the authority. Valid 320 of 320: writer_terminal_protocol_valid_count 160 plus probe_protocol_valid_count 160.
+20260817-w1f-model-001                     512     512    511  512/511 ok
+20260817-w1g-model-001                     640     640    636  640/636 ok
+20260817-w1h-model-001                     512     512    512  512/512 ok
+                                       valid 512 of 512 under analyses/20260817-w1h-model-001-protocol-corrected.json; the grade-blind report says 0, which is the classifier bug, not the result.
+20260819-w1i-lean-model-001                320     320    320  320/320 ok
+                                       valid 320 of 320 under protocol-corrected-report.json; graded-report.json says 0, which is the same classifier bug.
+20260820-w1j-model-001                     576     576    572  576/572 ok
+20260820-w2-model-002                      128     128    127  128/127 ok
+20260820-w3-model-001                      248     248    247  248/247 ok
+20260820-w4-model-001                      160     160    160  160/160 ok
+20260821-w4r-model-003                     160     160    160  160/160 ok
+
+totals as printed in the paper: 3576 run, 3565 protocol-valid
+every capture found agrees with the paper.

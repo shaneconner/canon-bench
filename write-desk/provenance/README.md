@@ -30,6 +30,13 @@ Reproduces the drift audit against an unpacked capture tree from the Zenodo
 deposit. `drift-sweep.txt` is our run of it.
 
 ```
+python3 verify-session-counts.py /path/to/runs
+```
+
+Recounts every capture against the numbers the paper prints. Also needs the
+deposit. `session-counts.txt` is our run of it.
+
+```
 sha256sum -c MANIFEST.sha256
 ```
 
@@ -49,6 +56,8 @@ sha256sum -c MANIFEST.sha256
 | `fixtures/w4_lineage.py`, `fixtures/w3_lineage.py` | the histories are generated, byte-identical across arms, and the availability denominators are a property of the fixture rather than of any run |
 | `drift-sweep.py`, `drift-sweep.txt` | no output from the mid-capture package drift reached any model |
 | `regenerate.py` | the published CSV and plotted series are derived from the reports above and were not hand-edited |
+| `growth-line-gate.mjs` | the line shipped with a test asserting it stays quiet on creation, shrinking, capsule-only edits, and no-op writes, and matching the same message text Figure 4 quotes |
+| `verify-session-counts.py`, `session-counts.txt` | the ten captures' run and protocol-valid counts, recounted from the capture trees rather than restated |
 
 ## What this does not establish
 

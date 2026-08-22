@@ -38,6 +38,14 @@ Recounts every capture against the numbers the paper prints. Also needs the
 deposit. `session-counts.txt` is our run of it.
 
 ```
+node retrieval/r1_freeze.mjs 400 && node retrieval/r1_frozen_score.mjs
+```
+
+Rebuilds the frozen retrieval corpus from two live project stores and scores it.
+Needs those stores and a local Ollama, and it will produce different numbers as
+the stores grow, which is the point `retrieval/README.md` makes.
+
+```
 sha256sum -c MANIFEST.sha256
 ```
 
@@ -70,6 +78,7 @@ find . -type f ! -name MANIFEST.sha256 -not -path '*/__pycache__/*' \
 | `rehearsal-growth-lines.py`, `rehearsal-growth-lines.txt` | the no-model rehearsal fires the line 38 times in all four runs, 8 of them the fixture's own exercise sentence and 30 incidental, and none of the 30 from a replacement number carrying more digits. This is the recount behind the W4 erratum |
 | `regenerate.py` | the published CSV and plotted series are derived from the reports above and were not hand-edited |
 | `growth-line-gate.mjs` | the line shipped with a test asserting it stays quiet on creation, shrinking, capsule-only edits, and no-op writes, and matching the same message text Figure 4 quotes. Its header names the pi-canon commit it was copied from and the SHA-256 of the copied block, so the copy can be checked against the package rather than assumed current |
+| `retrieval/` | the frozen ranking harness and what freezing it revealed: BM25 fell in eight cells of eight as the two live stores grew, by 2.2 to 13.3 points, while the embedding ranker did not move consistently, and the ordering held in all eight. Start at `retrieval/README.md` |
 | `verify-session-counts.py`, `session-counts.txt` | the eleven captures' run and protocol-valid counts, recounted from the capture trees rather than restated |
 
 ## What this does not establish
@@ -82,10 +91,15 @@ against that deposit, and its positive control is the pattern to copy: it counts
 something the reports say is there, and refuses to report the interesting zeroes
 unless that count matches.
 
-Two limits are permanent. The Codex runtime exposes no decoding seed, so the
-captures are auditable but not exactly rerunnable. And the retrieval benchmark
-in the paper cannot be rerun against the same corpus at all, because both real
-stores have grown since it ran.
+One limit is permanent: the Codex runtime exposes no decoding seed, so the
+captures are auditable but not exactly rerunnable.
+
+A second was permanent and is now bounded. The retrieval benchmark in the paper
+cannot be rerun against the corpus it plotted, because both real stores have
+grown since. `retrieval/` freezes the harness so that stops being true going
+forward, and measures what the old defect cost: scored against the plotted run,
+BM25 fell in eight cells of eight while the embedding ranker did not move
+consistently, and the ordering held in all eight.
 
 ## An audit script needs a control
 
